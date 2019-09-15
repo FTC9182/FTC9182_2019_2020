@@ -22,7 +22,7 @@ public class MecanumDriveAttempt1 extends OpMode {
           frontRight = hardwareMap.dcMotor.get("front_right");
           frontLeft = hardwareMap.dcMotor.get("front_left");
           backLeft = hardwareMap.dcMotor.get("back_left");
-          backRight = hardwareMap.dcMotor.get("back_left");
+          backRight = hardwareMap.dcMotor.get("back_right");
 
           frontRight.setDirection(DcMotorSimple.Direction.FORWARD);
           frontLeft.setDirection(DcMotorSimple.Direction.REVERSE);
