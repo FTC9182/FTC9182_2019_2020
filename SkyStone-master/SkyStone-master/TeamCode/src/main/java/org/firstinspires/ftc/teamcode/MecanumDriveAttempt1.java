@@ -16,6 +16,7 @@ public class MecanumDriveAttempt1 extends OpMode {
     double driveX;
     double driveY;
     double turnDegrees;
+    double speedVari;
 
     @Override
     public void init() {
@@ -29,19 +30,33 @@ public class MecanumDriveAttempt1 extends OpMode {
           backLeft.setDirection(DcMotorSimple.Direction.REVERSE);
           backRight.setDirection(DcMotorSimple.Direction.FORWARD);
 
+          speedVari = 1;
+
     }
 
     @Override
     public void loop() {
 
+        if (gamepad1.dpad_up){
+            speedVari = 1;
+        } else if (gamepad1.dpad_left) {
+            speedVari = 0.5;
+        } else if (gamepad1.dpad_right) {
+            speedVari = 0.75;
+        } else if (gamepad1.dpad_down) {
+            speedVari = 0.25;
+        }
+
+
+
         driveX = gamepad1.left_stick_x;
         driveY = gamepad1.left_stick_y;
         turnDegrees = gamepad1.right_stick_x;
 
-        frontRight.setPower(-driveY-driveX-turnDegrees);
-        frontLeft.setPower(-driveY+driveX+turnDegrees);
-        backLeft.setPower(-driveY-driveX+turnDegrees);
-        backRight.setPower(-driveY+driveX-turnDegrees);
+        frontRight.setPower(speedVari*(-driveY-driveX-turnDegrees));
+        frontLeft.setPower(speedVari*(-driveY+driveX+turnDegrees));
+        backLeft.setPower(speedVari*(-driveY-driveX+turnDegrees));
+        backRight.setPower(speedVari*(-driveY+driveX-turnDegrees));
 
 
 
