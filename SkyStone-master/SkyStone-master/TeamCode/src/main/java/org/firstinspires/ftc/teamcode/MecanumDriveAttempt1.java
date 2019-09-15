@@ -15,6 +15,7 @@ public class MecanumDriveAttempt1 extends OpMode {
 
     double driveX;
     double driveY;
+    double turnDegrees;
 
     @Override
     public void init() {
@@ -35,11 +36,12 @@ public class MecanumDriveAttempt1 extends OpMode {
 
         driveX = gamepad1.left_stick_x;
         driveY = gamepad1.left_stick_y;
+        turnDegrees = gamepad1.right_stick_x;
 
-        frontRight.setPower(driveY+driveX);
-        frontLeft.setPower(driveY-driveX);
-        backLeft.setPower(driveY+driveX);
-        backRight.setPower(driveY-driveY);
+        frontRight.setPower(driveY-driveX-turnDegrees);
+        frontLeft.setPower(driveY+driveX+turnDegrees);
+        backLeft.setPower(driveY-driveX+turnDegrees);
+        backRight.setPower(driveY+driveY-turnDegrees);
 
 
 
