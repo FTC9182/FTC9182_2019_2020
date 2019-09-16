@@ -1,11 +1,11 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
-public class FoundationPull_Autonomous extends LinearOpMode
+public class QuarryPush_Autonomous extends LinearOpMode
 {
     Servo pullerServo = null;
 
@@ -31,13 +31,11 @@ public class FoundationPull_Autonomous extends LinearOpMode
         backRight.setDirection(DcMotorSimple.Direction.FORWARD);
         /* ! Autonomous commands ! */
 
-        //Go backwards
-        //Move servo + .5
-        //Move to the left
-        //Move servo + .5
         //Move forward
-        //Move servo - 1
-
+        //180 arc
+        //90 arc Left
+        //Move froward
+        //Move backwards under bridge
     }
 }
-//Nicholas 9/15/19
+//Nicholas 9/16/19

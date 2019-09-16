@@ -23,10 +23,11 @@ public class CapstoneAndFoundationPull extends OpMode
     @Override
     public void loop()
     {
-        if (gamepad1.y)//back
+        if (gamepad1.y)
         {
             if (currentPower == basePower){ currentPower = fullExtend; pullerServo.setPosition(currentPower); }
             else if (currentPower == fullExtend) { currentPower = basePower; pullerServo.setPosition((currentPower));}
         }
     }
 }
+//Nicholas 9/15/19
