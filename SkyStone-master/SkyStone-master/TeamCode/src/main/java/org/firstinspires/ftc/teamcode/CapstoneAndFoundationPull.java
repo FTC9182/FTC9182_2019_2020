@@ -12,9 +12,6 @@ public class CapstoneAndFoundationPull extends OpMode
     double basePower = 0;
     double fullExtend = 1;
     double currentPower = 0;
-    double adjustment = .5;
-
-
 
     @Override
     public void init()
@@ -28,13 +25,8 @@ public class CapstoneAndFoundationPull extends OpMode
     {
         if (gamepad1.y)//back
         {
-            if (currentPower != basePower) {currentPower -= adjustment;}
-            pullerServo.setPosition(currentPower);
-        }
-        else if (gamepad1.b)//forward
-        {
-            if (currentPower != fullExtend) {currentPower += adjustment;}
-            pullerServo.setPosition(currentPower);
+            if (currentPower == basePower){ currentPower = fullExtend; pullerServo.setPosition(currentPower); }
+            else if (currentPower == fullExtend) { currentPower = basePower; pullerServo.setPosition((currentPower));}
         }
     }
 }
