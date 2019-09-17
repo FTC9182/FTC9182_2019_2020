@@ -37,6 +37,8 @@ public class MecanumDriveAttempt1 extends OpMode {
     @Override
     public void loop() {
 
+        //This changes the value of a variable that is used as a multiplier
+        //to allow us to have variable speed.
         if (gamepad1.dpad_up){
             speedVari = 1;
         } else if (gamepad1.dpad_left) {
@@ -48,7 +50,8 @@ public class MecanumDriveAttempt1 extends OpMode {
         }
 
 
-
+        //This creates variables that change depending on the position of the joysticks,
+        //which is used
         driveX = gamepad1.left_stick_x;
         driveY = gamepad1.left_stick_y;
         turnDegrees = gamepad1.right_stick_x;
