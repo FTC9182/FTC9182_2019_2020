@@ -14,7 +14,6 @@ public class FoundationPull_Autonomous extends LinearOpMode
     DcMotor backRight = null;
     DcMotor backLeft = null;
 
-
     @Override
     public void runOpMode() throws InterruptedException
     {
