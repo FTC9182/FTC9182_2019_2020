@@ -9,6 +9,18 @@ public class Grabber
 
     public Grabber(HardwareMap hardwareMap)
     {
+        pullerServo = hardwareMap.servo.get("Puller_Servo");
 
+        pullerServo.setPosition(0);
+    }
+
+    public void Down()
+    {
+        pullerServo.setPosition(0);
+    }
+
+    public void Up()
+    {
+        pullerServo.setPosition(1);
     }
 }
