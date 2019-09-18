@@ -39,11 +39,11 @@ public class MecanumDriveAttempt1 extends OpMode {
 
     @Override
     public void loop() {
-        if (gamepad1.y)  {
-            pullServo.setPosition(pullServo.getPosition()+(1/30));
-        } else if (gamepad1.b)  {
-            pullServo.setPosition(pullServo.getPosition()-(1/30));
-        }
+        //if (gamepad1.y)  {
+            //pullServo.setPosition(pullServo.getPosition()+(1/30));
+        //} else if (gamepad1.b)  {
+            //pullServo.setPosition(pullServo.getPosition()-(1/30));
+        //}
 
         //This changes the value of a variable that is used as a multiplier
         //to allow us to have variable speed.
