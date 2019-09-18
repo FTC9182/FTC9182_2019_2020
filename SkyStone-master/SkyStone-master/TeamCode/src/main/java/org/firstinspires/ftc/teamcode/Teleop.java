@@ -23,6 +23,7 @@ public class Teleop extends OpMode {
     @Override
     public void init() {
 
+        grabber1.Up();
         currentPower = basePower;
 
     }
