@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.Servo;
 
 @TeleOp (name = "Teleop1")
 public class MecanumDriveAttempt1 extends OpMode {
@@ -12,6 +13,7 @@ public class MecanumDriveAttempt1 extends OpMode {
     DcMotor frontLeft;
     DcMotor backRight;
     DcMotor backLeft;
+    Servo pullServo;
 
     double driveX;
     double driveY;
@@ -24,6 +26,7 @@ public class MecanumDriveAttempt1 extends OpMode {
           frontLeft = hardwareMap.dcMotor.get("front_left");
           backLeft = hardwareMap.dcMotor.get("back_left");
           backRight = hardwareMap.dcMotor.get("back_right");
+          pullServo = hardwareMap.servo.get("pull_servo");
 
           frontRight.setDirection(DcMotorSimple.Direction.FORWARD);
           frontLeft.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -36,6 +39,11 @@ public class MecanumDriveAttempt1 extends OpMode {
 
     @Override
     public void loop() {
+        if (gamepad1.y)  {
+            pullServo.setPosition(pullServo.getPosition()+(1/30));
+        } else if (gamepad1.b)  {
+            pullServo.setPosition(pullServo.getPosition()-(1/30));
+        }
 
         //This changes the value of a variable that is used as a multiplier
         //to allow us to have variable speed.
