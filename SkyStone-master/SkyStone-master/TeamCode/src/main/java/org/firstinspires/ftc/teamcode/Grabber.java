@@ -12,7 +12,7 @@ public class Grabber
 
     public Grabber(HardwareMap hardwareMap)
     {
-        pullerServo = hardwareMap.servo.get("Puller_Servo");
+        pullerServo = hardwareMap.servo.get("pull_servo");
 
         pullerServo.setPosition(0);
     }
