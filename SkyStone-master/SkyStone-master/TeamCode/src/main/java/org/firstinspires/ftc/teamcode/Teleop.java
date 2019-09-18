@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
@@ -9,7 +10,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 @TeleOp (name = "Teleop")
 public class Teleop extends OpMode {
 
-    Grabber grabber1 = new Grabber(hardwareMap);
+    Grabber grabber1 = null;
     public ElapsedTime waitTime = new ElapsedTime();
 
     double basePower = 1;
@@ -23,6 +24,8 @@ public class Teleop extends OpMode {
 
         grabber1.Up();
         currentPower = basePower;
+
+        grabber1 = new Grabber(hardwareMap);
 
     }
 
