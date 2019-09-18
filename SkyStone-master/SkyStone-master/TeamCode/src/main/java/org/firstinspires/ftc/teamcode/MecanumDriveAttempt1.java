@@ -51,11 +51,14 @@ public class MecanumDriveAttempt1 extends OpMode {
 
 
         //This creates variables that change depending on the position of the joysticks,
-        //which is used
+        //which is used to determine the direction the wheels spin. The variable turnDegrees
+        //simply adds or subtracts from the speed to add turning.
         driveX = gamepad1.left_stick_x;
         driveY = gamepad1.left_stick_y;
         turnDegrees = gamepad1.right_stick_x;
 
+        //This compiles all above code to create our drive code.
+        //The code is different depending on which wheel it is for.
         frontRight.setPower(speedVari*(-driveY-driveX-turnDegrees));
         frontLeft.setPower(speedVari*(-driveY+driveX+turnDegrees));
         backLeft.setPower(speedVari*(-driveY-driveX+turnDegrees));
