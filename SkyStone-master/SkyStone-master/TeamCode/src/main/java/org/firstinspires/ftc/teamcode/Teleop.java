@@ -9,8 +9,6 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 @TeleOp (name = "Teleop")
 public class Teleop extends OpMode {
 
-    Servo pullerServo = null;
-
     Grabber grabber1 = new Grabber(hardwareMap);
     public ElapsedTime waitTime = new ElapsedTime();
 
