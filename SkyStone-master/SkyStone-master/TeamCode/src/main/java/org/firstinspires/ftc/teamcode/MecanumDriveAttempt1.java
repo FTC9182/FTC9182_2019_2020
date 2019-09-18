@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.util.ElapsedTime;
 
 @TeleOp (name = "Teleop1")
 public class MecanumDriveAttempt1 extends OpMode {
@@ -13,12 +14,17 @@ public class MecanumDriveAttempt1 extends OpMode {
     DcMotor frontLeft;
     DcMotor backRight;
     DcMotor backLeft;
+
     Servo pullServo;
+
+    ElapsedTime waitTime = new ElapsedTime();
 
     double driveX;
     double driveY;
     double turnDegrees;
     double speedVari;
+
+    boolean speedReady;
 
     @Override
     public void init() {
@@ -39,6 +45,11 @@ public class MecanumDriveAttempt1 extends OpMode {
 
     @Override
     public void loop() {
+        if (gamepad1.y && speedReady)
+        {
+
+        }
+
         //if (gamepad1.y)  {
             //pullServo.setPosition(pullServo.getPosition()+(1/30));
         //} else if (gamepad1.b)  {
