@@ -9,7 +9,7 @@ public class DriveTrain {
     DcMotor frontLeft = null;
     DcMotor backLeft = null;
     DcMotor backRight = null;
-    
+
     public DriveTrain(HardwareMap hardwareMap) {
         frontRight = hardwareMap.dcMotor.get("front_right");
         frontLeft = hardwareMap.dcMotor.get("front_left");
@@ -25,7 +25,10 @@ public class DriveTrain {
 
     public void Move(double speedVari,double driveX, double driveY, double turnDegrees)
     {
-
+        frontRight.setPower(speedVari*(-driveY-driveX-turnDegrees));
+        frontLeft.setPower(speedVari*(-driveY+driveX+turnDegrees));
+        backLeft.setPower(speedVari*(-driveY-driveX+turnDegrees));
+        backRight.setPower(speedVari*(-driveY+driveX-turnDegrees));
     }
 
 }
