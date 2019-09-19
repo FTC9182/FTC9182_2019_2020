@@ -4,8 +4,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-public class DriveTrain
-{
+public class DriveTrain {
     DcMotor frontRight = null;
     DcMotor frontLeft = null;
     DcMotor backLeft = null;
@@ -14,8 +13,7 @@ public class DriveTrain
     double speedVari;
 
 
-    public DriveTrain(HardwareMap hardwareMap)
-    {
+    public DriveTrain(HardwareMap hardwareMap) {
         frontRight = hardwareMap.dcMotor.get("front_right");
         frontLeft = hardwareMap.dcMotor.get("front_left");
         backLeft = hardwareMap.dcMotor.get("back_left");
@@ -28,10 +26,5 @@ public class DriveTrain
 
         speedVari = 1;
     }
-
-    
-
-
-
-
 }
+
