@@ -26,15 +26,15 @@ public class QuarryPush_Autonomous extends LinearOpMode
         backRight = hardwareMap.dcMotor.get("back_right");
 
         frontRight.setDirection(DcMotorSimple.Direction.FORWARD);
-        frontLeft.setDirection(DcMotorSimple.Direction.REVERSE);
-        backLeft.setDirection(DcMotorSimple.Direction.REVERSE);
+        frontLeft.setDirection(DcMotorSimple.Direction.FORWARD);
+        backLeft.setDirection(DcMotorSimple.Direction.FORWARD);
         backRight.setDirection(DcMotorSimple.Direction.FORWARD);
         /* ! Autonomous commands ! */
 
-        //Move forward
+        //Forward
         //180 arc
         //90 arc Left
-        //Move froward
+        //froward
         //Move backwards under bridge
     }
 }
