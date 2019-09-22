@@ -8,7 +8,7 @@ public class Grabber
     private Servo pullerServo = null;
 
     private double basePower = 1;
-    private double fullExtend = 0;
+    private double fullExtend = 0.15;
 
     public Grabber(HardwareMap hardwareMap)
     {
