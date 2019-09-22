@@ -26,5 +26,14 @@ public class HDrive {
         Middle.setDirection(DcMotorSimple.Direction.FORWARD);
     }
 
+    public void drive(double driveX, double driveY, double turnDegrees){
+
+        ForwardRight.setPower(driveY - turnDegrees);
+        ForwardLeft.setPower(driveY - turnDegrees);
+        BackwardsRight.setPower(driveY + turnDegrees);
+        BackwardsLeft.setPower(driveY + turnDegrees);
+        Middle.setPower(driveX);
+    }
+
 
 }

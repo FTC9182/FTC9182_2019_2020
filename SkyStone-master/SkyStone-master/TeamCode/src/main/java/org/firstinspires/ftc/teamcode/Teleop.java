@@ -8,6 +8,10 @@ public class Teleop extends OpMode {
 
     HDrive hDrive = null;
 
+    double driveX;
+    double driveY;
+    double turnDegrees;
+
     public void init(){
 
         hDrive = new HDrive(hardwareMap);
@@ -15,7 +19,13 @@ public class Teleop extends OpMode {
     }
 
     public void loop(){
-        
+
+        driveX = gamepad1.left_stick_x;
+        driveY = gamepad1.left_stick_y;
+        turnDegrees = gamepad1.right_stick_x;
+
+        hDrive.drive(driveX, driveY, turnDegrees);
+
 
     }
 }
