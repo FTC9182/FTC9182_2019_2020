@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class HDrive {
@@ -18,7 +19,11 @@ public class HDrive {
         BackwardsLeft = hardwareMap.dcMotor.get("back_left");
         Middle = hardwareMap.dcMotor.get("middle");
 
-
+        ForwardRight.setDirection(DcMotorSimple.Direction.FORWARD);
+        ForwardLeft.setDirection(DcMotorSimple.Direction.REVERSE);
+        BackwardsRight.setDirection(DcMotorSimple.Direction.FORWARD);
+        BackwardsLeft.setDirection(DcMotorSimple.Direction.REVERSE);
+        Middle.setDirection(DcMotorSimple.Direction.FORWARD);
     }
 
 
