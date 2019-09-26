@@ -11,6 +11,7 @@ public class HDrive {
     DcMotor BackwardsRight = null;
     DcMotor BackwardsLeft = null;
     DcMotor Middle = null;
+    final double DRIVETICKS = 2240;
 
     public HDrive(HardwareMap hardwareMap){
         ForwardRight = hardwareMap.dcMotor.get("front_right");
@@ -35,12 +36,12 @@ public class HDrive {
         Middle.setPower(driveX);
     }
 
-    public void AutoDrive(double RightDrive, double LeftDrive, double MiddleDrive){
-        ForwardRight.setPower(RightDrive);
-        ForwardLeft.setPower(RightDrive);
-        BackwardsRight.setPower(LeftDrive);
-        BackwardsLeft.setPower(LeftDrive);
-        Middle.setPower(MiddleDrive);
+    public void AutoDrive(double RightPower, double LeftPower, double MiddlePower){
+        ForwardRight.setPower(RightPower);
+        ForwardLeft.setPower(RightPower);
+        BackwardsRight.setPower(LeftPower);
+        BackwardsLeft.setPower(LeftPower);
+        Middle.setPower(MiddlePower);
 
     }
 
