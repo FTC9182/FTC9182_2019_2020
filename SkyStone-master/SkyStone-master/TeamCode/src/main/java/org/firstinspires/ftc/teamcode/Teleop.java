@@ -23,7 +23,7 @@ public class Teleop extends OpMode {
 
     boolean speedReady;
 
-    public void init(){
+    public void init() {
 
         hDrive = new HDrive(hardwareMap);
         grabber = new Grabber(hardwareMap);
@@ -31,23 +31,29 @@ public class Teleop extends OpMode {
         currentPower = basePower;
     }
 
-    public void loop(){
+    public void loop() {
 
         speedReady = waitTime.milliseconds() > 500;
 
-        if (gamepad1.x && speedReady){
+        if (gamepad1.x && speedReady) {
 
-            if (currentPower == basePower){ currentPower = fullExtend; grabber.Down(); }
-            else if (currentPower == fullExtend) { currentPower = basePower; grabber.Up();}
+            if (currentPower == basePower) {
+                currentPower = fullExtend;
+                grabber.Down();
+            } else if (currentPower == fullExtend) {
+                currentPower = basePower;
+                grabber.Up();
+            }
 
             waitTime.reset();
 
-        driveX = gamepad1.left_stick_x;
-        driveY = gamepad1.left_stick_y;
-        turnDegrees = gamepad1.right_stick_x;
+            driveX = gamepad1.left_stick_x;
+            driveY = gamepad1.left_stick_y;
+            turnDegrees = gamepad1.right_stick_x;
 
-        hDrive.drive(driveX, driveY, turnDegrees);
+            hDrive.drive(driveX, driveY, turnDegrees);
 
 
+        }
     }
 }
