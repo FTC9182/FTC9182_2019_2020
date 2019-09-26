@@ -41,7 +41,7 @@ public class HDrive {
         BackwardsRight.setPower(LeftDrive);
         BackwardsLeft.setPower(LeftDrive);
         Middle.setPower(MiddleDrive);
-        
+
     }
 
 
