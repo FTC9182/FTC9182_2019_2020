@@ -7,6 +7,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 public class Teleop extends OpMode {
 
     HDrive hDrive = null;
+    Grabber grabber = null;
 
     double driveX;
     double driveY;
@@ -15,6 +16,7 @@ public class Teleop extends OpMode {
     public void init(){
 
         hDrive = new HDrive(hardwareMap);
+        grabber = new Grabber(hardwareMap);
 
     }
 
