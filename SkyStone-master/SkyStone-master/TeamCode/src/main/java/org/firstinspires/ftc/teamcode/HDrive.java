@@ -35,5 +35,14 @@ public class HDrive {
         Middle.setPower(driveX);
     }
 
+    public void AutoDrive(double RightDrive, double LeftDrive, double MiddleDrive){
+        ForwardRight.setPower(RightDrive);
+        ForwardLeft.setPower(RightDrive);
+        BackwardsRight.setPower(LeftDrive);
+        BackwardsLeft.setPower(LeftDrive);
+        Middle.setPower(MiddleDrive);
+        
+    }
+
 
 }
