@@ -40,12 +40,13 @@ public class Teleop extends OpMode {
             if (currentPower == basePower) {
                 currentPower = fullExtend;
                 grabber.Down();
+                waitTime.reset();
             } else if (currentPower == fullExtend) {
                 currentPower = basePower;
                 grabber.Up();
+                waitTime.reset();
             }
-
-            waitTime.reset();
+        }
 
             driveX = gamepad1.left_stick_x;
             driveY = gamepad1.left_stick_y;
@@ -56,4 +57,4 @@ public class Teleop extends OpMode {
 
         }
     }
-}
+
