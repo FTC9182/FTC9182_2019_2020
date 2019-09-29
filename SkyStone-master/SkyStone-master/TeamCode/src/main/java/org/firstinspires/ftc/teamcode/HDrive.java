@@ -57,7 +57,7 @@ public class HDrive {
 
     }
 
-    public void AutoDrive(double RightPower, double LeftPower, double MiddlePower, final double FBTargetDistance, boolean FB, final double STargetDistance){
+    public void AutoDrive(double RightPower, double LeftPower, double MiddlePower, double FBTargetDistance, boolean FB, double STargetDistance){
 //        ForwardRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 //        ForwardRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 //        ForwardLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -86,7 +86,7 @@ public class HDrive {
 
         SDriveDistance = STargetDistance * DRIVETICKS;
 
-        while (FB == true && (FBDistance > -(FBDriveDistance))){
+        while (FB == true && (FBDistance < FBDriveDistance)){
 
             ForwardRight.setPower(RightPower);
             ForwardLeft.setPower(RightPower);
@@ -96,6 +96,8 @@ public class HDrive {
         while (FB == false &&(SDistance < SDriveDistance)){
             Middle.setPower(MiddlePower);
         }
+
+        StopDriving();
 
 
 
