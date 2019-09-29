@@ -21,7 +21,7 @@ public class AutonomousFoundationSide extends LinearOpMode {
 
         waitForStart();
 
-        hDrive.AutoDrive(4, 4, 0);
+        hDrive.AutoDrive(4, 4, 0, 3, true, 0);
 
 
     }
