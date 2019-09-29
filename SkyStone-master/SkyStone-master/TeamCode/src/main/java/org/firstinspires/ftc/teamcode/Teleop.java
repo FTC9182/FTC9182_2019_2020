@@ -9,6 +9,7 @@ public class Teleop extends OpMode {
 
     HDrive hDrive = null;
     Grabber grabber = null;
+    BlockGrabber blockGrabber = null;
     public ElapsedTime waitTime = new ElapsedTime();
 
     //Drive var
@@ -28,12 +29,13 @@ public class Teleop extends OpMode {
 
         hDrive = new HDrive(hardwareMap);
         grabber = new Grabber(hardwareMap);
+        blockGrabber = new BlockGrabber(hardwareMap);
         grabber.Up();
         currentPower = basePower;
     }
 
     public void loop() {
-
+        //Gamepad1
         speedReady = waitTime.milliseconds() > 500;
 
         if (gamepad1.x && speedReady) {
@@ -49,21 +51,28 @@ public class Teleop extends OpMode {
             }
         }
 
-            driveX = gamepad1.left_stick_x;
-            driveY = gamepad1.left_stick_y;
-            turnDegrees = gamepad1.right_stick_x;
+        driveX = gamepad1.left_stick_x;
+        driveY = gamepad1.left_stick_y;
+        turnDegrees = gamepad1.right_stick_x;
 
-            hDrive.drive(driveX, driveY, turnDegrees, speedVari);
+        hDrive.drive(driveX, driveY, turnDegrees, speedVari);
 
-            if (gamepad1.dpad_up){
+        if (gamepad1.dpad_up){
                 speedVari = 1;
             } else if (gamepad1.dpad_left) {
-                speedVari = 0.5;
-            } else if (gamepad1.dpad_right) {
-                speedVari = 0.75;
-            } else if (gamepad1.dpad_down) {
-                speedVari = 0.25;
-            }
+            speedVari = 0.5;
+        } else if (gamepad1.dpad_right) {
+            speedVari = 0.75;
+        } else if (gamepad1.dpad_down) {
+            speedVari = 0.25;
+        }
+        //Gamepad2
+        if (gamepad2.right_trigger >= .75f){ blockGrabber.Close(); }
+        else if (gamepad2.left_trigger >= .75f) { blockGrabber.IncrementOpen(); }
+        else if (gamepad2.right_bumper) { blockGrabber.IncrementClose(); }
+        else if (gamepad2.left_bumper) { blockGrabber.Open(); }
+
+
         }
     }
 
