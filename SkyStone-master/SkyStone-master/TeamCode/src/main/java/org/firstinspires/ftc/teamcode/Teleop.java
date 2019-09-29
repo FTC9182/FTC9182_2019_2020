@@ -15,6 +15,7 @@ public class Teleop extends OpMode {
     double driveX;
     double driveY;
     double turnDegrees;
+    double speedVari;
 
     //Grabber var
     double currentPower;
@@ -52,9 +53,17 @@ public class Teleop extends OpMode {
             driveY = gamepad1.left_stick_y;
             turnDegrees = gamepad1.right_stick_x;
 
-            hDrive.drive(driveX, driveY, turnDegrees);
+            hDrive.drive(driveX, driveY, turnDegrees, speedVari);
 
-
+            if (gamepad1.dpad_up){
+                speedVari = 1;
+            } else if (gamepad1.dpad_left) {
+                speedVari = 0.5;
+            } else if (gamepad1.dpad_right) {
+                speedVari = 0.75;
+            } else if (gamepad1.dpad_down) {
+                speedVari = 0.25;
+            }
         }
     }
 
