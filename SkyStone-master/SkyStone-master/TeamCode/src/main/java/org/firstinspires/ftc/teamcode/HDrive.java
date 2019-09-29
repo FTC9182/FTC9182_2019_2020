@@ -58,16 +58,16 @@ public class HDrive {
     }
 
     public void AutoDrive(double RightPower, double LeftPower, double MiddlePower, final double FBTargetDistance, boolean FB, final double STargetDistance){
-        //ForwardRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        //ForwardRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        //ForwardLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        //ForwardLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        //BackwardsRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        //BackwardsRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        //BackwardsLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        //BackwardsLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        //Middle.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        //Middle.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        ForwardRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        ForwardRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        ForwardLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        ForwardLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        BackwardsRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        BackwardsRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        BackwardsLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        BackwardsLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        Middle.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        Middle.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
         double FBDistance;
 
