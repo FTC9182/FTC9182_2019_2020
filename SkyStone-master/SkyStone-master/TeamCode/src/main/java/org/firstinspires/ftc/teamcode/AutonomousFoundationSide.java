@@ -1,15 +1,17 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
+@Autonomous (name = "AutonFoundation")
 public class AutonomousFoundationSide extends LinearOpMode {
 
     Grabber grabber = null;
     HDrive hDrive = null;
 
-    double RightSide;
+    /*double RightSide;
     double LeftSide;
-    double MiddleDrive;
+    double MiddleDrive;*/
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -21,7 +23,9 @@ public class AutonomousFoundationSide extends LinearOpMode {
 
         waitForStart();
 
-        hDrive.AutoDrive(4, 4, 0, 3, true, 0);
+        hDrive.AutoDrive(1, 1, 0, 3, true, 0);
+
+        hDrive.StopDriving();
 
 
     }

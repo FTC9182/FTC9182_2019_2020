@@ -58,20 +58,21 @@ public class HDrive {
     }
 
     public void AutoDrive(double RightPower, double LeftPower, double MiddlePower, final double FBTargetDistance, boolean FB, final double STargetDistance){
-        ForwardRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        ForwardRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        ForwardLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        ForwardLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        BackwardsRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        BackwardsRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        BackwardsLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        BackwardsLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        Middle.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        Middle.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+//        ForwardRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+//        ForwardRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+//        ForwardLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+//        ForwardLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+//        BackwardsRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+//        BackwardsRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+//        BackwardsLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+//        BackwardsLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+//        Middle.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+//        Middle.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
 
         double FBDistance;
 
-        FBDistance = (ForwardRight.getCurrentPosition() * ForwardLeft.getCurrentPosition() * BackwardsLeft.getCurrentPosition() * BackwardsRight.getCurrentPosition())/4;
+        FBDistance = (ForwardRight.getCurrentPosition() + ForwardLeft.getCurrentPosition() + BackwardsLeft.getCurrentPosition() + BackwardsRight.getCurrentPosition())/4;
 
         double SDistance;
 
@@ -85,16 +86,15 @@ public class HDrive {
 
         SDriveDistance = STargetDistance * DRIVETICKS;
 
-        if (FB == true && (FBDistance < FBDriveDistance)){
+        while (FB == true && (FBDistance > -(FBDriveDistance))){
 
             ForwardRight.setPower(RightPower);
             ForwardLeft.setPower(RightPower);
             BackwardsRight.setPower(LeftPower);
             BackwardsLeft.setPower(LeftPower);
-        } else if (FB == false &&(SDistance < SDriveDistance)){
+        }
+        while (FB == false &&(SDistance < SDriveDistance)){
             Middle.setPower(MiddlePower);
-        } else {
-            StopDriving();
         }
 
 
