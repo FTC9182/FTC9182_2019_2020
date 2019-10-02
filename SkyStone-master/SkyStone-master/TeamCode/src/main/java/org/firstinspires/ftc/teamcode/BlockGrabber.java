@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 public class BlockGrabber {
 
-    private Servo[] grabbers = null;
+    private Servo[] grabbers;
 
     double open = 0;
     double close = .5;
