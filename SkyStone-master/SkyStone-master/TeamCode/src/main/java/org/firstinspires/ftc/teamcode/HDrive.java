@@ -87,12 +87,12 @@ public class HDrive {
 
         SDriveDistance = STargetDistance * DRIVETICKS;
 
-        while (FB == true && (FBDistance < FBDriveDistance)){
+        while (FB == true && (FBDistance > -FBDriveDistance)){
 
-            ForwardRight.setPower(RightPower);
-            ForwardLeft.setPower(RightPower);
-            BackwardsRight.setPower(LeftPower);
-            BackwardsLeft.setPower(LeftPower);
+            ForwardRight.setPower(-RightPower);
+            ForwardLeft.setPower(-RightPower);
+            BackwardsRight.setPower(-LeftPower);
+            BackwardsLeft.setPower(-LeftPower);
             FBDistance = (ForwardRight.getCurrentPosition() + ForwardLeft.getCurrentPosition() + BackwardsLeft.getCurrentPosition() + BackwardsRight.getCurrentPosition())/4;
 
         }
