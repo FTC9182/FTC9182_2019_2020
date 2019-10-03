@@ -12,7 +12,7 @@ public class HDrive {
     DcMotor BackwardsLeft = null;
     DcMotor Middle = null;
 
-    final double DRIVETICKS = 2240;
+    final double DRIVETICKS = 600;
 
     public HDrive(HardwareMap hardwareMap){
         ForwardRight = hardwareMap.dcMotor.get("front_right");
@@ -45,6 +45,8 @@ public class HDrive {
         BackwardsLeft.setPower(0);
         Middle.setPower(0);
 
+
+
         ForwardRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         ForwardRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         ForwardLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -58,7 +60,7 @@ public class HDrive {
 
     }
 
-    public void AutoDrive(double RightPower, double LeftPower, double MiddlePower, double FBTargetDistance, boolean FB, double STargetDistance){
+    public void AutoDrive(double Speed, double TargetDistance, String Direction){
 //        ForwardRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 //        ForwardRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 //        ForwardLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -79,29 +81,37 @@ public class HDrive {
 
         SDistance = Middle.getCurrentPosition();
 
-        double FBDriveDistance;
+        double DriveDistance;
 
-        FBDriveDistance = FBTargetDistance * DRIVETICKS;
+        DriveDistance = TargetDistance * DRIVETICKS;
 
-        double SDriveDistance;
+        while ((Direction == "Forward") && (FBDistance > -DriveDistance)){
 
-        SDriveDistance = STargetDistance * DRIVETICKS;
-
-        while (FB == true && (FBDistance > -FBDriveDistance)){
-
-            ForwardRight.setPower(-RightPower);
-            ForwardLeft.setPower(-RightPower);
-            BackwardsRight.setPower(-LeftPower);
-            BackwardsLeft.setPower(-LeftPower);
+            ForwardRight.setPower(-Speed);
+            ForwardLeft.setPower(-Speed);
+            BackwardsRight.setPower(-Speed);
+            BackwardsLeft.setPower(-Speed);
             FBDistance = (ForwardRight.getCurrentPosition() + ForwardLeft.getCurrentPosition() + BackwardsLeft.getCurrentPosition() + BackwardsRight.getCurrentPosition())/4;
 
         }
 
         StopDriving();
 
-        while (FB == false &&(SDistance < SDriveDistance)){
-            Middle.setPower(MiddlePower);
-            SDistance = (ForwardRight.getCurrentPosition() + ForwardLeft.getCurrentPosition() + BackwardsLeft.getCurrentPosition() + BackwardsRight.getCurrentPosition())/4;
+        while ((Direction == "Backward") && (FBDistance < DriveDistance)){
+
+            ForwardRight.setPower(Speed);
+            ForwardLeft.setPower(Speed);
+            BackwardsRight.setPower(Speed);
+            BackwardsLeft.setPower(Speed);
+            FBDistance = (ForwardRight.getCurrentPosition() + ForwardLeft.getCurrentPosition() + BackwardsLeft.getCurrentPosition() + BackwardsRight.getCurrentPosition())/4;
+
+        }
+
+        StopDriving();
+
+        while ((Direction == "Sideways") &&(SDistance < DriveDistance)){
+            Middle.setPower(Speed);
+            SDistance = Middle.getCurrentPosition();
         }
 
         StopDriving();

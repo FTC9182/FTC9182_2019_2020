@@ -25,7 +25,11 @@ public class AutonomousFoundationSide extends LinearOpMode {
 
 
 
-        hDrive.AutoDrive(1, 1, 0, 1, true, 0);
+        hDrive.AutoDrive(1, 1, "Forward");
+
+        hDrive.AutoDrive(1, 1, "Backward");
+
+        hDrive.AutoDrive(1,1,"Sideways");
 
 
     }
