@@ -51,7 +51,7 @@ public class BlockGrabber {
     public void IncrementOpen(){
         for (Servo servo : grabbers){
             currentDegree -= increment;
-            if (currentDegree >= open) { currentDegree = open; }
+            if (currentDegree <= open) { currentDegree = open; }
             servo.setPosition(currentDegree);
         }
     }
