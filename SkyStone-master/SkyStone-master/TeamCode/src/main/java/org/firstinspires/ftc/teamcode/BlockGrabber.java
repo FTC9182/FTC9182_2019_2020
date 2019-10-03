@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.util.ElapsedTime;
 
 public class BlockGrabber {
 
@@ -11,7 +12,11 @@ public class BlockGrabber {
     double open = .5;
     double close = 1;
     double currentDegree = 0;
-    double increment = .05;
+    double increment = .1;
+
+    boolean buttonReady = true;
+
+    public ElapsedTime waitTime = new ElapsedTime();
 
     public BlockGrabber (HardwareMap hardwareMap){
         grabbers[0] = hardwareMap.servo.get("grabber1");

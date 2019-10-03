@@ -25,6 +25,11 @@ public class Teleop extends OpMode {
 
     boolean speedReady;
 
+    //Block grabber
+    boolean triggerReady = true;
+
+    public ElapsedTime triggerTime = new ElapsedTime();
+
     public void init() {
 
         hDrive = new HDrive(hardwareMap);
@@ -37,6 +42,7 @@ public class Teleop extends OpMode {
     public void loop() {
         //Gamepad1
         speedReady = waitTime.milliseconds() > 500;
+        triggerReady = triggerTime.milliseconds() > 500;
 
         if (gamepad1.x && speedReady) {
 
@@ -57,8 +63,8 @@ public class Teleop extends OpMode {
 
         hDrive.drive(driveX, driveY, turnDegrees, speedVari);
 
-        if (gamepad1.dpad_up){
-                speedVari = 1;
+        if (gamepad1.dpad_up) {
+            speedVari = 1;
         } else if (gamepad1.dpad_left) {
             speedVari = 0.5;
         } else if (gamepad1.dpad_right) {
@@ -66,18 +72,30 @@ public class Teleop extends OpMode {
         } else if (gamepad1.dpad_down) {
             speedVari = 0.25;
         }
+
         //Gamepad2
-        if (gamepad2.right_trigger >= .75f){ blockGrabber.Close(); }
-        else if (gamepad2.left_trigger >= .75f) { blockGrabber.IncrementOpen(); }
-        else if (gamepad2.right_bumper) { blockGrabber.IncrementClose();
-            telemetry.addData("Bumper Press: ", "Right Bumper");}
+        if (triggerReady) {
+            if (gamepad2.right_trigger >= .75f) {
+                blockGrabber.Close();
+                triggerTime.reset();
+            } else if (gamepad2.left_trigger >= .75f) {
+                blockGrabber.IncrementOpen();
+                triggerTime.reset();
+            } else if (gamepad2.right_bumper) {
+                blockGrabber.IncrementClose();
+                triggerTime.reset();
+                telemetry.addData("Bumper Press: ", "Right Bumper");
+            } else if (gamepad2.left_bumper) {
+                blockGrabber.Open();
+                triggerTime.reset();
+                telemetry.addData("Bumper Press: ", "Left Bumper");
+            }
 
-        else if (gamepad2.left_bumper) { blockGrabber.Open();
-            telemetry.addData("Bumper Press: ", "Left Bumper");}
+                telemetry.addData("Servo Current Degree: ", blockGrabber.currentDegree);
+        }
 
-        telemetry.addData("Servo Current Degree: ", blockGrabber.currentDegree);
         telemetry.update();
-
         }
     }
+
 
