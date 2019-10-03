@@ -5,10 +5,11 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 public class BlockGrabber {
 
-    private Servo[] grabbers = null;
+    public Servo[] grabbers = new Servo[2];
 
-    double open = 0;
-    double close = .5;
+    double start = 0;
+    double open = .5;
+    double close = 1;
     double currentDegree = 0;
     double increment = .05;
 
@@ -18,7 +19,14 @@ public class BlockGrabber {
 
         grabbers[1].setDirection(Servo.Direction.REVERSE);
 
-        Open();
+        Start();
+    }
+
+    public void Start(){
+        for (Servo servo : grabbers) {
+            servo.setPosition(start);
+            currentDegree = start;
+        }
     }
 
     public void Open(){

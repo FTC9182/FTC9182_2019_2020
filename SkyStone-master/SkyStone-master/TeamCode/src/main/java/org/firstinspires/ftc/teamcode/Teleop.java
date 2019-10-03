@@ -16,7 +16,7 @@ public class Teleop extends OpMode {
     double driveX;
     double driveY;
     double turnDegrees;
-    double speedVari;
+    double speedVari = 1;
 
     //Grabber var
     double currentPower;
@@ -59,7 +59,7 @@ public class Teleop extends OpMode {
 
         if (gamepad1.dpad_up){
                 speedVari = 1;
-            } else if (gamepad1.dpad_left) {
+        } else if (gamepad1.dpad_left) {
             speedVari = 0.5;
         } else if (gamepad1.dpad_right) {
             speedVari = 0.75;
@@ -69,9 +69,14 @@ public class Teleop extends OpMode {
         //Gamepad2
         if (gamepad2.right_trigger >= .75f){ blockGrabber.Close(); }
         else if (gamepad2.left_trigger >= .75f) { blockGrabber.IncrementOpen(); }
-        else if (gamepad2.right_bumper) { blockGrabber.IncrementClose(); }
-        else if (gamepad2.left_bumper) { blockGrabber.Open(); }
+        else if (gamepad2.right_bumper) { blockGrabber.IncrementClose();
+            telemetry.addData("Bumper Press: ", "Right Bumper");}
 
+        else if (gamepad2.left_bumper) { blockGrabber.Open();
+            telemetry.addData("Bumper Press: ", "Left Bumper");}
+
+        telemetry.addData("Servo Current Degree: ", blockGrabber.currentDegree);
+        telemetry.update();
 
         }
     }
