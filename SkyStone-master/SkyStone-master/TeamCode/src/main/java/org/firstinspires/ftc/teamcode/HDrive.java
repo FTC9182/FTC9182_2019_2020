@@ -38,6 +38,13 @@ public class HDrive {
     }
 
     public void StopDriving(){
+
+        ForwardRight.setPower(0);
+        ForwardLeft.setPower(0);
+        BackwardsRight.setPower(0);
+        BackwardsLeft.setPower(0);
+        Middle.setPower(0);
+
         ForwardRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         ForwardRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         ForwardLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -48,12 +55,6 @@ public class HDrive {
         BackwardsLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         Middle.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         Middle.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-
-        ForwardRight.setPower(0);
-        ForwardLeft.setPower(0);
-        BackwardsRight.setPower(0);
-        BackwardsLeft.setPower(0);
-        Middle.setPower(0);
 
     }
 
@@ -92,9 +93,15 @@ public class HDrive {
             ForwardLeft.setPower(RightPower);
             BackwardsRight.setPower(LeftPower);
             BackwardsLeft.setPower(LeftPower);
+            FBDistance = (ForwardRight.getCurrentPosition() + ForwardLeft.getCurrentPosition() + BackwardsLeft.getCurrentPosition() + BackwardsRight.getCurrentPosition())/4;
+
         }
+
+        StopDriving();
+
         while (FB == false &&(SDistance < SDriveDistance)){
             Middle.setPower(MiddlePower);
+            SDistance = (ForwardRight.getCurrentPosition() + ForwardLeft.getCurrentPosition() + BackwardsLeft.getCurrentPosition() + BackwardsRight.getCurrentPosition())/4;
         }
 
         StopDriving();
