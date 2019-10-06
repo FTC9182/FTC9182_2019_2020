@@ -12,7 +12,7 @@ public class Arm {
     }
 
     public void Move(double gunnerY){
-        armExtend.setPower(gunnerY);
+        armExtend.setPower(.2*gunnerY);
     }
 
 
