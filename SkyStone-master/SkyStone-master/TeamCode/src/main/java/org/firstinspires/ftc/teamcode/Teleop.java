@@ -9,7 +9,7 @@ public class Teleop extends OpMode {
 
     HDrive hDrive = null;
     Grabber grabber = null;
-    BlockGrabber blockGrabber = null;
+    WheelGrabber wheelGrabber = null;
     public ElapsedTime waitTime = new ElapsedTime();
 
     //Drive var
@@ -34,7 +34,7 @@ public class Teleop extends OpMode {
 
         hDrive = new HDrive(hardwareMap);
         grabber = new Grabber(hardwareMap);
-        blockGrabber = new BlockGrabber(hardwareMap);
+        wheelGrabber = new WheelGrabber(hardwareMap);
         grabber.Up();
         currentPower = basePower;
     }
@@ -76,22 +76,22 @@ public class Teleop extends OpMode {
         //Gamepad2
         if (triggerReady) {
             if (gamepad2.right_trigger >= .75f) {
-                blockGrabber.Close();
+                wheelGrabber.Close();
                 triggerTime.reset();
             } else if (gamepad2.left_trigger >= .75f) {
-                blockGrabber.IncrementOpen();
+                wheelGrabber.IncrementOpen();
                 triggerTime.reset();
             } else if (gamepad2.right_bumper) {
-                blockGrabber.IncrementClose();
+                wheelGrabber.IncrementClose();
                 triggerTime.reset();
                 telemetry.addData("Bumper Press: ", "Right Bumper");
             } else if (gamepad2.left_bumper) {
-                blockGrabber.Open();
+                wheelGrabber.Open();
                 triggerTime.reset();
                 telemetry.addData("Bumper Press: ", "Left Bumper");
             }
 
-                telemetry.addData("Servo Current Degree: ", blockGrabber.currentDegree);
+                telemetry.addData("Servo Current Degree: ", wheelGrabber.currentDegree);
         }
 
         telemetry.update();
