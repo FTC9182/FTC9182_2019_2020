@@ -29,6 +29,9 @@ public class Teleop extends OpMode {
     //Block grabber
     boolean triggerReady = true;
 
+    //Arm
+    double gunnerY;
+
     public ElapsedTime triggerTime = new ElapsedTime();
 
     public void init() {
@@ -61,6 +64,7 @@ public class Teleop extends OpMode {
 
         driveX = gamepad1.left_stick_x;
         driveY = gamepad1.left_stick_y;
+        gunnerY = gamepad2.left_stick_y;
         turnDegrees = gamepad1.right_stick_x;
 
         hDrive.drive(driveX, driveY, turnDegrees, speedVari);
@@ -91,7 +95,9 @@ public class Teleop extends OpMode {
                 triggerTime.reset();
             }
         }
-        }
+
+        arm.Move(gunnerY);
     }
+}
 
 

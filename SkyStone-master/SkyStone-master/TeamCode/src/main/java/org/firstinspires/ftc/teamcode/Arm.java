@@ -11,12 +11,8 @@ public class Arm {
         armExtend = hardwareMap.dcMotor.get("arm_extend");
     }
 
-    public void Extend(){
-        armExtend.setPower(.5);
-    }
-
-    public void Retract(){
-        armExtend.setPower(.5);
+    public void Move(double gunnerY){
+        armExtend.setPower(gunnerY);
     }
 
 
