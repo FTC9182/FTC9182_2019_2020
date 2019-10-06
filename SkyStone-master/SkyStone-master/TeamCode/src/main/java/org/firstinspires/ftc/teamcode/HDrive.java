@@ -39,7 +39,7 @@ public class HDrive {
         ForwardLeft.setPower(speedVari * (driveY + turnDegrees));
         BackwardsRight.setPower(speedVari * (driveY - turnDegrees));
         BackwardsLeft.setPower(speedVari * (driveY + turnDegrees));
-        Middle.setPower(speedVari * driveX);
+        Middle.setPower(speedVari * -driveX);
     }
 
     public void StopDriving(String Direction){
