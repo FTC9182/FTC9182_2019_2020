@@ -10,6 +10,7 @@ public class Teleop extends OpMode {
     HDrive hDrive = null;
     Grabber grabber = null;
     WheelGrabber wheelGrabber = null;
+    Arm arm = null;
     public ElapsedTime waitTime = new ElapsedTime();
 
     //Drive var
@@ -35,6 +36,7 @@ public class Teleop extends OpMode {
         hDrive = new HDrive(hardwareMap);
         grabber = new Grabber(hardwareMap);
         wheelGrabber = new WheelGrabber(hardwareMap);
+        arm = new Arm(hardwareMap);
         grabber.Up();
         currentPower = basePower;
     }
