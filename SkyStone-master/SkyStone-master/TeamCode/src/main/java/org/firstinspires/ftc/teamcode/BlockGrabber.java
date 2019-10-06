@@ -22,7 +22,7 @@ public class BlockGrabber {
         grabbers[0] = hardwareMap.servo.get("grabber1");
         grabbers[1] = hardwareMap.servo.get("grabber2");
 
-        grabbers[1].setDirection(Servo.Direction.REVERSE);
+        //grabbers[1].setDirection(Servo.Direction.REVERSE);
 
         Start();
     }

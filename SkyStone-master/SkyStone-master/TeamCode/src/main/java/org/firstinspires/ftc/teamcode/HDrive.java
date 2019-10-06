@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.util.ElapsedTime;
 
 public class HDrive {
 
@@ -12,7 +13,9 @@ public class HDrive {
     DcMotor BackwardsLeft = null;
     DcMotor Middle = null;
 
-    final double DRIVETICKS = 600;
+    ElapsedTime SlowTime = null;
+
+    final double DRIVETICKS = 800;
 
     public HDrive(HardwareMap hardwareMap){
         ForwardRight = hardwareMap.dcMotor.get("front_right");
@@ -26,6 +29,8 @@ public class HDrive {
         BackwardsRight.setDirection(DcMotorSimple.Direction.FORWARD);
         BackwardsLeft.setDirection(DcMotorSimple.Direction.REVERSE);
         Middle.setDirection(DcMotorSimple.Direction.FORWARD);
+
+        SlowTime = new ElapsedTime();
     }
 
     public void drive(double driveX, double driveY, double turnDegrees, double speedVari){
@@ -37,15 +42,45 @@ public class HDrive {
         Middle.setPower(speedVari * driveX);
     }
 
-    public void StopDriving(){
+    public void StopDriving(String Direction){
+
+        SlowTime.reset();
+
+        if (ForwardRight.getPower() < -0.2 && Direction == "Forward"){
+            while (SlowTime.milliseconds() < 500){
+                ForwardRight.setPower(-0.2);
+                ForwardLeft.setPower(-0.2);
+                BackwardsRight.setPower(-0.2);
+                BackwardsLeft.setPower(-0.2);
+            }
+        }
+
+        if (ForwardRight.getPower() > 0.2 && Direction == "Backwards"){
+            while (SlowTime.milliseconds() < 500){
+                ForwardRight.setPower(0.2);
+                ForwardLeft.setPower(0.2);
+                BackwardsRight.setPower(0.2);
+                BackwardsLeft.setPower(0.2);
+            }
+        }
+
+        if (Middle.getPower() > 0.2 && Direction == "Left" ){
+            while (SlowTime.milliseconds() < 500){
+                Middle.setPower(0.2);
+            }
+        }
+
+        if (Middle.getPower() < -0.2 && Direction == "Right"){
+            while (SlowTime.milliseconds() < 500){
+                Middle.setPower(-0.2);
+            }
+        }
 
         ForwardRight.setPower(0);
         ForwardLeft.setPower(0);
         BackwardsRight.setPower(0);
         BackwardsLeft.setPower(0);
         Middle.setPower(0);
-
-
 
         ForwardRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         ForwardRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -95,9 +130,9 @@ public class HDrive {
 
         }
 
-        StopDriving();
+        StopDriving("Forward");
 
-        while ((Direction == "Backward") && (FBDistance < DriveDistance)){
+        while ((Direction == "Backwards") && (FBDistance < DriveDistance)){
 
             ForwardRight.setPower(Speed);
             ForwardLeft.setPower(Speed);
@@ -107,14 +142,21 @@ public class HDrive {
 
         }
 
-        StopDriving();
+        StopDriving("Backwards");
 
-        while ((Direction == "Sideways") &&(SDistance < DriveDistance)){
+        while ((Direction == "Left") &&(SDistance < DriveDistance)){
             Middle.setPower(Speed);
             SDistance = Middle.getCurrentPosition();
         }
 
-        StopDriving();
+        StopDriving("Left");
+
+        while ((Direction == "Right") &&(SDistance > -DriveDistance)){
+            Middle.setPower(-Speed);
+            SDistance = Middle.getCurrentPosition();
+        }
+
+        StopDriving("Right");
 
 
 
