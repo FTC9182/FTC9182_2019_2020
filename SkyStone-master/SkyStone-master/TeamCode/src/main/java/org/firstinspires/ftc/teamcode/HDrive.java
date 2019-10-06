@@ -28,7 +28,7 @@ public class HDrive {
         ForwardLeft.setDirection(DcMotorSimple.Direction.REVERSE);
         BackwardsRight.setDirection(DcMotorSimple.Direction.FORWARD);
         BackwardsLeft.setDirection(DcMotorSimple.Direction.REVERSE);
-        Middle.setDirection(DcMotorSimple.Direction.FORWARD);
+        Middle.setDirection(DcMotorSimple.Direction.REVERSE);
 
         SlowTime = new ElapsedTime();
     }
