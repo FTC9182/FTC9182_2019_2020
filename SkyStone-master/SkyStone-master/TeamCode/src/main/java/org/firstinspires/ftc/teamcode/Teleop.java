@@ -79,22 +79,16 @@ public class Teleop extends OpMode {
                 wheelGrabber.Close();
                 triggerTime.reset();
             } else if (gamepad2.left_trigger >= .75f) {
-                wheelGrabber.IncrementOpen();
+                wheelGrabber.Open();
                 triggerTime.reset();
             } else if (gamepad2.right_bumper) {
                 wheelGrabber.IncrementClose();
                 triggerTime.reset();
-                telemetry.addData("Bumper Press: ", "Right Bumper");
             } else if (gamepad2.left_bumper) {
-                wheelGrabber.Open();
+                wheelGrabber.IncrementOpen();
                 triggerTime.reset();
-                telemetry.addData("Bumper Press: ", "Left Bumper");
             }
-
-                telemetry.addData("Servo Current Degree: ", wheelGrabber.currentDegree);
         }
-
-        telemetry.update();
         }
     }
 
