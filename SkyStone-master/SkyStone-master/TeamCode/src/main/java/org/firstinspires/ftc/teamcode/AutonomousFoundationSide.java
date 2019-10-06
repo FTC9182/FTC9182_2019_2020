@@ -34,7 +34,5 @@ public class AutonomousFoundationSide extends LinearOpMode {
 
         hDrive.AutoDrive(0.8, 4, "Left");
 
-        hDrive.AutoDrive(0.8, 4, "Right");
-
     }
 }
