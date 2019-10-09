@@ -3,7 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
-@Autonomous (name = "AutonFoundation")
+@Autonomous (name = "AutonFoundationBlue")
 public class AutonomousFoundationSide extends LinearOpMode {
 
     Grabber grabber = null;
@@ -37,6 +37,10 @@ public class AutonomousFoundationSide extends LinearOpMode {
         hDrive.AutoDrive(0.5,1,"Backwards");
 
         hDrive.AutoDrive(0.5,0.8, "TurnLeft");
+
+        hDrive.AutoDrive(0.5,0.7,"Backwards");
+
+        hDrive.AutoDrive(0.5, 3, "Forward");
 
     }
 }
