@@ -4,14 +4,10 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 @Autonomous (name = "AutonFoundationBlue")
-public class AutonomousFoundationSide extends LinearOpMode {
+public class AutonFoundationBlue extends LinearOpMode {
 
     Grabber grabber = null;
     HDrive hDrive = null;
-
-    /*double RightSide;
-    double LeftSide;
-    double MiddleDrive;*/
 
     @Override
     public void runOpMode() throws InterruptedException {
