@@ -76,6 +76,15 @@ public class HDrive {
             }
         }
 
+        if ((ForwardRight.getPower() > 0.2) && (Direction == "TurnLeft")){
+            while (SlowTime.milliseconds() < 500){
+                ForwardRight.setPower(0.2);
+                ForwardLeft.setPower(-0.2);
+                BackwardsRight.setPower(0.2);
+                BackwardsLeft.setPower(-0.2);
+            }
+        }
+
         ForwardRight.setPower(0);
         ForwardLeft.setPower(0);
         BackwardsRight.setPower(0);
@@ -115,6 +124,10 @@ public class HDrive {
         double SDistance;
 
         SDistance = Middle.getCurrentPosition();
+
+        double TurnDistance;
+
+        TurnDistance = (ForwardRight.getCurrentPosition() + BackwardsRight.getCurrentPosition())/2;
 
         double DriveDistance;
 
@@ -157,6 +170,17 @@ public class HDrive {
         }
 
         StopDriving("Right");
+
+        while ((Direction == "TurnLeft") && (TurnDistance < DriveDistance)){
+            ForwardRight.setPower(Speed);
+            ForwardLeft.setPower(-Speed);
+            BackwardsRight.setPower(Speed);
+            BackwardsLeft.setPower(-Speed);
+
+            TurnDistance = (ForwardRight.getCurrentPosition() + BackwardsRight.getCurrentPosition())/2;
+        }
+
+        StopDriving("TurnLeft");
 
 
 
