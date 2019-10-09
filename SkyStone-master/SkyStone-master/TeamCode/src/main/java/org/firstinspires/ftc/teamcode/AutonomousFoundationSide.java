@@ -32,7 +32,11 @@ public class AutonomousFoundationSide extends LinearOpMode {
 
         grabber.Up();
 
-        hDrive.AutoDrive(0.8, 4, "Left");
+        hDrive.AutoDrive(0.5, 4, "Left");
+
+        hDrive.AutoDrive(0.5,1,"Backwards");
+
+        hDrive.AutoDrive(0.5,0.8, "TurnLeft");
 
     }
 }
