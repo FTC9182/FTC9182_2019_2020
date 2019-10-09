@@ -101,11 +101,11 @@ public class Teleop extends OpMode {
         }
 
         if(armReady) {
-            if (gunnerY <= 0) {
+            if (gunnerY <= -.5) {
                 arm.IncrementUp();
                 armTime.reset();
             }
-            if (gunnerY <= 0) {
+            if (gunnerY >= .5) {
                 arm.IncrementDown();
                 armTime.reset();
             }
