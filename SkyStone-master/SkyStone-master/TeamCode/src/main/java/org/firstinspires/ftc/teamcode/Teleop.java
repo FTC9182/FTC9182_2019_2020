@@ -32,7 +32,10 @@ public class Teleop extends OpMode {
     //Arm
     double gunnerY;
 
+    boolean armReady = true;
+
     public ElapsedTime triggerTime = new ElapsedTime();
+    public ElapsedTime armTime = new ElapsedTime();
 
     public void init() {
 
@@ -48,6 +51,7 @@ public class Teleop extends OpMode {
         //Gamepad1
         speedReady = waitTime.milliseconds() > 500;
         triggerReady = triggerTime.milliseconds() > 500;
+        armReady = triggerTime.milliseconds() > 200;
 
         if (gamepad1.x && speedReady) {
 
@@ -96,7 +100,16 @@ public class Teleop extends OpMode {
             }
         }
 
-        arm.Move(gunnerY);
+        if(armReady) {
+            if (gunnerY <= 0) {
+                arm.IncrementUp();
+                armTime.reset();
+            }
+            if (gunnerY <= 0) {
+                arm.IncrementDown();
+                armTime.reset();
+            }
+        }
     }
 }
 
