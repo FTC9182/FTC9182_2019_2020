@@ -11,6 +11,7 @@ public class Teleop extends OpMode {
     Grabber grabber = null;
     WheelGrabber wheelGrabber = null;
     Arm arm = null;
+    ArmRotation armRotate = null;
     public ElapsedTime waitTime = new ElapsedTime();
 
     //Drive var
@@ -31,11 +32,14 @@ public class Teleop extends OpMode {
 
     //Arm
     double gunnerY;
+    double gunnerY2;
 
     boolean armReady = true;
+    boolean armRotateReady = true;
 
     public ElapsedTime triggerTime = new ElapsedTime();
     public ElapsedTime armTime = new ElapsedTime();
+    public ElapsedTime armRotateTime = new ElapsedTime();
 
     public void init() {
 
@@ -43,6 +47,7 @@ public class Teleop extends OpMode {
         grabber = new Grabber(hardwareMap);
         wheelGrabber = new WheelGrabber(hardwareMap);
         arm = new Arm(hardwareMap);
+        armRotate = new ArmRotation(hardwareMap);
         grabber.Up();
         currentPower = basePower;
     }
@@ -52,6 +57,7 @@ public class Teleop extends OpMode {
         speedReady = waitTime.milliseconds() > 500;
         triggerReady = triggerTime.milliseconds() > 500;
         armReady = triggerTime.milliseconds() > 200;
+        armRotateReady = triggerTime.milliseconds() > 400;
 
         if (gamepad1.x && speedReady) {
 
@@ -69,6 +75,7 @@ public class Teleop extends OpMode {
         driveX = gamepad1.left_stick_x;
         driveY = gamepad1.left_stick_y;
         gunnerY = gamepad2.left_stick_y;
+        gunnerY2 = gamepad2.right_stick_y;
         turnDegrees = gamepad1.right_stick_x;
 
         hDrive.drive(driveX, driveY, turnDegrees, speedVari);
@@ -108,6 +115,17 @@ public class Teleop extends OpMode {
             if (gunnerY >= .5) {
                 arm.IncrementDown();
                 armTime.reset();
+            }
+        }
+
+        if (armRotateReady){
+            if (gunnerY2 >= .5){
+                armRotate.Up();
+                armRotateTime.reset();
+            }
+            if (gunnerY2 <= -.5){
+                armRotate.Down();
+                armRotateTime.reset();
             }
         }
     }
