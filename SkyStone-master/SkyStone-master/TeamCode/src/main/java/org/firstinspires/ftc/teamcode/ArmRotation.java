@@ -13,10 +13,10 @@ public class ArmRotation {
     private ElapsedTime armTimer = new ElapsedTime();
 
     public ArmRotation(HardwareMap hardwareMap){
+        armRotation = hardwareMap.dcMotor.get("arm_rotate");
         armRotation.setPower(power);
         armRotation.setTargetPosition(260);
         armRotation.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        armRotation = hardwareMap.dcMotor.get("arm_rotate");
     }
 
     public void Up(){

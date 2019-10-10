@@ -8,7 +8,7 @@ public class Grabber
 {
     private Servo pullerServo = null;
 
-    ElapsedTime MoveTime = null;
+    ElapsedTime MoveTime = new ElapsedTime();
 
     private double basePower = 1;
     private double fullExtend = 0.15;
