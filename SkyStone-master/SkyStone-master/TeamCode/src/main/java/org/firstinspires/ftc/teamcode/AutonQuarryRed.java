@@ -15,7 +15,7 @@ public class AutonQuarryRed extends LinearOpMode {
         hDrive = new HDrive(hardwareMap);
         grabber = new Grabber(hardwareMap);
         grabber.Up();
-        
+
         waitForStart();
 
         hDrive.AutoDrive(0.5, 1, "Forward");
