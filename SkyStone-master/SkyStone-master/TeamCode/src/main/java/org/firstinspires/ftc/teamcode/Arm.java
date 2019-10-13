@@ -17,10 +17,11 @@ public class Arm {
         armExtend = hardwareMap.dcMotor.get("arm_extend");
         armExtend.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         currentPosition = armExtend.getCurrentPosition();
+        armExtend.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
 
     public void Move(double gunnerY){
-        armExtend.setPower(-gunnerY);
+        armExtend.setPower(-.5 * gunnerY);
     }
 
     public void Brake(){
