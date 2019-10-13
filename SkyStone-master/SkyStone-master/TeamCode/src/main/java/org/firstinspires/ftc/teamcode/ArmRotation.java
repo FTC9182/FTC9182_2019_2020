@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 public class ArmRotation {
 
     DcMotor armRotation = null;
-    private double power = .2;
+    private double power = .5;
     private int currentPosition;
     private int rotationIndex = 5;
     private ElapsedTime armTimer = new ElapsedTime();
@@ -15,7 +15,7 @@ public class ArmRotation {
     public ArmRotation(HardwareMap hardwareMap){
         armRotation = hardwareMap.dcMotor.get("arm_rotate");
         armRotation.setPower(power);
-        armRotation.setTargetPosition(260);
+        armRotation.setTargetPosition(300);
         armRotation.setMode(DcMotor.RunMode.RUN_TO_POSITION);
     }
 
