@@ -57,8 +57,8 @@ public class Teleop extends OpMode {
         //Gamepad1
         speedReady = waitTime.milliseconds() > 500;
         triggerReady = triggerTime.milliseconds() > 500;
-        armReady = triggerTime.milliseconds() > 300;
-        armRotateReady = triggerTime.milliseconds() > 400;
+        armReady = armTime.milliseconds() > 300;
+        armRotateReady = armRotateTime.milliseconds() > 400;
 
         if (gamepad1.x && speedReady) {
 
