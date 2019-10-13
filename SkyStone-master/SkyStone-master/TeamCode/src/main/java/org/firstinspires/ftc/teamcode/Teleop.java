@@ -36,6 +36,7 @@ public class Teleop extends OpMode {
 
     boolean armReady = true;
     boolean armRotateReady = true;
+    boolean Locked  = false;
 
     public ElapsedTime triggerTime = new ElapsedTime();
     public ElapsedTime armTime = new ElapsedTime();
@@ -118,7 +119,20 @@ public class Teleop extends OpMode {
             }
         }
 
-        if (armRotateReady){
+
+        if (gamepad2.b && armRotateReady && !Locked)
+        {
+            armRotateTime.reset();
+            armRotate.Brake();
+            Locked = true;
+        } else if (!Locked){
+            armRotate.Move(gunnerY2);
+        }else if (gamepad2.b && armRotateReady && Locked){
+            Locked = false;
+        }
+
+
+        /*if (armRotateReady){
             if (gunnerY2 >= .5){
                 armRotate.Up();
                 armRotateTime.reset();
@@ -127,7 +141,7 @@ public class Teleop extends OpMode {
                 armRotate.Down();
                 armRotateTime.reset();
             }
-        }
+        }*/
     }
 }
 

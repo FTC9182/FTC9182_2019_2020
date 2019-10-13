@@ -9,14 +9,14 @@ public class ArmRotation {
     DcMotor armRotation = null;
     private double power = .5;
     private int currentPosition;
-    private int rotationIndex = 5;
-    private ElapsedTime armTimer = new ElapsedTime();
+    private int rotationIndex = 15;
 
     public ArmRotation(HardwareMap hardwareMap){
         armRotation = hardwareMap.dcMotor.get("arm_rotate");
         armRotation.setPower(power);
-        armRotation.setTargetPosition(300);
+        armRotation.setTargetPosition(60);
         armRotation.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        armRotation.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
 
     public void Up(){
@@ -32,4 +32,13 @@ public class ArmRotation {
         armRotation.setPower(power);
         currentPosition = armRotation.getCurrentPosition();
     }
+
+    public void Move(double gunnerY){
+        armRotation.setPower(.6*gunnerY);
+    }
+
+    public void Brake(){
+        armRotation.setPower(0);
+    }
+
 }
