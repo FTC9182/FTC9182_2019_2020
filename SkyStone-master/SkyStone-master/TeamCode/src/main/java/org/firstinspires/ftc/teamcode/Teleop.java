@@ -109,7 +109,7 @@ public class Teleop extends OpMode {
         }
 
         armExtend.Move(gunnerY);
- 
+
         armRotate.Move(gunnerY2);
 
         /*if(armReady) {
