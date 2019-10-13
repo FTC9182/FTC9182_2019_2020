@@ -51,9 +51,6 @@ public class Teleop extends OpMode {
         armRotate = new ArmRotation(hardwareMap);
         grabber.Up();
         currentPower = basePower;
-
-        arm.Brake();
-        armRotate.Brake();
     }
 
     public void loop() {
