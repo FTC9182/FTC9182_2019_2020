@@ -24,13 +24,13 @@ public class AutonFoundationRed extends LinearOpMode {
 
         grabber.Down();
 
-        hDrive.AutoDrive(0.5, 3, "Forward");
+        hDrive.AutoDrive(0.5, 3.3, "Forward");
 
         grabber.Up();
 
-        hDrive.AutoDrive(0.5, 4, "Right");
+        hDrive.AutoDrive(0.5, 4.7, "Right");
 
-        hDrive.AutoDrive(0.5,1,"Backwards");
+        hDrive.AutoDrive(0.5,2,"Backwards");
 
         hDrive.AutoDrive(0.5,1.3, "TurnRight");
 
