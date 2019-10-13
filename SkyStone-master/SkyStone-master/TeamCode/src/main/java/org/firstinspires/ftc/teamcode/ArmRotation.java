@@ -34,7 +34,7 @@ public class ArmRotation {
     }
 
     public void Move(double gunnerY){
-        armRotation.setPower(.7*gunnerY);
+        armRotation.setPower(-.5*gunnerY);
     }
 
     public void Brake(){
