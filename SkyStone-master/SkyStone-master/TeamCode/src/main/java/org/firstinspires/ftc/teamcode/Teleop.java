@@ -10,7 +10,7 @@ public class Teleop extends OpMode {
     HDrive hDrive = null;
     Grabber grabber = null;
     WheelGrabber wheelGrabber = null;
-    Arm arm = null;
+    Arm armExtend = null;
     ArmRotation armRotate = null;
     public ElapsedTime waitTime = new ElapsedTime();
 
@@ -47,7 +47,7 @@ public class Teleop extends OpMode {
         hDrive = new HDrive(hardwareMap);
         grabber = new Grabber(hardwareMap);
         wheelGrabber = new WheelGrabber(hardwareMap);
-        arm = new Arm(hardwareMap);
+        armExtend = new Arm(hardwareMap);
         armRotate = new ArmRotation(hardwareMap);
         grabber.Up();
         currentPower = basePower;
@@ -108,8 +108,8 @@ public class Teleop extends OpMode {
             }
         }
 
-        arm.Move(gunnerY);
-
+        armExtend.Move(gunnerY);
+ 
         armRotate.Move(gunnerY2);
 
         /*if(armReady) {
