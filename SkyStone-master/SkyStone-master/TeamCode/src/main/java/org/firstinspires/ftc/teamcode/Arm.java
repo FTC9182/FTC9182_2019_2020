@@ -20,7 +20,11 @@ public class Arm {
     }
 
     public void Move(double gunnerY){
-        armExtend.setPower(.6*gunnerY);
+        armExtend.setPower(-gunnerY);
+    }
+
+    public void Brake(){
+        armExtend.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
 
     public void IncrementUp(){

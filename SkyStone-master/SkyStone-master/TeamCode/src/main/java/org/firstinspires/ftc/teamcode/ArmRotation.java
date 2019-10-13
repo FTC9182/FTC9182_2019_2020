@@ -33,12 +33,12 @@ public class ArmRotation {
         currentPosition = armRotation.getCurrentPosition();
     }
 
-    public void Move(double gunnerY){
-        armRotation.setPower(-.5*gunnerY);
+    public void Move(double gunnerY2){
+        armRotation.setPower(-.5*gunnerY2);
     }
 
     public void Brake(){
-        armRotation.setPower(0);
+        armRotation.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
 
 }

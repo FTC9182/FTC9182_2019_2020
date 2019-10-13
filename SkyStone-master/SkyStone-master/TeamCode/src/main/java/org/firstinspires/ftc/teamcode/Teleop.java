@@ -51,6 +51,9 @@ public class Teleop extends OpMode {
         armRotate = new ArmRotation(hardwareMap);
         grabber.Up();
         currentPower = basePower;
+
+        arm.Brake();
+        armRotate.Brake();
     }
 
     public void loop() {
@@ -108,7 +111,11 @@ public class Teleop extends OpMode {
             }
         }
 
-        if(armReady) {
+        arm.Move(gunnerY);
+
+        armRotate.Move(gunnerY2);
+
+        /*if(armReady) {
             if (gunnerY >= .5) {
                 arm.IncrementUp();
                 armTime.reset();
@@ -117,10 +124,10 @@ public class Teleop extends OpMode {
                 arm.IncrementDown();
                 armTime.reset();
             }
-        }
+        }*/
 
 
-        if (gamepad2.b && armRotateReady && !Locked)
+        /*if (gamepad2.b && armRotateReady && !Locked)
         {
             armRotateTime.reset();
             armRotate.Brake();
@@ -129,7 +136,7 @@ public class Teleop extends OpMode {
             armRotate.Move(gunnerY2);
         }else if (gamepad2.b && armRotateReady && Locked){
             Locked = false;
-        }
+        }*/
 
 
         /*if (armRotateReady){
