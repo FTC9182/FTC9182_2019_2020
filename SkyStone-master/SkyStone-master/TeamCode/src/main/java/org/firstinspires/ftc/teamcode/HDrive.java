@@ -213,7 +213,7 @@ public class HDrive {
     }
 
     public void AutonBackSensor(double TargetDistance, double Speed) {
-        while (BackSensor.getDistance(DistanceUnit.CM) < TargetDistance) {
+        while (BackSensor.getDistance(DistanceUnit.CM) > TargetDistance) {
 
             ForwardRight.setPower(Speed);
             ForwardLeft.setPower(Speed);
