@@ -13,7 +13,7 @@ public class ArmRotation {
 
     public ArmRotation(HardwareMap hardwareMap){
         armRotation = hardwareMap.dcMotor.get("arm_rotate");
-        armRotation.setPower(power);
+        //armRotation.setPower(power);
         //armRotation.setTargetPosition(60);
         //armRotation.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         armRotation.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
