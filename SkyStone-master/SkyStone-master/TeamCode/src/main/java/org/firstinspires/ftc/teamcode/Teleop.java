@@ -1,5 +1,7 @@
 package org.firstinspires.ftc.teamcode;
 
+import android.renderscript.Sampler;
+
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
@@ -110,12 +112,12 @@ public class Teleop extends OpMode {
 
         armExtend.Move(gunnerY);
 
-        if (gunnerY2 >= 0.5) { Locked = false; telemetry.addData("Up", true);}
-        else if (gunnerY2 <= -0.5) { Locked = false; telemetry.addData("Down", true);}
-        else if (gunnerY2 >= -0.5 && gunnerY2 <= 0.5) { Locked = true; telemetry.addData("Locked", true);}
+        if (gunnerY2 >= 0.5) { Locked = false; telemetry.addData("Down", Locked);}
+        else if (gunnerY2 <= -0.5) { Locked = false; telemetry.addData("Up", Locked);}
+        else if (gunnerY2 >= -0.3 && gunnerY2 <= 0.3) { Locked = true; telemetry.addData("Locked", Locked);}
 
-        //if (!Locked){ armRotate.Move(gunnerY2); }
-        //else if (Locked) { armRotate.GravityCounter();
+        if (!Locked){ armRotate.Move(gunnerY2); }
+        else if (Locked) { armRotate.GravityCounter(); }
 
         /*if(armReady) {
             if (gunnerY >= .5) {
