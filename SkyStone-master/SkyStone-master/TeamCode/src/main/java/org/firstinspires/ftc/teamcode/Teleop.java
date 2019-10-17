@@ -110,8 +110,12 @@ public class Teleop extends OpMode {
 
         armExtend.Move(gunnerY);
 
-        armRotate.Move(gunnerY2);
-        armRotate.GravityCounter();
+        if (gunnerY2 >= 0.5) { Locked = false; telemetry.addData("Up", true);}
+        else if (gunnerY2 <= -0.5) { Locked = false; telemetry.addData("Down", true);}
+        else if (gunnerY2 >= -0.5 && gunnerY2 <= 0.5) { Locked = true; telemetry.addData("Locked", true);}
+
+        //if (!Locked){ armRotate.Move(gunnerY2); }
+        //else if (Locked) { armRotate.GravityCounter();
 
         /*if(armReady) {
             if (gunnerY >= .5) {
@@ -147,6 +151,7 @@ public class Teleop extends OpMode {
                 armRotateTime.reset();
             }
         }*/
+        telemetry.update();
     }
 }
 
