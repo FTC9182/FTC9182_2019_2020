@@ -37,6 +37,8 @@ public class ArmRotation {
         armRotation.setPower(-gunnerY2);
     }
 
+    public void GravityCounter() {armRotation.setPower(.2);}
+
     public void Brake(){
         armRotation.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }

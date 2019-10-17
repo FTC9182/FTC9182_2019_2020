@@ -111,6 +111,7 @@ public class Teleop extends OpMode {
         armExtend.Move(gunnerY);
 
         armRotate.Move(gunnerY2);
+        armRotate.GravityCounter();
 
         /*if(armReady) {
             if (gunnerY >= .5) {
