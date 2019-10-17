@@ -18,7 +18,7 @@ public class HDrive {
 
     ElapsedTime SlowTime = null;
 
-    SensorMRRangeSensor BackSensor = null;
+    ModernRoboticsI2cRangeSensor FrontSensor = null;
 
     final double DRIVETICKS = 800;
 
@@ -37,7 +37,7 @@ public class HDrive {
 
         SlowTime = new ElapsedTime();
 
-        BackSensor = hardwareMap.get(ModernRoboticsI2cRangeSensor.class, "sensor_range");
+        FrontSensor = hardwareMap.get(ModernRoboticsI2cRangeSensor.class, "sensor_range");
     }
 
     public void drive(double driveX, double driveY, double turnDegrees, double speedVari) {
@@ -213,7 +213,7 @@ public class HDrive {
     }
 
     public void AutonBackSensor(double TargetDistance, double Speed) {
-        while (BackSensor.rawUltrasonic() > TargetDistance) {
+        while (FrontSensor.rawUltrasonic() > TargetDistance) {
 
             ForwardRight.setPower(Speed);
             ForwardLeft.setPower(Speed);
