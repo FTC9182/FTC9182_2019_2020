@@ -40,7 +40,7 @@ public class AutonFoundationRed extends LinearOpMode {
 
         hDrive.AutoDrive(0.5, 2.7, "Forward");*/
 
-        hDrive.AutonBackSensor(0.5, 1);
+        hDrive.AutonBackSensor(7, 1);
 
     }
 }

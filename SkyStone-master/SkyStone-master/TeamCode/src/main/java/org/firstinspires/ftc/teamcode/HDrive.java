@@ -1,12 +1,12 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.hardware.modernrobotics.ModernRoboticsI2cRangeSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
-import com.qualcomm.robotcore.hardware.DistanceSensor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
+import org.firstinspires.ftc.robotcontroller.external.samples.SensorMRRangeSensor;
 
 public class HDrive {
 
@@ -18,7 +18,7 @@ public class HDrive {
 
     ElapsedTime SlowTime = null;
 
-    DistanceSensor BackSensor = null;
+    SensorMRRangeSensor BackSensor = null;
 
     final double DRIVETICKS = 800;
 
@@ -37,7 +37,7 @@ public class HDrive {
 
         SlowTime = new ElapsedTime();
 
-        BackSensor = hardwareMap.get(DistanceSensor.class, "back_sensor");
+        BackSensor = hardwareMap.get(ModernRoboticsI2cRangeSensor.class, "sensor_range");
     }
 
     public void drive(double driveX, double driveY, double turnDegrees, double speedVari) {
@@ -213,7 +213,7 @@ public class HDrive {
     }
 
     public void AutonBackSensor(double TargetDistance, double Speed) {
-        while (BackSensor.getDistance(DistanceUnit.CM) > TargetDistance) {
+        while (BackSensor.rawUltrasonic() > TargetDistance) {
 
             ForwardRight.setPower(Speed);
             ForwardLeft.setPower(Speed);
