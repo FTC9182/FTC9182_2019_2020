@@ -26,13 +26,15 @@ public class AutonFoundationBlue extends LinearOpMode {
 
         grabber.Down();
 
-        hDrive.AutonBackSensor(10, 1);
+        hDrive.AutonSensor(10, 1, "PullToWall");
 
         //hDrive.AutoDrive(0.5, 3.5, "Forward");
 
         grabber.Up();
 
-        hDrive.AutoDrive(0.5, 3, "Left");
+        hDrive.AutonSensor(0, 0.5, "BluePark");
+
+        /*hDrive.AutoDrive(0.5, 3, "Left");
 
         hDrive.AutoDrive(0.5,2,"Backwards");
 
@@ -40,7 +42,7 @@ public class AutonFoundationBlue extends LinearOpMode {
 
         hDrive.AutoDrive(0.5,0.5,"Backwards");
 
-        hDrive.AutoDrive(0.5, 2.7, "Forward");
+        hDrive.AutoDrive(0.5, 2.7, "Forward");*/
 
     }
 }

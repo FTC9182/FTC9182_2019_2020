@@ -1,6 +1,9 @@
 package org.firstinspires.ftc.teamcode;
 
+import android.graphics.Color;
+
 import com.qualcomm.hardware.modernrobotics.ModernRoboticsI2cRangeSensor;
+import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
@@ -16,9 +19,12 @@ public class HDrive {
 
     ElapsedTime SlowTime = null;
 
-    ModernRoboticsI2cRangeSensor FrontSensor = null;
+    ModernRoboticsI2cRangeSensor FrontSensor;
+    ColorSensor BottomSensorColor;
 
     final double DRIVETICKS = 800;
+
+    final int SCALE_FACTOR = 255;
 
     public HDrive(HardwareMap hardwareMap) {
         ForwardRight = hardwareMap.dcMotor.get("front_right");
@@ -36,6 +42,10 @@ public class HDrive {
         SlowTime = new ElapsedTime();
 
         FrontSensor = hardwareMap.get(ModernRoboticsI2cRangeSensor.class, "sensor_range");
+
+        BottomSensorColor = hardwareMap.get(ColorSensor.class, "bottom_sensor");
+
+
     }
 
     public void drive(double driveX, double driveY, double turnDegrees, double speedVari) {
@@ -210,13 +220,25 @@ public class HDrive {
 
     }
 
-    public void AutonBackSensor(double TargetDistance, double Speed) {
-        while (FrontSensor.rawUltrasonic() > TargetDistance) {
+    public void AutonSensor(double TargetDistance, double Speed, String Direction) {
+        while (FrontSensor.rawUltrasonic() > TargetDistance && Direction == "PullToWall") {
 
             ForwardRight.setPower(Speed);
             ForwardLeft.setPower(Speed);
             BackwardsRight.setPower(Speed);
             BackwardsLeft.setPower(Speed);
+
+        }
+
+        while (BottomSensorColor.blue() < 200 && Direction == "BluePark"){
+
+            Middle.setPower(Speed);
+
+        }
+
+        while (BottomSensorColor.red() < 200 && Direction == "RedPark"){
+
+            Middle.setPower(-Speed);
 
         }
 
