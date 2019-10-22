@@ -10,7 +10,7 @@ public class Arm {
 
     private DcMotor armExtend;
     private int currentPosition;
-    private double armPower = .6;
+    private double armPower = .45;
     private ElapsedTime armTimer = new ElapsedTime();
 
     public Arm(HardwareMap hardwareMap){
