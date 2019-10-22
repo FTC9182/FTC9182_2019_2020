@@ -39,6 +39,7 @@ public class Teleop extends OpMode {
     boolean armReady = true;
     boolean armRotateReady = true;
     boolean Locked  = false;
+    boolean Up = true;
 
     public ElapsedTime triggerTime = new ElapsedTime();
     public ElapsedTime armTime = new ElapsedTime();
@@ -112,11 +113,12 @@ public class Teleop extends OpMode {
 
         armExtend.Move(gunnerY);
 
-        if (gunnerY2 >= 0.5) { Locked = false; telemetry.addData("Down", Locked);}
-        else if (gunnerY2 <= -0.5) { Locked = false; telemetry.addData("Up", Locked);}
+        if (gunnerY2 >= 0.5) { Locked = false; Up = false; telemetry.addData("Down", Locked);}
+        else if (gunnerY2 <= -0.5) { Locked = false; Up = true; telemetry.addData("Up", Locked);}
         else if (gunnerY2 >= -0.3 && gunnerY2 <= 0.3) { Locked = true; telemetry.addData("Locked", Locked);}
 
-        if (!Locked){ armRotate.Move(gunnerY2); }
+        if (!Locked && Up){ armRotate.UpMove(gunnerY2); }
+        else if (!Locked && !Up) { armRotate.DownMove(gunnerY2); }
         else if (Locked) { armRotate.GravityCounter(); }
 
         /*if(armReady) {

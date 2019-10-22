@@ -7,7 +7,8 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 public class ArmRotation {
 
     DcMotor armRotation = null;
-    private double power = .65;
+    private double upPower = .65;
+    private double downPower = .3;
     private int currentPosition;
     private int rotationIndex = 15;
 
@@ -22,20 +23,22 @@ public class ArmRotation {
     public void Up(){
         armRotation.setTargetPosition(currentPosition + rotationIndex);
         armRotation.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        armRotation.setPower(power);
+        armRotation.setPower(upPower);
         currentPosition = armRotation.getCurrentPosition();
     }
 
     public void Down(){
         armRotation.setTargetPosition(currentPosition - rotationIndex);
         armRotation.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        armRotation.setPower(power);
+        armRotation.setPower(upPower);
         currentPosition = armRotation.getCurrentPosition();
     }
 
-    public void Move(double gunnerY2){
-        armRotation.setPower(-gunnerY2 * power);
+    public void UpMove(double gunnerY2){
+        armRotation.setPower(-gunnerY2 * upPower);
     }
+
+    public void DownMove(double gunnerY2) { armRotation.setPower(-gunnerY2 * downPower); }
 
     public void GravityCounter() {armRotation.setPower(.1);}
 
