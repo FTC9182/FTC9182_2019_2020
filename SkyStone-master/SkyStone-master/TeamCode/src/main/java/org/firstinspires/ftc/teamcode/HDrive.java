@@ -232,13 +232,13 @@ public class HDrive {
 
         }
 
-        while (BottomSensorColor.blue() < 50 && Direction == "BluePark"){
+        while ((BottomSensorColor.blue() - BottomSensorColor.red()) < 50 && Direction == "BluePark"){
 
             Middle.setPower(Speed);
 
         }
 
-        while (BottomSensorColor.red() < 50 && Direction == "RedPark"){
+        while ((BottomSensorColor.red() - BottomSensorColor.blue()) < 50 && Direction == "RedPark"){
 
             Middle.setPower(-Speed);
 
