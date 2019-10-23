@@ -154,7 +154,7 @@ public class ConceptTensorFlowObjectDetection extends LinearOpMode {
 
         // Loading trackables is not necessary for the TensorFlow Object Detection engine.
     }
-    
+
     /**
      * Initialize the TensorFlow Object Detection engine.
      */
