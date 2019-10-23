@@ -40,7 +40,7 @@ public class ArmRotation {
 
     public void DownMove(double gunnerY2) { armRotation.setPower(-gunnerY2 * downPower); }
 
-    public void GravityCounter() {armRotation.setPower(.1);}
+    public void GravityCounter() {armRotation.setPower(.15);}
 
     public void Brake(){
         armRotation.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
