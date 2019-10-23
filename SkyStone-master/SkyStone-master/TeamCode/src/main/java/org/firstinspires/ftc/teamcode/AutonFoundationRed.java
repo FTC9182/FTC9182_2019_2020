@@ -3,6 +3,8 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
+import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
+
 @Autonomous(name = "AutonFoundationRed")
 public class AutonFoundationRed extends LinearOpMode {
 
@@ -26,7 +28,7 @@ public class AutonFoundationRed extends LinearOpMode {
 
         grabber.Down();
 
-        telemetry.addData("distance", hDrive.FrontSensor);
+        telemetry.addData("distance",hDrive.FrontSensor.getDistance(DistanceUnit.CM));
 
         hDrive.AutonSensor(10, 1, "PullToWall");
 
@@ -34,7 +36,7 @@ public class AutonFoundationRed extends LinearOpMode {
 
         grabber.Up();
 
-        telemetry.addData("color", hDrive.BottomSensorColor);
+        telemetry.addData("color", hDrive.BottomSensorColor.red());
 
         hDrive.AutonSensor(0, 0.5, "RedPark");
 
