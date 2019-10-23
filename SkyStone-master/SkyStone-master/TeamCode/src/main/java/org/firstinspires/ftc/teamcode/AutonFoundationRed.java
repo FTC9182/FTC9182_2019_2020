@@ -26,11 +26,15 @@ public class AutonFoundationRed extends LinearOpMode {
 
         grabber.Down();
 
+        telemetry.addData("distance", hDrive.FrontSensor);
+
         hDrive.AutonSensor(10, 1, "PullToWall");
 
         //hDrive.AutoDrive(0.5, 3.5, "Forward");
 
         grabber.Up();
+
+        telemetry.addData("color", hDrive.BottomSensorColor);
 
         hDrive.AutonSensor(0, 0.5, "RedPark");
 
