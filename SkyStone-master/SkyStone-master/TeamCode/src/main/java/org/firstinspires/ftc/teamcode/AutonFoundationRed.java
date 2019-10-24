@@ -21,18 +21,19 @@ public class AutonFoundationRed extends LinearOpMode {
 
         waitForStart();
 
+        hDrive.AutonSensor(4, 0.5, "GoToFoundation");
 
-        /*hDrive.AutoDrive(0.5, 3.3, "Backwards");
+        //hDrive.AutoDrive(0.5, 3.3, "Backwards");
 
         hDrive.AutoDrive(0.5, 1, "Left");
 
-        grabber.Down();*/
+        grabber.Down();
 
-        hDrive.AutonSensor(10, 1, "PullToWall");
+        hDrive.AutonSensor(7, 1, "PullToWall");
 
         //hDrive.AutoDrive(0.5, 3.5, "Forward");
 
-        //grabber.Up();
+        grabber.Up();
 
         hDrive.AutonSensor(0, 0.5, "RedPark");
 

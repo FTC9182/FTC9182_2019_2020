@@ -6,6 +6,7 @@ import com.qualcomm.hardware.modernrobotics.ModernRoboticsI2cRangeSensor;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.DistanceSensor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
@@ -21,12 +22,16 @@ public class HDrive {
 
     ElapsedTime SlowTime = null;
 
-    ModernRoboticsI2cRangeSensor FrontSensor;
+    ModernRoboticsI2cRangeSensor FrontDistanceSensor;
     ColorSensor BottomSensorColor;
+    DistanceSensor BackDistanceSensor;
+    ColorSensor FrontColorSensor;
 
     final double DRIVETICKS = 800;
 
     final int SCALE_FACTOR = 255;
+
+    boolean SkystoneSeen;
 
     public HDrive(HardwareMap hardwareMap) {
         ForwardRight = hardwareMap.dcMotor.get("front_right");
@@ -43,10 +48,13 @@ public class HDrive {
 
         SlowTime = new ElapsedTime();
 
-        FrontSensor = hardwareMap.get(ModernRoboticsI2cRangeSensor.class, "sensor_range");
+        FrontDistanceSensor = hardwareMap.get(ModernRoboticsI2cRangeSensor.class, "sensor_range");
 
         BottomSensorColor = hardwareMap.get(ColorSensor.class, "bottom_sensor");
 
+        BackDistanceSensor = hardwareMap.get(DistanceSensor.class, "back_distance_sensor");
+
+        FrontColorSensor = hardwareMap.get(ColorSensor.class, "front_color_sensor");
 
     }
 
@@ -223,12 +231,12 @@ public class HDrive {
     }
 
     public void AutonSensor(double TargetDistance, double Speed, String Direction) {
-        while (FrontSensor.rawUltrasonic() > TargetDistance && Direction == "PullToWall") {
+        while (FrontDistanceSensor.rawUltrasonic() > TargetDistance && Direction == "PullToWall") {
 
-            ForwardRight.setPower(Speed);
-            ForwardLeft.setPower(Speed);
-            BackwardsRight.setPower(Speed);
-            BackwardsLeft.setPower(Speed);
+            ForwardRight.setPower(-Speed);
+            ForwardLeft.setPower(-Speed);
+            BackwardsRight.setPower(-Speed);
+            BackwardsLeft.setPower(-Speed);
 
         }
 
@@ -241,6 +249,35 @@ public class HDrive {
         while ((BottomSensorColor.red() - BottomSensorColor.blue()) < 50 && Direction == "RedPark"){
 
             Middle.setPower(-Speed);
+
+        }
+
+        while (BackDistanceSensor.getDistance(DistanceUnit.CM) < TargetDistance && Direction == "GoToFoundation"){
+
+            ForwardRight.setPower(Speed);
+            ForwardLeft.setPower(Speed);
+            BackwardsRight.setPower(Speed);
+            BackwardsLeft.setPower(Speed);
+
+        }
+
+        while ((SkystoneSeen == false && Direction == "SkystoneRedID")){
+
+            if ((FrontColorSensor.alpha()/3) > 50 ){
+                SkystoneSeen = true;
+            }
+
+            Middle.setPower(0.3);
+
+        }
+
+        while ((SkystoneSeen == false && Direction == "SkystoneBlueID")){
+
+            if ((FrontColorSensor.alpha()/3) > 50 ){
+                SkystoneSeen = true;
+            }
+
+            Middle.setPower(-0.3);
 
         }
 
