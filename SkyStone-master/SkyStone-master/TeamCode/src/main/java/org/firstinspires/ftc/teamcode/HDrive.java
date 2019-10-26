@@ -264,7 +264,7 @@ public class HDrive {
 
         }
 
-        while (BackDistanceSensor.getDistance(DistanceUnit.CM) > TargetDistance && Direction == "GoToFoundation/Stone"){
+        while (BackDistanceSensor.getDistance(DistanceUnit.CM) < TargetDistance && Direction == "GoToFoundation/Stone"){
 
             ForwardRight.setPower(Speed);
             ForwardLeft.setPower(Speed);
