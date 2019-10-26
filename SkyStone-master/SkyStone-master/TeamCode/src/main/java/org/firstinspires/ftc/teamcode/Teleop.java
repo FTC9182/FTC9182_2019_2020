@@ -35,6 +35,8 @@ public class Teleop extends OpMode {
     //Arm
     double gunnerY;
     double gunnerY2;
+    double upPower = 0;
+    double boostPower = 0;
 
     boolean armReady = true;
     boolean armRotateReady = true;
@@ -54,6 +56,8 @@ public class Teleop extends OpMode {
         armRotate = new ArmRotation(hardwareMap);
         grabber.Up();
         currentPower = basePower;
+        upPower = armRotate.upPower;
+        boostPower = armRotate.boostPower;
     }
 
     public void loop() {
@@ -103,10 +107,10 @@ public class Teleop extends OpMode {
                 wheelGrabber.Open();
                 triggerTime.reset();
             } else if (gamepad2.right_bumper) {
-                wheelGrabber.IncrementClose();
+                armRotate.Boost(boostPower);
                 triggerTime.reset();
             } else if (gamepad2.left_bumper) {
-                wheelGrabber.IncrementOpen();
+                armRotate.Boost(upPower);
                 triggerTime.reset();
             }
         }

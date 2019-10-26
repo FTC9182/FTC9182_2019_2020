@@ -242,7 +242,7 @@ public class HDrive {
 
         StopDriving("Forward");
 
-        while ((BottomSensorColor.blue() - BottomSensorColor.red()) < 50 && Direction == "BlueParkFoundation"){
+        while ((BottomSensorColor.blue() - BottomSensorColor.red()) < 35 && Direction == "BlueParkFoundation"){
 
             Middle.setPower(Speed);
 
@@ -250,7 +250,7 @@ public class HDrive {
 
         StopDriving("Left");
 
-        while ((BottomSensorColor.red() - BottomSensorColor.blue()) < 50 && Direction == "RedParkFoundation"){
+        while ((BottomSensorColor.red() - BottomSensorColor.blue()) < 35 && Direction == "RedParkFoundation"){
 
             Middle.setPower(-Speed);
 

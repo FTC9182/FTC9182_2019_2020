@@ -23,7 +23,7 @@ public class AutonFoundationRed extends LinearOpMode {
 
         //hDrive.AutonSensor(4, 0.5, "GoToFoundation/Stone");
 
-        hDrive.AutoDrive(0.5, 3.3, "Backwards");
+        hDrive.AutoDrive(0.5, 2.4, "Backwards");
 
         hDrive.AutoDrive(0.5, 1, "Left");
 
