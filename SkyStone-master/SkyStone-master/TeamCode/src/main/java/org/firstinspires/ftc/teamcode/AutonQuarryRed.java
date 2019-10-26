@@ -18,9 +18,13 @@ public class AutonQuarryRed extends LinearOpMode {
 
         waitForStart();
 
-        hDrive.AutoDrive(0.5, 1, "Forward");
+        hDrive.AutonSensor(5, 0.5, "GoToFoundation/Stone");
 
-        hDrive.AutoDrive(0.5, 4, "Right");
+        hDrive.AutonSensor(0, 0.4, "RedParkQuarry");
+
+        /*hDrive.AutoDrive(0.5, 1, "Forward");
+
+        hDrive.AutoDrive(0.5, 4, "Right");*/
 
 
     }
