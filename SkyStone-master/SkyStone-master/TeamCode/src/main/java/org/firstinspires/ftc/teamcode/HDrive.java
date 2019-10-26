@@ -25,7 +25,7 @@ public class HDrive {
     ModernRoboticsI2cRangeSensor FrontDistanceSensor;
     ColorSensor BottomSensorColor;
     DistanceSensor BackDistanceSensor;
-    ColorSensor FrontColorSensor;
+    //ColorSensor FrontColorSensor;
 
     final double DRIVETICKS = 800;
 
@@ -54,7 +54,7 @@ public class HDrive {
 
         BackDistanceSensor = hardwareMap.get(DistanceSensor.class, "back_distance_sensor");
 
-        FrontColorSensor = hardwareMap.get(ColorSensor.class, "front_color_sensor");
+        //FrontColorSensor = hardwareMap.get(ColorSensor.class, "front_color_sensor");
 
     }
 
@@ -240,19 +240,31 @@ public class HDrive {
 
         }
 
-        while ((BottomSensorColor.blue() - BottomSensorColor.red()) < 50 && Direction == "BluePark"){
+        while ((BottomSensorColor.blue() - BottomSensorColor.red()) < 50 && Direction == "BlueParkFoundation"){
 
             Middle.setPower(Speed);
 
         }
 
-        while ((BottomSensorColor.red() - BottomSensorColor.blue()) < 50 && Direction == "RedPark"){
+        while ((BottomSensorColor.red() - BottomSensorColor.blue()) < 50 && Direction == "RedParkFoundation"){
 
             Middle.setPower(-Speed);
 
         }
 
-        while (BackDistanceSensor.getDistance(DistanceUnit.CM) < TargetDistance && Direction == "GoToFoundation"){
+        while ((BottomSensorColor.blue() - BottomSensorColor.red()) < 50 && Direction == "RedParkQuarry"){
+
+            Middle.setPower(Speed);
+
+        }
+
+        while ((BottomSensorColor.red() - BottomSensorColor.blue()) < 50 && Direction == "BlueParkQuarry"){
+
+            Middle.setPower(-Speed);
+
+        }
+
+        while (BackDistanceSensor.getDistance(DistanceUnit.CM) < TargetDistance && Direction == "GoToFoundation/Stone"){
 
             ForwardRight.setPower(Speed);
             ForwardLeft.setPower(Speed);
@@ -261,7 +273,7 @@ public class HDrive {
 
         }
 
-        while ((SkystoneSeen == false && Direction == "SkystoneRedID")){
+        /*while ((SkystoneSeen == false && Direction == "SkystoneRedID")){
 
             if ((FrontColorSensor.alpha()/3) > 50 ){
                 SkystoneSeen = true;
@@ -279,7 +291,7 @@ public class HDrive {
 
             Middle.setPower(-0.3);
 
-        }
+        }*/
 
 
     }

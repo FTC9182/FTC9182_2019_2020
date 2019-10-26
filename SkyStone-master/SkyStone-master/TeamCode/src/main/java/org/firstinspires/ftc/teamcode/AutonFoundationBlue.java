@@ -19,7 +19,7 @@ public class AutonFoundationBlue extends LinearOpMode {
 
         waitForStart();
 
-        hDrive.AutonSensor(4, 0.5, "GoToFoundation");
+        hDrive.AutonSensor(4, 0.5, "GoToFoundation/Stone");
 
         //hDrive.AutoDrive(0.5, 3.3, "Backwards");
 
