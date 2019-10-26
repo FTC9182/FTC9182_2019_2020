@@ -8,7 +8,7 @@ public class ArmRotation {
 
     DcMotor armRotation = null;
     private double upPower = .6;
-    private double downPower = .2;
+    private double downPower = .15;
     private int currentPosition;
     private int rotationIndex = 15;
 
