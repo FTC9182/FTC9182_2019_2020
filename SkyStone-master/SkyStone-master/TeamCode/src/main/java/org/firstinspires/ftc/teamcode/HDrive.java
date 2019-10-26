@@ -240,11 +240,15 @@ public class HDrive {
 
         }
 
+        StopDriving("Forward");
+
         while ((BottomSensorColor.blue() - BottomSensorColor.red()) < 50 && Direction == "BlueParkFoundation"){
 
             Middle.setPower(Speed);
 
         }
+
+        StopDriving("Left");
 
         while ((BottomSensorColor.red() - BottomSensorColor.blue()) < 50 && Direction == "RedParkFoundation"){
 
@@ -252,17 +256,23 @@ public class HDrive {
 
         }
 
+        StopDriving("Right");
+
         while ((BottomSensorColor.blue() - BottomSensorColor.red()) < 50 && Direction == "RedParkQuarry"){
 
             Middle.setPower(Speed);
 
         }
 
+        StopDriving("Left");
+
         while ((BottomSensorColor.red() - BottomSensorColor.blue()) < 50 && Direction == "BlueParkQuarry"){
 
             Middle.setPower(-Speed);
 
         }
+
+        StopDriving("Right");
 
         while (BackDistanceSensor.getDistance(DistanceUnit.CM) > TargetDistance && Direction == "GoToFoundation/Stone"){
 
@@ -272,6 +282,8 @@ public class HDrive {
             BackwardsLeft.setPower(Speed);
 
         }
+
+        StopDriving("Backwards");
 
         /*while ((SkystoneSeen == false && Direction == "SkystoneRedID")){
 
