@@ -38,14 +38,20 @@ public class Teleop extends OpMode {
     double upPower = 0;
     double boostPower = 0;
 
+    double gravityCounter = 0;
+    double boostGravityCounter = 0;
+
     boolean armReady = true;
     boolean armRotateReady = true;
     boolean Locked  = false;
     boolean Up = true;
+    boolean boostTimeReady = true;
+    boolean boostReady = true;
 
     public ElapsedTime triggerTime = new ElapsedTime();
     public ElapsedTime armTime = new ElapsedTime();
     public ElapsedTime armRotateTime = new ElapsedTime();
+    public ElapsedTime boostTime = new ElapsedTime();
 
     public void init() {
 
@@ -55,9 +61,12 @@ public class Teleop extends OpMode {
         armExtend = new Arm(hardwareMap);
         armRotate = new ArmRotation(hardwareMap);
         grabber.Up();
+
         currentPower = basePower;
         upPower = armRotate.upPower;
         boostPower = armRotate.boostPower;
+        boostGravityCounter = armRotate.boostGravityPower;
+        gravityCounter = armRotate.gravityCounter;
     }
 
     public void loop() {
@@ -66,6 +75,7 @@ public class Teleop extends OpMode {
         triggerReady = triggerTime.milliseconds() > 500;
         armReady = armTime.milliseconds() > 300;
         armRotateReady = armRotateTime.milliseconds() > 400;
+        boostTimeReady = boostTime.milliseconds() > 650;
 
         if (gamepad1.x && speedReady) {
 
@@ -107,10 +117,10 @@ public class Teleop extends OpMode {
                 wheelGrabber.Open();
                 triggerTime.reset();
             } else if (gamepad2.right_bumper) {
-                armRotate.Boost(boostPower);
+                armRotate.Boost(boostPower, boostGravityCounter);
                 triggerTime.reset();
             } else if (gamepad2.left_bumper) {
-                armRotate.Boost(upPower);
+                armRotate.Boost(upPower, gravityCounter);
                 triggerTime.reset();
             }
         }
@@ -124,6 +134,17 @@ public class Teleop extends OpMode {
         if (!Locked && Up){ armRotate.UpMove(gunnerY2); }
         else if (!Locked && !Up) { armRotate.DownMove(gunnerY2); }
         else if (Locked) { armRotate.GravityCounter(); }
+
+        if (boostReady && gamepad2.a && boostTimeReady){
+            armRotate.Boost(boostPower, boostGravityCounter);
+            boostReady = false;
+            boostTime.reset();
+        }
+        else if (!boostReady && gamepad2.a && boostTimeReady) {
+            armRotate.Boost(upPower, gravityCounter);
+            boostReady = true;
+            boostTime.reset();
+        }
 
         /*if(armReady) {
             if (gunnerY >= .5) {

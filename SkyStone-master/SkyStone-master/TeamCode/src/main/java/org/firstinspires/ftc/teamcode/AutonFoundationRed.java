@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
@@ -10,6 +11,7 @@ public class AutonFoundationRed extends LinearOpMode {
 
     Grabber grabber = null;
     HDrive hDrive = null;
+    ElapsedTime totalTime = null;
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -18,8 +20,17 @@ public class AutonFoundationRed extends LinearOpMode {
         grabber = new Grabber(hardwareMap);
         grabber.Up();
 
+        totalTime = new ElapsedTime();
+
+        totalTime.reset();
+
 
         waitForStart();
+
+        totalTime.reset();
+
+
+        while (totalTime.milliseconds() < 27000){
 
         //hDrive.AutonSensor(4, 0.5, "GoToFoundation/Stone");
 
@@ -29,7 +40,7 @@ public class AutonFoundationRed extends LinearOpMode {
 
         grabber.Down();
 
-        hDrive.AutonSensor(7, 0.5, "PullToWall");
+        hDrive.AutonSensor(5, 0.5, "PullToWall");
 
         //hDrive.AutoDrive(0.5, 3.5, "Forward");
 
@@ -46,6 +57,8 @@ public class AutonFoundationRed extends LinearOpMode {
         hDrive.AutoDrive(0.5,0.5,"Backwards");
 
         hDrive.AutoDrive(0.5, 2.7, "Forward");*/
+        }
+
 
     }
 }

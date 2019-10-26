@@ -10,9 +10,12 @@ public class ArmRotation {
     public double upPower = .6;
     private double downPower = .15;
     public double boostPower = .8;
-    private double currentUpPower = .6;
+    private double currentUpPower;
     private int currentPosition;
     private int rotationIndex = 15;
+    public double gravityCounter = .165;
+    public double boostGravityPower = .2;
+    private double currentGravityCounter;
 
     public ArmRotation(HardwareMap hardwareMap){
         armRotation = hardwareMap.dcMotor.get("arm_rotate");
@@ -20,6 +23,8 @@ public class ArmRotation {
         //armRotation.setTargetPosition(60);
         //armRotation.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         armRotation.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        currentGravityCounter = gravityCounter;
+        currentUpPower = upPower;
     }
 
     public void Up(){
@@ -42,12 +47,12 @@ public class ArmRotation {
 
     public void DownMove(double gunnerY2) { armRotation.setPower(-gunnerY2 * downPower); }
 
-    public void GravityCounter() {armRotation.setPower(.16);}
+    public void GravityCounter() {armRotation.setPower(gravityCounter);}
 
     public void Brake(){
         armRotation.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
 
-    public void Boost(double power){ currentUpPower = power; }
+    public void Boost(double power, double gravityPower){ currentUpPower = power; currentGravityCounter = gravityPower; }
 
 }
