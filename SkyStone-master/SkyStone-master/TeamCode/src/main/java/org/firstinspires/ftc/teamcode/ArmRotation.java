@@ -7,8 +7,8 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 public class ArmRotation {
 
     DcMotor armRotation = null;
-    private double upPower = .8;
-    private double downPower = .6;
+    private double upPower = .3;
+    private double downPower = .25;
     private int currentPosition;
     private int rotationIndex = 15;
 
