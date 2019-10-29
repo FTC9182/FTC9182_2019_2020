@@ -19,23 +19,23 @@ public class AutonFoundationBlue extends LinearOpMode {
         grabber = new Grabber(hardwareMap);
         grabber.Up();
 
-        totalTime = new ElapsedTime();
+        //totalTime = new ElapsedTime();
 
-        totalTime.reset();
+        //totalTime.reset();
 
 
         waitForStart();
 
-        totalTime.reset();
+        //totalTime.reset();
 
-        while (totalTime.milliseconds() < 27000){
+        //while (totalTime.milliseconds() < 27000){
 
 
 
         //hDrive.AutonSensor(4, 0.5, "GoToFoundation/Stone");
 
 
-        hDrive.AutoDrive(0.5, 2.4, "Backwards");
+        hDrive.AutoDrive(0.5, 3.2, "Backwards");
 
         hDrive.AutoDrive(0.5, 1, "Right");
 
@@ -47,10 +47,10 @@ public class AutonFoundationBlue extends LinearOpMode {
 
         grabber.Up();
 
-        hDrive.AutonSensor(0, 0.5, "BlueParkFoundation");
+        //hDrive.AutonSensor(0, 0.5, "BlueParkFoundation");
 
-        /*hDrive.AutoDrive(0.5, 3, "Left");
-
+        hDrive.AutoDrive(0.5, 3, "Left");
+/*
         hDrive.AutoDrive(0.5,2,"Backwards");
 
         hDrive.AutoDrive(0.5,1.1, "TurnLeft");
@@ -58,7 +58,7 @@ public class AutonFoundationBlue extends LinearOpMode {
         hDrive.AutoDrive(0.5,0.5,"Backwards");
 
         hDrive.AutoDrive(0.5, 2.7, "Forward");*/
-        }
+        //}
 
     }
 }

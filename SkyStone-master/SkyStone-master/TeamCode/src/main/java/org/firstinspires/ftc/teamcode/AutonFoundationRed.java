@@ -11,7 +11,7 @@ public class AutonFoundationRed extends LinearOpMode {
 
     Grabber grabber = null;
     HDrive hDrive = null;
-    ElapsedTime totalTime = null;
+    //ElapsedTime totalTime = null;
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -20,21 +20,21 @@ public class AutonFoundationRed extends LinearOpMode {
         grabber = new Grabber(hardwareMap);
         grabber.Up();
 
-        totalTime = new ElapsedTime();
+        //totalTime = new ElapsedTime();
 
-        totalTime.reset();
+        //totalTime.reset();
 
 
         waitForStart();
 
-        totalTime.reset();
+        //totalTime.reset();
 
 
-        while (totalTime.milliseconds() < 27000){
+        //while (totalTime.milliseconds() < 27000){
 
         //hDrive.AutonSensor(4, 0.5, "GoToFoundation/Stone");
 
-        hDrive.AutoDrive(0.5, 2.4, "Backwards");
+        hDrive.AutoDrive(0.5, 3.2, "Backwards");
 
         hDrive.AutoDrive(0.5, 1, "Left");
 
@@ -46,18 +46,18 @@ public class AutonFoundationRed extends LinearOpMode {
 
         grabber.Up();
 
-        hDrive.AutonSensor(0, 0.5, "RedParkFoundation");
+        //hDrive.AutonSensor(0, 0.5, "RedParkFoundation");
 
-        /*hDrive.AutoDrive(0.5, 3, "Right");
+        hDrive.AutoDrive(0.5, 3, "Right");
 
-        hDrive.AutoDrive(0.5,2,"Backwards");
+        /*hDrive.AutoDrive(0.5,2,"Backwards");
 
         hDrive.AutoDrive(0.5,1.1, "TurnRight");
 
         hDrive.AutoDrive(0.5,0.5,"Backwards");
 
         hDrive.AutoDrive(0.5, 2.7, "Forward");*/
-        }
+        //}
 
 
     }
