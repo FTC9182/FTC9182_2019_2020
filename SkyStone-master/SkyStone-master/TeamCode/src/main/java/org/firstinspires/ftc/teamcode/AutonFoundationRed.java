@@ -16,6 +16,8 @@ public class AutonFoundationRed extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
 
+        while(opModeIsActive()){
+
         hDrive = new HDrive(hardwareMap);
         grabber = new Grabber(hardwareMap);
         grabber.Up();
@@ -36,21 +38,33 @@ public class AutonFoundationRed extends LinearOpMode {
 
         hDrive.AutoDrive(0.5, 3.2, "Backwards");
 
+        idle();
+
         hDrive.AutoDrive(0.5, 1, "Left");
+
+        idle();
 
         grabber.Down();
 
+        idle();
+
         hDrive.AutonSensor(6, 0.5, "PullToWall");
+
+        idle();
 
         //hDrive.AutoDrive(0.5, 3.5, "Forward");
 
         grabber.Up();
+
+        idle();
 
         //hDrive.AutonSensor(0, 0.5, "RedParkFoundation");
 
         //maybe decrease strafe speed to get a grip on the tiles?
 
         hDrive.AutoDrive(0.5, 3, "Right");
+
+        idle();
 
         /*hDrive.AutoDrive(0.5,2,"Backwards");
 
@@ -61,6 +75,11 @@ public class AutonFoundationRed extends LinearOpMode {
         hDrive.AutoDrive(0.5, 2.7, "Forward");*/
         //}
 
+            while(opModeIsActive()){
+
+            }
+
+        }
 
     }
 }
