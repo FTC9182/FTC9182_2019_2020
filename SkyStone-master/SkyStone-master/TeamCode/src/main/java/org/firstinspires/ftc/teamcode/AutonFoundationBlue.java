@@ -41,13 +41,15 @@ public class AutonFoundationBlue extends LinearOpMode {
 
         grabber.Down();
 
-        hDrive.AutonSensor(5, 0.5, "PullToWall");
+        hDrive.AutonSensor(6, 0.5, "PullToWall");
 
         //hDrive.AutoDrive(0.5, 3.5, "Forward");
 
         grabber.Up();
 
         //hDrive.AutonSensor(0, 0.5, "BlueParkFoundation");
+
+        //maybe decrease strafe speed to get a grip on the tiles?
 
         hDrive.AutoDrive(0.5, 3, "Left");
 /*
