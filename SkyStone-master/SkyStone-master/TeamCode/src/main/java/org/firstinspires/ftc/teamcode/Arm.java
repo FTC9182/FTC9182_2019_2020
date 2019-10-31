@@ -8,7 +8,7 @@ import java.util.EventListenerProxy;
 
 public class Arm {
 
-    private DcMotor armExtend;
+    public DcMotor armExtend;
     private int currentPosition;
     private double armPower = .35;
     private ElapsedTime armTimer = new ElapsedTime();
