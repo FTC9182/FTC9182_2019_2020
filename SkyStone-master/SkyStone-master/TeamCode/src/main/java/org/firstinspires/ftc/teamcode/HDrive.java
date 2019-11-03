@@ -22,10 +22,10 @@ public class HDrive {
 
     ElapsedTime SlowTime = null;
 
-    ModernRoboticsI2cRangeSensor BackDistanceSensor;
+    ModernRoboticsI2cRangeSensor FrontDistanceSensor;
     ColorSensor BottomSensorColor;
-    DistanceSensor FrontDistanceSensor;
-    //ColorSensor FrontColorSensor;
+    DistanceSensor BackDistanceSensor;
+    ColorSensor FrontColorSensor;
 
     final double DRIVETICKS = 800;
 
@@ -48,13 +48,13 @@ public class HDrive {
 
         SlowTime = new ElapsedTime();
 
-        BackDistanceSensor = hardwareMap.get(ModernRoboticsI2cRangeSensor.class, "sensor_range");
+        FrontDistanceSensor = hardwareMap.get(ModernRoboticsI2cRangeSensor.class, "sensor_range");
 
         BottomSensorColor = hardwareMap.get(ColorSensor.class, "bottom_sensor");
 
-        FrontDistanceSensor = hardwareMap.get(DistanceSensor.class, "front_distance_sensor");
+        BackDistanceSensor = hardwareMap.get(DistanceSensor.class, "back_distance_sensor");
 
-        //FrontColorSensor = hardwareMap.get(ColorSensor.class, "front_color_sensor");
+        FrontColorSensor = hardwareMap.get(ColorSensor.class, "front_color_sensor");
 
     }
 
@@ -231,7 +231,7 @@ public class HDrive {
     }
 
     public void AutonSensor(double TargetDistance, double Speed, String Direction) {
-        while (BackDistanceSensor.rawUltrasonic() > TargetDistance && Direction == "PullToWall/GoToStone") {
+        while (FrontDistanceSensor.rawUltrasonic() > TargetDistance && Direction == "PullToWall/GoToStone") {
 
             ForwardRight.setPower(-Speed);
             ForwardLeft.setPower(-Speed);
@@ -274,7 +274,7 @@ public class HDrive {
 
         StopDriving("Right");
 
-        while (FrontDistanceSensor.getDistance(DistanceUnit.CM) > TargetDistance && Direction == "GoToFoundation"){
+        while (BackDistanceSensor.getDistance(DistanceUnit.CM) > TargetDistance && Direction == "GoToFoundation"){
 
             ForwardRight.setPower(Speed);
             ForwardLeft.setPower(Speed);
