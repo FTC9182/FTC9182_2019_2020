@@ -13,8 +13,8 @@ public class ArmRotation {
     private double currentUpPower;
     private int currentPosition;
     private int rotationIndex = 15;
-    public double gravityCounter = .14;//.165
-    public double boostGravityPower = .175;//.2
+    public double gravityCounter = .17;//.165
+    public double boostGravityPower = .2;//.2
     private double currentGravityCounter;
 
     final double TICKS = 100;
