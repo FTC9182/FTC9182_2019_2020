@@ -285,9 +285,9 @@ public class HDrive {
 
         StopDriving("Backwards");
 
-        /*while ((SkystoneSeen == false && Direction == "SkystoneRedID")){
+        while ((SkystoneSeen == false && Direction == "SkystoneRedID")){
 
-            if ((FrontColorSensor.alpha()/3) > 50 ){
+            if ((FrontColorSensor.red()) > 50 ){
                 SkystoneSeen = true;
             }
 
@@ -297,13 +297,13 @@ public class HDrive {
 
         while ((SkystoneSeen == false && Direction == "SkystoneBlueID")){
 
-            if ((FrontColorSensor.alpha()/3) > 50 ){
+            if ((FrontColorSensor.red()) > 50 ){
                 SkystoneSeen = true;
             }
 
             Middle.setPower(-0.3);
 
-        }*/
+        }
 
 
     }
