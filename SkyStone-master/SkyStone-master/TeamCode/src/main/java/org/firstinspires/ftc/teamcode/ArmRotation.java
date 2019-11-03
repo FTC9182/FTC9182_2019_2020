@@ -17,6 +17,8 @@ public class ArmRotation {
     public double boostGravityPower = .2;
     private double currentGravityCounter;
 
+    final double TICKS = 100;
+
     public ArmRotation(HardwareMap hardwareMap){
         armRotation = hardwareMap.dcMotor.get("arm_rotate");
         armRotation.setPower(0);
@@ -54,5 +56,17 @@ public class ArmRotation {
     }
 
     public void Boost(double power, double gravityPower){ currentUpPower = power; currentGravityCounter = gravityPower; }
+
+    public void EncoderMove(double TargetDistance, double speed, String Direction){
+
+        while(armRotation.getCurrentPosition() < (TargetDistance * TICKS) && Direction == "Up"){
+            armRotation.setPower(speed);
+        }
+
+        while(armRotation.getCurrentPosition() > (-TargetDistance * TICKS) && Direction == "Down"){
+            armRotation.setPower(-speed);
+        }
+
+    }
 
 }

@@ -146,6 +146,8 @@ public class Teleop extends OpMode {
             boostTime.reset();
         }
 
+        telemetry.addData("90 degree encoder count", armExtend.armExtend.getCurrentPosition());
+
         /*if(armReady) {
             if (gunnerY >= .5) {
                 arm.IncrementUp();

@@ -34,7 +34,7 @@ public class AutonFoundationRed extends LinearOpMode {
 
         //while (totalTime.milliseconds() < 27000){
 
-        //hDrive.AutonSensor(4, 0.5, "GoToFoundation/Stone");
+        //hDrive.AutonSensor(4, 0.5, "GoToFoundation");
 
         hDrive.AutoDrive(0.5, 3.2, "Backwards");
 
@@ -48,7 +48,7 @@ public class AutonFoundationRed extends LinearOpMode {
 
         idle();
 
-        hDrive.AutonSensor(6, 0.5, "PullToWall");
+        hDrive.AutonSensor(6, 0.5, "PullToWall/GoToStone");
 
         idle();
 

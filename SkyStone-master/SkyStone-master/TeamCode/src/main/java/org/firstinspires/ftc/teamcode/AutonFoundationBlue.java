@@ -34,7 +34,7 @@ public class AutonFoundationBlue extends LinearOpMode {
 
 
 
-        //hDrive.AutonSensor(4, 0.5, "GoToFoundation/Stone");
+        //hDrive.AutonSensor(4, 0.5, "GoToFoundation");
 
 
         hDrive.AutoDrive(0.5, 3.2, "Backwards");
@@ -49,7 +49,7 @@ public class AutonFoundationBlue extends LinearOpMode {
 
         idle();
 
-        hDrive.AutonSensor(6, 0.5, "PullToWall");
+        hDrive.AutonSensor(6, 0.5, "PullToWall/GoToStone");
 
         idle();
 

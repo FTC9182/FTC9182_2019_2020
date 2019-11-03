@@ -8,20 +8,23 @@ import java.util.EventListenerProxy;
 
 public class Arm {
 
-    private DcMotor armExtend;
+    public DcMotor armExtend;
     private int currentPosition;
     private double armPower = .35;
     private ElapsedTime armTimer = new ElapsedTime();
 
     public Arm(HardwareMap hardwareMap){
         armExtend = hardwareMap.dcMotor.get("arm_extend");
+        armExtend.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         armExtend.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         currentPosition = armExtend.getCurrentPosition();
         armExtend.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
 
     public void Move(double gunnerY){
-        armExtend.setPower(-.5 * gunnerY);
+        if (armExtend.getCurrentPosition() < 500 && armExtend.getCurrentPosition() > -20){
+            armExtend.setPower(-.5 * gunnerY);
+        }
     }
 
     public void Brake(){
