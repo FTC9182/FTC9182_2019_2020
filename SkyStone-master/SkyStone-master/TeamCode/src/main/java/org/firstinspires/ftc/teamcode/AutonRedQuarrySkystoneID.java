@@ -22,7 +22,7 @@ public class AutonRedQuarrySkystoneID extends LinearOpMode {
 
             hDrive.AutonSensor(5, 0.5, "PullToWall/GoToStone");
 
-
+            hDrive.AutonSensor(0, 0.3, "SkystoneRedID");
 
             armRotation.EncoderMove(3, 0.4, "Up");
 
