@@ -7,14 +7,14 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 public class ArmRotation {
 
     DcMotor armRotation = null;
-    public double upPower = .6;
-    private double downPower = .15;
-    public double boostPower = .8;
+    public double upPower = .48; //.6
+    private double downPower = .12;//.15
+    public double boostPower = .64;//.8
     private double currentUpPower;
     private int currentPosition;
     private int rotationIndex = 15;
-    public double gravityCounter = .165;
-    public double boostGravityPower = .2;
+    public double gravityCounter = .132;//.165
+    public double boostGravityPower = .16;//.2
     private double currentGravityCounter;
 
     final double TICKS = 100;
@@ -49,7 +49,7 @@ public class ArmRotation {
 
     public void DownMove(double gunnerY2) { armRotation.setPower(-gunnerY2 * downPower); }
 
-    public void GravityCounter() {armRotation.setPower(gravityCounter);}
+    public void GravityCounter() {armRotation.setPower(currentGravityCounter);}
 
     public void Brake(){
         armRotation.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
