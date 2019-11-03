@@ -231,7 +231,7 @@ public class HDrive {
     }
 
     public void AutonSensor(double TargetDistance, double Speed, String Direction) {
-        while (BackDistanceSensor.rawUltrasonic() > TargetDistance && Direction == "PullToWall") {
+        while (BackDistanceSensor.rawUltrasonic() > TargetDistance && Direction == "PullToWall/GoToStone") {
 
             ForwardRight.setPower(-Speed);
             ForwardLeft.setPower(-Speed);
@@ -274,7 +274,7 @@ public class HDrive {
 
         StopDriving("Right");
 
-        while (FrontDistanceSensor.getDistance(DistanceUnit.CM) > TargetDistance && Direction == "GoToFoundation/Stone"){
+        while (FrontDistanceSensor.getDistance(DistanceUnit.CM) > TargetDistance && Direction == "GoToFoundation"){
 
             ForwardRight.setPower(Speed);
             ForwardLeft.setPower(Speed);
