@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-@TeleOp (name = "Teleop")
+@TeleOp (name = "Use This Teleop")
 public class Teleop extends OpMode {
 
     HDrive hDrive = null;
@@ -125,7 +125,7 @@ public class Teleop extends OpMode {
             }
         }
 
-        armExtend.Move(gunnerY);
+        armExtend.OriginalMove(gunnerY);
 
         if (gunnerY2 >= 0.5) { Locked = false; Up = false; telemetry.addData("Down", Locked);}
         else if (gunnerY2 <= -0.5) { Locked = false; Up = true; telemetry.addData("Up", Locked);}

@@ -10,6 +10,7 @@ public class Arm {
 
     public DcMotor armExtend;
     private int currentPosition;
+    private double power = .3;
     private double armPower = .35;
     private ElapsedTime armTimer = new ElapsedTime();
 
@@ -21,10 +22,15 @@ public class Arm {
         armExtend.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
 
+    //Greg explain this to me, your change broke it :(
     public void Move(double gunnerY){
         if (armExtend.getCurrentPosition() < 500 && armExtend.getCurrentPosition() > -20){
-            armExtend.setPower(-.5 * gunnerY);
+            armExtend.setPower(-.3 * gunnerY);
         }
+    }
+
+    public void OriginalMove(double gunnerY){
+        armExtend.setPower(power * -gunnerY);
     }
 
     public void Brake(){
