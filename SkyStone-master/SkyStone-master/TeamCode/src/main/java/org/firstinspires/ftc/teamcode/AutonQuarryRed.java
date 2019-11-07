@@ -8,6 +8,7 @@ public class AutonQuarryRed extends LinearOpMode {
 
     Grabber grabber = null;
     HDrive hDrive = null;
+    LinearOpMode opMode;
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -17,8 +18,6 @@ public class AutonQuarryRed extends LinearOpMode {
             grabber.Up();
 
             waitForStart();
-
-        while(opModeIsActive()) {
 
             hDrive.AutonSensor(5, 0.5, "GoToFoundation/Stone");
 
@@ -36,8 +35,6 @@ public class AutonQuarryRed extends LinearOpMode {
             while(opModeIsActive()){
 
             }
-
-        }
 
 
     }

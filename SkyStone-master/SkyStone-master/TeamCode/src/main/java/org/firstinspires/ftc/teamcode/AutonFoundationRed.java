@@ -11,6 +11,7 @@ public class AutonFoundationRed extends LinearOpMode {
 
     Grabber grabber = null;
     HDrive hDrive = null;
+    LinearOpMode opMode;
     //ElapsedTime totalTime = null;
 
     @Override
@@ -27,8 +28,6 @@ public class AutonFoundationRed extends LinearOpMode {
 
         waitForStart();
 
-        while(opModeIsActive()){
-
         //totalTime.reset();
 
 
@@ -36,11 +35,11 @@ public class AutonFoundationRed extends LinearOpMode {
 
         //hDrive.AutonSensor(4, 0.5, "GoToFoundation");
 
-        hDrive.AutoDrive(0.5, 3.2, "Backwards");
+        while(opModeIsActive() && hDrive.AutoDrive(0.5, 3.2, "Backwards"));
 
         idle();
 
-        hDrive.AutoDrive(0.5, 1, "Left");
+        while(opModeIsActive() && hDrive.AutoDrive(0.5, 1, "Left"));
 
         idle();
 
@@ -48,7 +47,7 @@ public class AutonFoundationRed extends LinearOpMode {
 
         idle();
 
-        hDrive.AutonSensor(6, 0.5, "PullToWall/GoToStone");
+        while(opModeIsActive() && hDrive.AutonSensor(6, 0.5, "PullToWall/GoToStone"));
 
         idle();
 
@@ -62,7 +61,7 @@ public class AutonFoundationRed extends LinearOpMode {
 
         //maybe decrease strafe speed to get a grip on the tiles?
 
-        hDrive.AutoDrive(0.5, 3, "Right");
+        while(opModeIsActive() && hDrive.AutoDrive(0.5, 3, "Right"));
 
         idle();
 
@@ -78,8 +77,6 @@ public class AutonFoundationRed extends LinearOpMode {
             while(opModeIsActive()){
 
             }
-
-        }
 
     }
 }

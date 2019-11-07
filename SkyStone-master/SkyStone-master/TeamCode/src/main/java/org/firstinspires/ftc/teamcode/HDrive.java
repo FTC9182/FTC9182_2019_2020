@@ -9,6 +9,8 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.DistanceSensor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.ElapsedTime;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
@@ -138,7 +140,7 @@ public class HDrive {
 
     }
 
-    public void AutoDrive(double Speed, double TargetDistance, String Direction) {
+    public boolean AutoDrive(double Speed, double TargetDistance, String Direction) {
 //        ForwardRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 //        ForwardRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 //        ForwardLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -167,7 +169,7 @@ public class HDrive {
 
         DriveDistance = TargetDistance * DRIVETICKS;
 
-        while ((Direction == "Forward") && (FBDistance > -DriveDistance)) {
+        if ((Direction == "Forward")) {
 
             ForwardRight.setPower(-Speed);
             ForwardLeft.setPower(-Speed);
@@ -175,11 +177,13 @@ public class HDrive {
             BackwardsLeft.setPower(-Speed);
             FBDistance = (ForwardRight.getCurrentPosition() + ForwardLeft.getCurrentPosition() + BackwardsLeft.getCurrentPosition() + BackwardsRight.getCurrentPosition()) / 4;
 
+            return FBDistance > -DriveDistance;
+
         }
 
         StopDriving("Forward");
 
-        while ((Direction == "Backwards") && (FBDistance < DriveDistance)) {
+        if (Direction == "Backwards") {
 
             ForwardRight.setPower(Speed);
             ForwardLeft.setPower(Speed);
@@ -187,124 +191,155 @@ public class HDrive {
             BackwardsLeft.setPower(Speed);
             FBDistance = (ForwardRight.getCurrentPosition() + ForwardLeft.getCurrentPosition() + BackwardsLeft.getCurrentPosition() + BackwardsRight.getCurrentPosition()) / 4;
 
+            return FBDistance < DriveDistance;
+
         }
 
         StopDriving("Backwards");
 
-        while ((Direction == "Left") && (SDistance < DriveDistance)) {
+        if (Direction == "Left") {
             Middle.setPower(Speed);
             SDistance = Middle.getCurrentPosition();
+
+            return SDistance < DriveDistance;
         }
 
         StopDriving("Left");
 
-        while ((Direction == "Right") && (SDistance > -DriveDistance)) {
+        if (Direction == "Right") {
             Middle.setPower(-Speed);
             SDistance = Middle.getCurrentPosition();
+
+            return SDistance > -DriveDistance;
         }
 
         StopDriving("Right");
 
-        while ((Direction == "TurnLeft") && (TurnDistance < DriveDistance)) {
+        if (Direction == "TurnLeft") {
             ForwardRight.setPower(Speed);
             ForwardLeft.setPower(-Speed);
             BackwardsRight.setPower(Speed);
             BackwardsLeft.setPower(-Speed);
 
             TurnDistance = (ForwardRight.getCurrentPosition() + BackwardsRight.getCurrentPosition()) / 2;
+
+            return TurnDistance < DriveDistance;
         }
 
         StopDriving("TurnLeft");
 
-        while ((Direction == "TurnRight") && (TurnDistance > -DriveDistance)) {
+        if (Direction == "TurnRight") {
             ForwardRight.setPower(-Speed);
             ForwardLeft.setPower(Speed);
             BackwardsRight.setPower(-Speed);
             BackwardsLeft.setPower(Speed);
 
             TurnDistance = (ForwardRight.getCurrentPosition() + BackwardsRight.getCurrentPosition()) / 2;
+
+            return TurnDistance > -DriveDistance;
         }
 
         StopDriving("TurnRight");
 
+        return false;
+
 
     }
 
-    public void AutonSensor(double TargetDistance, double Speed, String Direction) {
-        while (FrontDistanceSensor.rawUltrasonic() > TargetDistance && Direction == "PullToWall/GoToStone") {
+    public boolean AutonSensor(double TargetDistance, double Speed, String Direction) {
+        if (Direction == "PullToWall/GoToStone") {
 
             ForwardRight.setPower(-Speed);
             ForwardLeft.setPower(-Speed);
             BackwardsRight.setPower(-Speed);
             BackwardsLeft.setPower(-Speed);
 
+            return FrontDistanceSensor.rawUltrasonic() > TargetDistance;
+
         }
 
         StopDriving("Forward");
 
-        while ((BottomSensorColor.blue() - BottomSensorColor.red()) < 35 && Direction == "BlueParkFoundation"){
+        if (Direction == "BlueParkFoundation") {
 
             Middle.setPower(Speed);
+
+            return (BottomSensorColor.blue() - BottomSensorColor.red()) < 35;
 
         }
 
         StopDriving("Left");
 
-        while ((BottomSensorColor.red() - BottomSensorColor.blue()) < 35 && Direction == "RedParkFoundation"){
+        if (Direction == "RedParkFoundation") {
 
             Middle.setPower(-Speed);
+
+            return (BottomSensorColor.red() - BottomSensorColor.blue()) < 35;
 
         }
 
         StopDriving("Right");
 
-        while ((BottomSensorColor.blue() - BottomSensorColor.red()) < 50 && Direction == "RedParkQuarry"){
+        if (Direction == "RedParkQuarry") {
 
             Middle.setPower(Speed);
+
+            return (BottomSensorColor.blue() - BottomSensorColor.red()) < 35;
 
         }
 
         StopDriving("Left");
 
-        while ((BottomSensorColor.red() - BottomSensorColor.blue()) < 50 && Direction == "BlueParkQuarry"){
+        if (Direction == "BlueParkQuarry") {
 
             Middle.setPower(-Speed);
+
+            return (BottomSensorColor.red() - BottomSensorColor.blue()) < 35;
 
         }
 
         StopDriving("Right");
 
-        while (BackDistanceSensor.getDistance(DistanceUnit.CM) > TargetDistance && Direction == "GoToFoundation"){
+        if (Direction == "GoToFoundation") {
 
             ForwardRight.setPower(Speed);
             ForwardLeft.setPower(Speed);
             BackwardsRight.setPower(Speed);
             BackwardsLeft.setPower(Speed);
 
+            return BackDistanceSensor.getDistance(DistanceUnit.CM) > TargetDistance;
+
         }
 
         StopDriving("Backwards");
 
-        while ((SkystoneSeen == false && Direction == "SkystoneRedID")){
+        if (Direction == "SkystoneRedID") {
 
-            if ((FrontColorSensor.red()) > 50 ){
+            if ((FrontColorSensor.red()) > 50) {
                 SkystoneSeen = true;
             }
 
             Middle.setPower(0.3);
 
+            return SkystoneSeen == false;
+
         }
 
-        while ((SkystoneSeen == false && Direction == "SkystoneBlueID")){
+        while (Direction == "SkystoneBlueID") {
 
-            if ((FrontColorSensor.red()) > 50 ){
+            if ((FrontColorSensor.red()) > 50) {
                 SkystoneSeen = true;
             }
 
             Middle.setPower(-0.3);
 
+            return SkystoneSeen == false;
+
         }
+
+        return false;
 
 
     }
+
 }

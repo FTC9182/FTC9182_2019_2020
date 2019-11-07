@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode;
 
 import android.renderscript.Sampler;
 
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
@@ -10,6 +11,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 public class Teleop extends OpMode {
 
     HDrive hDrive = null;
+    LinearOpMode opMode;
     Grabber grabber = null;
     WheelGrabber wheelGrabber = null;
     Arm armExtend = null;

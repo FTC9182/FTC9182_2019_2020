@@ -9,6 +9,7 @@ public class AutonFoundationBlue extends LinearOpMode {
 
     Grabber grabber = null;
     HDrive hDrive = null;
+    LinearOpMode opMode;
 
     ElapsedTime totalTime = null;
 
@@ -25,8 +26,6 @@ public class AutonFoundationBlue extends LinearOpMode {
 
 
         waitForStart();
-
-        while(opModeIsActive()){
 
         //totalTime.reset();
 
@@ -79,8 +78,6 @@ public class AutonFoundationBlue extends LinearOpMode {
             while (opModeIsActive()){
 
             }
-
-        }
 
     }
 }
