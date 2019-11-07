@@ -21,8 +21,7 @@ public class Arm {
         currentPosition = armExtend.getCurrentPosition();
         armExtend.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
-
-    //Greg explain this to me, your change broke it :(
+    
     public void Move(double gunnerY){
         if (armExtend.getCurrentPosition() < 500 && armExtend.getCurrentPosition() > -20){
             armExtend.setPower(-.3 * gunnerY);
