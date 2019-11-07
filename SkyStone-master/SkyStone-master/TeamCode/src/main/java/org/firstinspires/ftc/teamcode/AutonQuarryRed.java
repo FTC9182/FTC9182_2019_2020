@@ -12,13 +12,13 @@ public class AutonQuarryRed extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
 
-        while(opModeIsActive()) {
-
             hDrive = new HDrive(hardwareMap);
             grabber = new Grabber(hardwareMap);
             grabber.Up();
 
             waitForStart();
+
+        while(opModeIsActive()) {
 
             hDrive.AutonSensor(5, 0.5, "GoToFoundation/Stone");
 

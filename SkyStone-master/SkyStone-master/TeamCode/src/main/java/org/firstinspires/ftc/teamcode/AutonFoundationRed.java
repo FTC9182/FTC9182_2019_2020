@@ -16,8 +16,6 @@ public class AutonFoundationRed extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
 
-        while(opModeIsActive()){
-
         hDrive = new HDrive(hardwareMap);
         grabber = new Grabber(hardwareMap);
         grabber.Up();
@@ -28,6 +26,8 @@ public class AutonFoundationRed extends LinearOpMode {
 
 
         waitForStart();
+
+        while(opModeIsActive()){
 
         //totalTime.reset();
 
