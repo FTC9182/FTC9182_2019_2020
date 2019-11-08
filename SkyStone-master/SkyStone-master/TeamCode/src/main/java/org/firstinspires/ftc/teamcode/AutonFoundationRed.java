@@ -39,9 +39,13 @@ public class AutonFoundationRed extends LinearOpMode {
 
         idle();
 
+        hDrive.StopDriving("Backwards");
+
         while(opModeIsActive() && hDrive.AutoDrive(0.5, 1, "Left"));
 
         idle();
+
+        hDrive.StopDriving("Left");
 
         grabber.Down();
 
@@ -50,6 +54,8 @@ public class AutonFoundationRed extends LinearOpMode {
         while(opModeIsActive() && hDrive.AutonSensor(6, 0.5, "PullToWall/GoToStone"));
 
         idle();
+
+        hDrive.StopDriving("Forward");
 
         //hDrive.AutoDrive(0.5, 3.5, "Forward");
 
@@ -64,6 +70,8 @@ public class AutonFoundationRed extends LinearOpMode {
         while(opModeIsActive() && hDrive.AutoDrive(0.5, 3, "Right"));
 
         idle();
+
+        hDrive.StopDriving("Right");
 
         /*hDrive.AutoDrive(0.5,2,"Backwards");
 
