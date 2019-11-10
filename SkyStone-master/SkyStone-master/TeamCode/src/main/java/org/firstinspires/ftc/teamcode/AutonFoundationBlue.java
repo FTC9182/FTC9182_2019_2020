@@ -62,7 +62,7 @@ public class AutonFoundationBlue extends LinearOpMode {
 
         //maybe decrease strafe speed to get a grip on the tiles?
 
-        hDrive.AutoDrive(0.5, 3, "Left");
+        hDrive.AutoDrive(0.5, 5, "Left");
 
         idle();
 /*
