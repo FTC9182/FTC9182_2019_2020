@@ -19,6 +19,11 @@ public class AutonQuarryRed extends LinearOpMode {
 
             waitForStart();
 
+<<<<<<< Updated upstream
+=======
+        while(opModeIsActive()) {
+/*
+>>>>>>> Stashed changes
             hDrive.AutonSensor(5, 0.5, "GoToFoundation/Stone");
 
             idle();
@@ -26,11 +31,15 @@ public class AutonQuarryRed extends LinearOpMode {
             hDrive.AutonSensor(0, 0.4, "RedParkQuarry");
 
             idle();
-
+*/
 
         /*hDrive.AutoDrive(0.5, 1, "Forward");
 
         hDrive.AutoDrive(0.5, 4, "Right");*/
+
+            hDrive.AutoDrive(.0, 3, "Right");
+
+            idle();
 
             while(opModeIsActive()){
 

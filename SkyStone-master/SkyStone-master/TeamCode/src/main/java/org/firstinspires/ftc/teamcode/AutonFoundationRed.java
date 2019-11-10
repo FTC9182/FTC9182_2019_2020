@@ -67,7 +67,11 @@ public class AutonFoundationRed extends LinearOpMode {
 
         //maybe decrease strafe speed to get a grip on the tiles?
 
+<<<<<<< Updated upstream
         while(opModeIsActive() && hDrive.AutoDrive(0.5, 3, "Right"));
+=======
+        hDrive.AutoDrive(0.5, 5, "Right");
+>>>>>>> Stashed changes
 
         idle();
 
