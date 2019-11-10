@@ -13,17 +13,15 @@ public class AutonQuarryRed extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
 
-            hDrive = new HDrive(hardwareMap);
-            grabber = new Grabber(hardwareMap);
-            grabber.Up();
+        hDrive = new HDrive(hardwareMap);
+        grabber = new Grabber(hardwareMap);
+        grabber.Up();
 
-            waitForStart();
+        waitForStart();
 
-<<<<<<< Updated upstream
-=======
-        while(opModeIsActive()) {
+        while (opModeIsActive()) {
 /*
->>>>>>> Stashed changes
+
             hDrive.AutonSensor(5, 0.5, "GoToFoundation/Stone");
 
             idle();
@@ -41,11 +39,11 @@ public class AutonQuarryRed extends LinearOpMode {
 
             idle();
 
-            while(opModeIsActive()){
+            while (opModeIsActive()) {
 
             }
 
 
+        }
     }
 }
-
