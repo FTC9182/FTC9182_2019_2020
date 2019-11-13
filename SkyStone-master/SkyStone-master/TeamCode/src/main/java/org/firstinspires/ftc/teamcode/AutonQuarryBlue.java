@@ -20,9 +20,13 @@ public class AutonQuarryBlue extends LinearOpMode {
         waitForStart();
 
 
-        hDrive.AutonSensor(5, 0.5, "GoToFoundation/Stone");
 
-        while (opModeIsActive()) {
+
+        while(opModeIsActive() && hDrive.AutonSensor(77, 0.5, "GoBackwards"));
+
+        idle();
+
+        hDrive.StopDriving("Backwards");
 
         /*hDrive.AutonSensor(5, 0.5, "GoToFoundation/Stone");
 
@@ -34,17 +38,9 @@ public class AutonQuarryBlue extends LinearOpMode {
 */
         /*hDrive.AutoDrive(0.5, 1, "Forward");
 
-        hDrive.AutoDrive(0.5, 4, "Left");*/
-
-            hDrive.AutoDrive(.5, 3, "Left");
-
-            idle();
-
             while (opModeIsActive()) {
 
-            }
-
-        }
+            }*/
 
     }
 }

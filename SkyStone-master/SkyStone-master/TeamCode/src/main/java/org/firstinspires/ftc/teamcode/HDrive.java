@@ -181,7 +181,7 @@ public class HDrive {
 
         }
 
-        StopDriving("Forward");
+        //StopDriving("Forward");
 
         if (Direction == "Backwards") {
 
@@ -195,7 +195,7 @@ public class HDrive {
 
         }
 
-        StopDriving("Backwards");
+        //StopDriving("Backwards");
 
         if (Direction == "Left") {
             Middle.setPower(Speed);
@@ -204,7 +204,7 @@ public class HDrive {
             return SDistance < DriveDistance;
         }
 
-        StopDriving("Left");
+        //StopDriving("Left");
 
         if (Direction == "Right") {
             Middle.setPower(-Speed);
@@ -213,7 +213,7 @@ public class HDrive {
             return SDistance > -DriveDistance;
         }
 
-        StopDriving("Right");
+        //StopDriving("Right");
 
         if (Direction == "TurnLeft") {
             ForwardRight.setPower(Speed);
@@ -226,7 +226,7 @@ public class HDrive {
             return TurnDistance < DriveDistance;
         }
 
-        StopDriving("TurnLeft");
+        //StopDriving("TurnLeft");
 
         if (Direction == "TurnRight") {
             ForwardRight.setPower(-Speed);
@@ -239,7 +239,7 @@ public class HDrive {
             return TurnDistance > -DriveDistance;
         }
 
-        StopDriving("TurnRight");
+        //StopDriving("TurnRight");
 
         return false;
 
@@ -258,7 +258,7 @@ public class HDrive {
 
         }
 
-        StopDriving("Forward");
+        //StopDriving("Forward");
 
         if (Direction == "BlueParkFoundation") {
 
@@ -268,7 +268,7 @@ public class HDrive {
 
         }
 
-        StopDriving("Left");
+        //StopDriving("Left");
 
         if (Direction == "RedParkFoundation") {
 
@@ -278,7 +278,7 @@ public class HDrive {
 
         }
 
-        StopDriving("Right");
+        //StopDriving("Right");
 
         if (Direction == "RedParkQuarry") {
 
@@ -288,7 +288,7 @@ public class HDrive {
 
         }
 
-        StopDriving("Left");
+        //StopDriving("Left");
 
         if (Direction == "BlueParkQuarry") {
 
@@ -298,20 +298,20 @@ public class HDrive {
 
         }
 
-        StopDriving("Right");
+        //StopDriving("Right");
 
-        if (Direction == "GoToFoundation") {
+        if (Direction == "GoBackwards") {
 
             ForwardRight.setPower(Speed);
             ForwardLeft.setPower(Speed);
             BackwardsRight.setPower(Speed);
             BackwardsLeft.setPower(Speed);
 
-            return BackDistanceSensor.getDistance(DistanceUnit.CM) > TargetDistance;
+            return FrontDistanceSensor.rawUltrasonic() < TargetDistance;
 
         }
 
-        StopDriving("Backwards");
+        //StopDriving("Backwards");
 
         if (Direction == "SkystoneRedID") {
 
