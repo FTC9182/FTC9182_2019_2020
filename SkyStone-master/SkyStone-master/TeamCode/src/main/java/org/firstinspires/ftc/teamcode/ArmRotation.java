@@ -57,15 +57,23 @@ public class ArmRotation {
 
     public void Boost(double power, double gravityPower){ currentUpPower = power; currentGravityCounter = gravityPower; }
 
-    public void EncoderMove(double TargetDistance, double speed, String Direction){
+    public boolean EncoderMove(double TargetDistance, double speed, String Direction){
 
-        while(armRotation.getCurrentPosition() < (TargetDistance * TICKS) && Direction == "Up"){
+        if (Direction == "Up"){
+
             armRotation.setPower(speed);
+
+            return armRotation.getCurrentPosition() < (TargetDistance * TICKS);
         }
 
-        while(armRotation.getCurrentPosition() > (-TargetDistance * TICKS) && Direction == "Down"){
+        if (Direction == "Down"){
+
             armRotation.setPower(-speed);
+
+            return armRotation.getCurrentPosition() > (-TargetDistance * TICKS);
         }
+
+        return false;
 
     }
 

@@ -18,8 +18,6 @@ public class AutonQuarryRed extends LinearOpMode {
         grabber.Up();
 
         waitForStart();
-
-        while (opModeIsActive()) {
 /*
 
             hDrive.AutonSensor(5, 0.5, "GoToFoundation/Stone");
@@ -35,15 +33,25 @@ public class AutonQuarryRed extends LinearOpMode {
 
         hDrive.AutoDrive(0.5, 4, "Right");*/
 
-            hDrive.AutoDrive(.0, 3, "Right");
+        //hDrive.AutoDrive(.0, 3, "Right");
 
-            idle();
+        //idle();
 
-            while (opModeIsActive()) {
+        while(opModeIsActive() && hDrive.AutonSensor(7, 0.5, "GoToFoundation/Stone"));
 
-            }
+        idle();
 
+        hDrive.StopDriving("Forward");
+
+        while(opModeIsActive() && hDrive.AutonSensor(0, 0.4, "RedParkQuarry"));
+
+        idle();
+
+        hDrive.StopDriving("Right");
+
+        while (opModeIsActive()) {
 
         }
+
     }
 }

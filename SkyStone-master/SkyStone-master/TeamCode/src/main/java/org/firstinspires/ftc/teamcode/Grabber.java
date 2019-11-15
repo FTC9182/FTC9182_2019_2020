@@ -10,8 +10,8 @@ public class Grabber
 
     ElapsedTime MoveTime = new ElapsedTime();
 
-    private double basePower = 1;
-    private double fullExtend = 0.15;
+    private double basePower = 0.05;
+    private double fullExtend = .9;
 
     public Grabber(HardwareMap hardwareMap)
     {

@@ -282,23 +282,23 @@ public class HDrive {
 
         if (Direction == "RedParkQuarry") {
 
-            Middle.setPower(Speed);
+            Middle.setPower(-Speed);
 
             return (BottomSensorColor.blue() - BottomSensorColor.red()) < 35;
 
         }
 
-        //StopDriving("Left");
+        //StopDriving("Right");
 
         if (Direction == "BlueParkQuarry") {
 
-            Middle.setPower(-Speed);
+            Middle.setPower(Speed);
 
             return (BottomSensorColor.red() - BottomSensorColor.blue()) < 35;
 
         }
 
-        //StopDriving("Right");
+        //StopDriving("Left");
 
         if (Direction == "GoBackwards") {
 
@@ -319,19 +319,19 @@ public class HDrive {
                 SkystoneSeen = true;
             }
 
-            Middle.setPower(0.3);
+            Middle.setPower(Speed);
 
             return SkystoneSeen == false;
 
         }
 
-        while (Direction == "SkystoneBlueID") {
+        if (Direction == "SkystoneBlueID") {
 
             if ((FrontColorSensor.red()) > 50) {
                 SkystoneSeen = true;
             }
 
-            Middle.setPower(-0.3);
+            Middle.setPower(-Speed);
 
             return SkystoneSeen == false;
 
