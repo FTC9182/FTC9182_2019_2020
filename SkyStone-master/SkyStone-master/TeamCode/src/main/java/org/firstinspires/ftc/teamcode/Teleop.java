@@ -105,13 +105,13 @@ public class Teleop extends OpMode {
         hDrive.drive(driveX, driveY, turnDegrees, speedVari);
 
         if (gamepad1.dpad_up) {
-            speedVari = .75;
+            speedVari = 1;
         } else if (gamepad1.dpad_left) {
-            speedVari = 0.6;
-        } else if (gamepad1.dpad_right) {
             speedVari = 0.5;
+        } else if (gamepad1.dpad_right) {
+            speedVari = 0.75;
         } else if (gamepad1.dpad_down) {
-            speedVari = 0.25;
+            speedVari = 0.6;
         }
 
         //Gamepad2

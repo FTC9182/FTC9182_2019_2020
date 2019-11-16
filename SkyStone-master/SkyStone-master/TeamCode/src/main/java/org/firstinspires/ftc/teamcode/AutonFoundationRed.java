@@ -32,12 +32,6 @@ public class AutonFoundationRed extends LinearOpMode {
 
         //hDrive.AutonSensor(4, 0.5, "GoToFoundation");
 
-        while(opModeIsActive() && hDrive.AutoDrive(0.5, 3.2, "Backwards"));
-
-        idle();
-
-        hDrive.StopDriving("Backwards");
-
         /*while(opModeIsActive() && hDrive.AutonSensor(95, 0.5, "GoBackwards")){
             telemetry.addData("Current Distance", hDrive.FrontDistanceSensor.rawUltrasonic());
             telemetry.update();
@@ -52,6 +46,12 @@ public class AutonFoundationRed extends LinearOpMode {
         //idle();
 
         //hDrive.StopDriving("Backwards");
+
+        while(opModeIsActive() && hDrive.AutoDrive(0.5, 3, "Backwards"));
+
+        idle();
+
+        hDrive.StopDriving("Backwards");
 
         while(opModeIsActive() && hDrive.AutoDrive(0.5, 1, "Left"));
 

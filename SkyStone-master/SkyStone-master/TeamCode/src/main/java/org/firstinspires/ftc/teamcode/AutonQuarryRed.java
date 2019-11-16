@@ -37,7 +37,7 @@ public class AutonQuarryRed extends LinearOpMode {
 
         //idle();
 
-        while(opModeIsActive() && hDrive.AutonSensor(7, 0.5, "PullToWall/GoToStone"));
+        while(opModeIsActive() && hDrive.AutonSensor(16, 0.5, "PullToWall/GoToStone"));
 
         idle();
 

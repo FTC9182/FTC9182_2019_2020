@@ -264,7 +264,7 @@ public class HDrive {
 
             Middle.setPower(Speed);
 
-            return (BottomSensorColor.blue() - BottomSensorColor.red()) < 35;
+            return (BottomSensorColor.blue() - BottomSensorColor.red()) < 25;
 
         }
 
@@ -284,7 +284,7 @@ public class HDrive {
 
             Middle.setPower(-Speed);
 
-            return (BottomSensorColor.blue() - BottomSensorColor.red()) < 35;
+            return (BottomSensorColor.red() - BottomSensorColor.blue()) < 35;
 
         }
 
@@ -294,7 +294,7 @@ public class HDrive {
 
             Middle.setPower(Speed);
 
-            return (BottomSensorColor.red() - BottomSensorColor.blue()) < 35;
+            return (BottomSensorColor.blue() - BottomSensorColor.red()) < 25;
 
         }
 
