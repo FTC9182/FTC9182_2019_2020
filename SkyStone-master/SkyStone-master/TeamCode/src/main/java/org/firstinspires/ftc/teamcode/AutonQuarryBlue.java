@@ -28,7 +28,7 @@ public class AutonQuarryBlue extends LinearOpMode {
 
         hDrive.StopDriving("Backwards");*/
 
-        while(opModeIsActive() && hDrive.AutonSensor(7, 0.5, "GoToFoundation/Stone"));
+        while(opModeIsActive() && hDrive.AutonSensor(7, 0.5, "PullToWall/GoToStone"));
 
         idle();
 

@@ -38,7 +38,7 @@ public class AutonFoundationBlue extends LinearOpMode {
 
         //while(opModeIsActive() && hDrive.AutoDrive(0.5, 3.2, "Backwards"));
 
-        while(opModeIsActive() && hDrive.AutonSensor(77, 0.5, "GoBackwards"));
+        while(opModeIsActive() && hDrive.AutonSensor(95, 0.5, "GoBackwards"));
 
         idle();
 
