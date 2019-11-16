@@ -246,7 +246,7 @@ public class HDrive {
 
     }
 
-    public boolean AutonSensor(double TargetDistance, double Speed, String Direction) {
+    public boolean AutonSensor(int TargetDistance, double Speed, String Direction) {
         if (Direction == "PullToWall/GoToStone") {
 
             ForwardRight.setPower(-Speed);
@@ -307,8 +307,7 @@ public class HDrive {
             BackwardsRight.setPower(Speed);
             BackwardsLeft.setPower(Speed);
 
-            return FrontDistanceSensor.rawUltrasonic() < TargetDistance;
-
+            return (FrontDistanceSensor.rawUltrasonic() < TargetDistance);// || FrontDistanceSensor.rawUltrasonic() > 200
         }
 
         //StopDriving("Backwards");

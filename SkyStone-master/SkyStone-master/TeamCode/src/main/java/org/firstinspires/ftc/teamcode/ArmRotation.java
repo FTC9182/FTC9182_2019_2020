@@ -15,7 +15,7 @@ public class ArmRotation {
     private int rotationIndex = 15;
     public double gravityCounter = .17;//.165
     public double boostGravityPower = .2;//.2
-    private double currentGravityCounter;
+    public double currentGravityCounter;
 
     final double TICKS = 100;
 
@@ -56,6 +56,8 @@ public class ArmRotation {
     }
 
     public void Boost(double power, double gravityPower){ currentUpPower = power; currentGravityCounter = gravityPower; }
+
+    public void StopGravity(double gravitycounter) { currentGravityCounter = gravitycounter; }
 
     public boolean EncoderMove(double TargetDistance, double speed, String Direction){
 

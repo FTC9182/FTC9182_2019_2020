@@ -49,11 +49,14 @@ public class Teleop extends OpMode {
     boolean Up = true;
     boolean boostTimeReady = true;
     boolean boostReady = true;
+    boolean gravityCounterReady = true;
+    boolean gravityCounterOn = true;
 
     public ElapsedTime triggerTime = new ElapsedTime();
     public ElapsedTime armTime = new ElapsedTime();
     public ElapsedTime armRotateTime = new ElapsedTime();
     public ElapsedTime boostTime = new ElapsedTime();
+    public ElapsedTime gravityCounterTime = new ElapsedTime();
 
     public void init() {
 
@@ -78,6 +81,7 @@ public class Teleop extends OpMode {
         armReady = armTime.milliseconds() > 300;
         armRotateReady = armRotateTime.milliseconds() > 400;
         boostTimeReady = boostTime.milliseconds() > 1520;
+        gravityCounterReady = gravityCounterTime.milliseconds() > 1500;
 
         if (gamepad1.x && speedReady) {
 
@@ -101,11 +105,11 @@ public class Teleop extends OpMode {
         hDrive.drive(driveX, driveY, turnDegrees, speedVari);
 
         if (gamepad1.dpad_up) {
-            speedVari = 1;
+            speedVari = .75;
         } else if (gamepad1.dpad_left) {
-            speedVari = 0.5;
+            speedVari = 0.6;
         } else if (gamepad1.dpad_right) {
-            speedVari = 0.75;
+            speedVari = 0.5;
         } else if (gamepad1.dpad_down) {
             speedVari = 0.25;
         }
@@ -140,16 +144,30 @@ public class Teleop extends OpMode {
         if (boostReady && gamepad2.a && boostTimeReady){
             armRotate.Boost(boostPower, boostGravityCounter);
             boostReady = false;
+            gravityCounterOn = true;
             boostTime.reset();
         }
         else if (!boostReady && gamepad2.a && boostTimeReady) {
             armRotate.Boost(upPower, gravityCounter);
             boostReady = true;
+            gravityCounterOn = true;
             boostTime.reset();
         }
 
         telemetry.addData("90 degree encoder count", armExtend.armExtend.getCurrentPosition());
 
+        if (gravityCounterOn && gravityCounterReady && gamepad2.y) {
+            armRotate.StopGravity(0);
+            gravityCounterOn = false;
+            gravityCounterTime.reset();
+        }
+        else if (!gravityCounterOn && gravityCounterReady && gamepad2.y) {
+            armRotate.StopGravity(gravityCounter);
+            gravityCounterOn = true;
+            gravityCounterTime.reset();
+        }
+
+        telemetry.addData("current gravity counter", armRotate.currentGravityCounter);
         /*if(armReady) {
             if (gunnerY >= .5) {
                 arm.IncrementUp();

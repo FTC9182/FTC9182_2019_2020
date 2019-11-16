@@ -12,7 +12,7 @@ public class AutonFoundationRed extends LinearOpMode {
     Grabber grabber = null;
     HDrive hDrive = null;
     LinearOpMode opMode;
-    //ElapsedTime totalTime = null;
+    //ElapsedTime waitTime = null;
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -21,31 +21,37 @@ public class AutonFoundationRed extends LinearOpMode {
         grabber = new Grabber(hardwareMap);
         grabber.Up();
 
-        //totalTime = new ElapsedTime();
-
-        //totalTime.reset();
-
+        //waitTime = new ElapsedTime();
 
         waitForStart();
 
-        //totalTime.reset();
+        //waitTime.reset();
 
 
         //while (totalTime.milliseconds() < 27000){
 
         //hDrive.AutonSensor(4, 0.5, "GoToFoundation");
 
-        /*while(opModeIsActive() && hDrive.AutoDrive(0.5, 3.2, "Backwards"));
-
-        idle();
-
-        hDrive.StopDriving("Backwards");*/
-
-        while(opModeIsActive() && hDrive.AutonSensor(95, 0.5, "GoBackwards"));
+        while(opModeIsActive() && hDrive.AutoDrive(0.5, 3.2, "Backwards"));
 
         idle();
 
         hDrive.StopDriving("Backwards");
+
+        /*while(opModeIsActive() && hDrive.AutonSensor(95, 0.5, "GoBackwards")){
+            telemetry.addData("Current Distance", hDrive.FrontDistanceSensor.rawUltrasonic());
+            telemetry.update();
+
+            waitTime.reset();
+
+            while(waitTime.milliseconds() < 20);
+
+
+        }*/
+
+        //idle();
+
+        //hDrive.StopDriving("Backwards");
 
         while(opModeIsActive() && hDrive.AutoDrive(0.5, 1, "Left"));
 
@@ -57,7 +63,7 @@ public class AutonFoundationRed extends LinearOpMode {
 
         idle();
 
-        while(opModeIsActive() && hDrive.AutonSensor(6, 0.5, "PullToWall/GoToStone"));
+        while(opModeIsActive() && hDrive.AutonSensor(7, 0.5, "PullToWall/GoToStone"));
 
         idle();
 
