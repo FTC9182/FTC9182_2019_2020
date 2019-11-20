@@ -6,6 +6,7 @@ import com.qualcomm.hardware.modernrobotics.ModernRoboticsI2cRangeSensor;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.DigitalChannel;
 import com.qualcomm.robotcore.hardware.DistanceSensor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.ElapsedTime;
@@ -28,6 +29,7 @@ public class HDrive {
     ColorSensor BottomSensorColor;
     DistanceSensor BackDistanceSensor;
     ColorSensor FrontColorSensor;
+    DigitalChannel FoundationTouch;
 
     final double DRIVETICKS = 800;
 
@@ -57,6 +59,11 @@ public class HDrive {
         BackDistanceSensor = hardwareMap.get(DistanceSensor.class, "back_distance_sensor");
 
         FrontColorSensor = hardwareMap.get(ColorSensor.class, "front_color_sensor");
+
+        FoundationTouch = hardwareMap.digitalChannel.get("foundation_touch");
+
+
+        FoundationTouch.setMode(DigitalChannel.Mode.INPUT);
 
     }
 
@@ -311,6 +318,17 @@ public class HDrive {
         }
 
         //StopDriving("Backwards");
+
+        if (Direction == "GoToFoundation"){
+
+            ForwardRight.setPower(Speed);
+            ForwardLeft.setPower(Speed);
+            BackwardsRight.setPower(Speed);
+            BackwardsLeft.setPower(Speed);
+
+            return FoundationTouch.getState() == false;
+
+        }
 
         if (Direction == "SkystoneRedID") {
 
