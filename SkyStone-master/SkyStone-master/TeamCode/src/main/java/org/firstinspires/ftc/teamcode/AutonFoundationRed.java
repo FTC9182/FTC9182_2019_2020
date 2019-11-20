@@ -47,11 +47,17 @@ public class AutonFoundationRed extends LinearOpMode {
 
         //hDrive.StopDriving("Backwards");
 
-        while(opModeIsActive() && hDrive.AutoDrive(0.5, 3, "Backwards"));
+        /*while(opModeIsActive() && hDrive.AutoDrive(0.5, 3, "Backwards"));
 
         idle();
 
-        hDrive.StopDriving("Backwards");
+        hDrive.StopDriving("Backwards");*/
+
+        while(opModeIsActive() && hDrive.AutonSensor(0, 0.3, "GoToFoundation"));
+
+        idle();
+
+        hDrive.StopDriving("InstantStop");
 
         while(opModeIsActive() && hDrive.AutoDrive(0.5, 1, "Left"));
 

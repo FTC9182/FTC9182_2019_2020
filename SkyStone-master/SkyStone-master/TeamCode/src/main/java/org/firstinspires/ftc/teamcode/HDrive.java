@@ -326,9 +326,11 @@ public class HDrive {
             BackwardsRight.setPower(Speed);
             BackwardsLeft.setPower(Speed);
 
-            return FoundationTouch.getState() == false;
+            return FoundationTouch.getState() == true;
 
         }
+
+        //StopDriving("Backwards");
 
         if (Direction == "SkystoneRedID") {
 
