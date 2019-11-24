@@ -27,7 +27,7 @@ public class HDrive {
 
     ModernRoboticsI2cRangeSensor FrontDistanceSensor;
     ColorSensor BottomSensorColor;
-    DistanceSensor BackDistanceSensor;
+    //DistanceSensor BackDistanceSensor;
     ColorSensor FrontColorSensor;
     DigitalChannel FoundationTouch;
 
@@ -56,7 +56,7 @@ public class HDrive {
 
         BottomSensorColor = hardwareMap.get(ColorSensor.class, "bottom_sensor");
 
-        BackDistanceSensor = hardwareMap.get(DistanceSensor.class, "back_distance_sensor");
+//        BackDistanceSensor = hardwareMap.get(DistanceSensor.class, "back_distance_sensor");
 
         FrontColorSensor = hardwareMap.get(ColorSensor.class, "front_color_sensor");
 
