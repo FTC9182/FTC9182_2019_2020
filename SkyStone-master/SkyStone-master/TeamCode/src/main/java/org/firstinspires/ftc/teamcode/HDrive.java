@@ -334,7 +334,7 @@ public class HDrive {
 
         if (Direction == "SkystoneRedID") {
 
-            if ((FrontColorSensor.red()) > 50) {
+            if ((FrontColorSensor.red()) < 50) {
                 SkystoneSeen = true;
             }
 
@@ -346,7 +346,7 @@ public class HDrive {
 
         if (Direction == "SkystoneBlueID") {
 
-            if ((FrontColorSensor.red()) > 50) {
+            if ((FrontColorSensor.red()) < 50) {
                 SkystoneSeen = true;
             }
 
