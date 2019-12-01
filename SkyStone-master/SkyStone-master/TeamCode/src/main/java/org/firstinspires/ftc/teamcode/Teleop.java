@@ -16,6 +16,7 @@ public class Teleop extends OpMode {
     WheelGrabber wheelGrabber = null;
     Arm armExtend = null;
     ArmRotation armRotate = null;
+    BlockGrabber blockGrabber = null;
     public ElapsedTime waitTime = new ElapsedTime();
 
     //Drive var
@@ -33,6 +34,12 @@ public class Teleop extends OpMode {
 
     //Block grabber
     boolean triggerReady = true;
+
+    //Other Block Grabber
+    boolean blockGrabberReady = true;
+    double blockCurrentPower;
+    double blockBasePower = 1;
+    double blockFullExtend = 0;
 
     //Arm
     double gunnerY;
@@ -57,6 +64,7 @@ public class Teleop extends OpMode {
     public ElapsedTime armRotateTime = new ElapsedTime();
     public ElapsedTime boostTime = new ElapsedTime();
     public ElapsedTime gravityCounterTime = new ElapsedTime();
+    public ElapsedTime blockGrabberTime = new ElapsedTime();
 
     public void init() {
 
@@ -65,6 +73,7 @@ public class Teleop extends OpMode {
         wheelGrabber = new WheelGrabber(hardwareMap);
         armExtend = new Arm(hardwareMap);
         armRotate = new ArmRotation(hardwareMap);
+        blockGrabber = new BlockGrabber(hardwareMap);
         grabber.Up();
 
         currentPower = basePower;
@@ -82,6 +91,7 @@ public class Teleop extends OpMode {
         armRotateReady = armRotateTime.milliseconds() > 400;
         boostTimeReady = boostTime.milliseconds() > 1520;
         gravityCounterReady = gravityCounterTime.milliseconds() > 1500;
+        blockGrabberReady = blockGrabberTime.milliseconds() > 500;
 
         if (gamepad1.x && speedReady) {
 
@@ -112,6 +122,19 @@ public class Teleop extends OpMode {
             speedVari = 0.75;
         } else if (gamepad1.dpad_down) {
             speedVari = 0.6;
+        }
+
+        if (gamepad1.a && blockGrabberReady) {
+
+            if (blockCurrentPower == blockBasePower) {
+                blockCurrentPower = blockFullExtend;
+                blockGrabber.Down();
+                blockGrabberTime.reset();
+            } else if (blockCurrentPower == blockFullExtend) {
+                blockCurrentPower = blockBasePower;
+                blockGrabber.Up();
+                blockGrabberTime.reset();
+            }
         }
 
         //Gamepad2

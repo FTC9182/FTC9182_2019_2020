@@ -4,20 +4,20 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-public class Grabber
+public class BlockGrabber
 {
-    private Servo blockServo = null;
+    private Servo pullerServo = null;
 
     ElapsedTime MoveTime = new ElapsedTime();
 
-    private double basePower = 0.05;
-    private double fullExtend = .9;
+    private double basePower = 1;
+    private double fullExtend = 0.02;
 
-    public Grabber(HardwareMap hardwareMap)
+    public BlockGrabber(HardwareMap hardwareMap)
     {
-        blockServo = hardwareMap.servo.get("pull_servo");
+        pullerServo = hardwareMap.servo.get("block_servo");
 
-        blockServo.setPosition(0);
+        pullerServo.setPosition(basePower);
 
         MoveTime = new ElapsedTime();
     }
@@ -26,7 +26,7 @@ public class Grabber
     {
         MoveTime.reset();
 
-        blockServo.setPosition(fullExtend);
+        pullerServo.setPosition(fullExtend);
 
         while (MoveTime.milliseconds() < 700);
     }
@@ -35,7 +35,7 @@ public class Grabber
     {
         MoveTime.reset();
 
-        blockServo.setPosition(basePower);
+        pullerServo.setPosition(basePower);
 
         while (MoveTime.milliseconds() < 700);
     }
