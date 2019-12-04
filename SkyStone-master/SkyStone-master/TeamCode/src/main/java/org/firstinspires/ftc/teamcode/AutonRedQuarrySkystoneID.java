@@ -23,19 +23,19 @@ public class AutonRedQuarrySkystoneID extends LinearOpMode {
 
             waitForStart();
 
-            while(opModeIsActive() && hDrive.AutonSensor(5, 0.5, "PullToWall/GoToStone"));
+            while(opModeIsActive() && hDrive.AutonSensor(9, 0.4, "PullToWall/GoToStone"));
 
             idle();
 
             hDrive.StopDriving("InstantStop");
 
-            while(opModeIsActive() && hDrive.AutonSensor(0, 0.3, "SkystoneRedID"));
+            while(opModeIsActive() && hDrive.AutonSensor(0, 0.5, "SkystoneRedIDPart1"));
 
             idle();
 
             hDrive.StopDriving("InstantStop");
 
-            while(opModeIsActive() && hDrive.AutoDrive(0.3, 0.7, "Left"))
+            while(opModeIsActive() && hDrive.AutonSensor(0, 0.5, "SkystoneRedIDPart2"));
 
             idle();
 
@@ -70,6 +70,8 @@ public class AutonRedQuarrySkystoneID extends LinearOpMode {
             idle();
 
             hDrive.StopDriving("Left");
+
+            while(opModeIsActive());
 
 
 

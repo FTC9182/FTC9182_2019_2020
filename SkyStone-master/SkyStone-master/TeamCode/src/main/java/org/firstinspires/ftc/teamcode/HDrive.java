@@ -36,6 +36,7 @@ public class HDrive {
     final int SCALE_FACTOR = 255;
 
     boolean SkystoneSeen;
+    boolean SeenSkystone;
 
     public HDrive(HardwareMap hardwareMap) {
         ForwardRight = hardwareMap.dcMotor.get("front_right");
@@ -332,7 +333,7 @@ public class HDrive {
 
         //StopDriving("Backwards");
 
-        if (Direction == "SkystoneRedID") {
+        if (Direction == "SkystoneRedIDPart1") {
 
             if ((FrontColorSensor.red()) < 50) {
                 SkystoneSeen = true;
@@ -342,6 +343,16 @@ public class HDrive {
 
             return SkystoneSeen == false;
 
+        }
+
+        if (Direction == "SkystoneRedIDPart2"){
+            if(FrontColorSensor.red() > 50){
+                SeenSkystone = true;
+            }
+
+            Middle.setPower(Speed);
+
+            return SeenSkystone == false;
         }
 
         if (Direction == "SkystoneBlueID") {
