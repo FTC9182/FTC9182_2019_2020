@@ -50,7 +50,7 @@ public class AutonFoundationBlue extends LinearOpMode {
 
         hDrive.StopDriving("InstantStop");
 
-        while(opModeIsActive() && hDrive.AutoDrive(0.5, 1, "Right"));
+        while(opModeIsActive() && hDrive.AutoDrive(0.5, 1.3, "Right"));
 
         idle();
 
@@ -60,7 +60,7 @@ public class AutonFoundationBlue extends LinearOpMode {
 
         idle();
 
-        while(opModeIsActive() && hDrive.AutonSensor(12, 0.5, "PullToWall/GoToStone"));
+        while(opModeIsActive() && hDrive.AutonSensor(11, 0.5, "PullToWall/GoToStone"));
 
         idle();
 
