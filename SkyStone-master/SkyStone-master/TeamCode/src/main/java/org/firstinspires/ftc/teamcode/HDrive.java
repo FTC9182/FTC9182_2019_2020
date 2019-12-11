@@ -167,7 +167,9 @@ public class HDrive {
 
         double SDistance;
 
-        SDistance = Middle.getCurrentPosition();
+        SDistance = (ForwardRight.getCurrentPosition() - ForwardLeft.getCurrentPosition() - BackwardsRight.getCurrentPosition() + BackwardsLeft.getCurrentPosition());
+
+        //SDistance = Middle.getCurrentPosition();
 
         double TurnDistance;
 
@@ -206,19 +208,38 @@ public class HDrive {
         //StopDriving("Backwards");
 
         if (Direction == "Left") {
-            Middle.setPower(Speed);
-            SDistance = Middle.getCurrentPosition();
+
+            ForwardRight.setPower(-Speed);
+            ForwardLeft.setPower(Speed);
+            BackwardsRight.setPower(Speed);
+            BackwardsLeft.setPower(-Speed);
+
+            SDistance = (ForwardRight.getCurrentPosition() - ForwardLeft.getCurrentPosition() - BackwardsRight.getCurrentPosition() + BackwardsLeft.getCurrentPosition());
 
             return SDistance < DriveDistance;
+
+            /*Middle.setPower(Speed);
+            SDistance = Middle.getCurrentPosition();
+
+            return SDistance < DriveDistance;*/
         }
 
         //StopDriving("Left");
 
         if (Direction == "Right") {
-            Middle.setPower(-Speed);
-            SDistance = Middle.getCurrentPosition();
+
+            ForwardRight.setPower(Speed);
+            ForwardLeft.setPower(-Speed);
+            BackwardsRight.setPower(-Speed);
+            BackwardsLeft.setPower(Speed);
+
+            SDistance = (ForwardRight.getCurrentPosition() - ForwardLeft.getCurrentPosition() - BackwardsRight.getCurrentPosition() + BackwardsLeft.getCurrentPosition());
 
             return SDistance > -DriveDistance;
+            /*Middle.setPower(-Speed);
+            SDistance = Middle.getCurrentPosition();
+
+            return SDistance > -DriveDistance;*/
         }
 
         //StopDriving("Right");
