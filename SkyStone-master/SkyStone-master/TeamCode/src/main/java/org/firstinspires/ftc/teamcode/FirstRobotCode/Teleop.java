@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.teamcode.Grabber;
 
-@Disabled
+//@Disabled
 @TeleOp (name = "Teleop7")
 public class Teleop extends OpMode {
 
