@@ -25,10 +25,10 @@ public class DriveTrain {
 
     public void Move(double speedVari,double driveX, double driveY, double turnDegrees)
     {
-        frontRight.setPower(speedVari*(-driveY-driveX-turnDegrees));
-        frontLeft.setPower(speedVari*(-driveY+driveX+turnDegrees));
-        backLeft.setPower(speedVari*(-driveY-driveX+turnDegrees));
-        backRight.setPower(speedVari*(-driveY+driveX-turnDegrees));
+        frontRight.setPower(speedVari*(driveY-driveX-turnDegrees));
+        frontLeft.setPower(speedVari*(driveY+driveX+turnDegrees));
+        backLeft.setPower(speedVari*(driveY-driveX+turnDegrees));
+        backRight.setPower(speedVari*(driveY+driveX-turnDegrees));
     }
 
 }

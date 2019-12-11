@@ -45,10 +45,10 @@ public class HDrive {
         BackwardsLeft = hardwareMap.dcMotor.get("back_left");
         Middle = hardwareMap.dcMotor.get("middle");
 
-        ForwardRight.setDirection(DcMotorSimple.Direction.FORWARD);
-        ForwardLeft.setDirection(DcMotorSimple.Direction.REVERSE);
-        BackwardsRight.setDirection(DcMotorSimple.Direction.FORWARD);
-        BackwardsLeft.setDirection(DcMotorSimple.Direction.REVERSE);
+        ForwardRight.setDirection(DcMotorSimple.Direction.REVERSE);
+        ForwardLeft.setDirection(DcMotorSimple.Direction.FORWARD);
+        BackwardsRight.setDirection(DcMotorSimple.Direction.REVERSE);
+        BackwardsLeft.setDirection(DcMotorSimple.Direction.FORWARD);
         Middle.setDirection(DcMotorSimple.Direction.REVERSE);
 
         SlowTime = new ElapsedTime();
@@ -70,11 +70,16 @@ public class HDrive {
 
     public void drive(double driveX, double driveY, double turnDegrees, double speedVari) {
 
-        ForwardRight.setPower(speedVari * (driveY - turnDegrees));
+        ForwardRight.setPower(-speedVari*(driveY-driveX-turnDegrees));
+        ForwardLeft.setPower(-speedVari*(driveY+driveX+turnDegrees));
+        BackwardsLeft.setPower(-speedVari*(driveY-driveX+turnDegrees));
+        BackwardsRight.setPower(-speedVari*(driveY+driveX-turnDegrees));
+
+        /*ForwardRight.setPower(speedVari * (driveY - turnDegrees));
         ForwardLeft.setPower(speedVari * (driveY + turnDegrees));
         BackwardsRight.setPower(speedVari * (driveY - turnDegrees));
         BackwardsLeft.setPower(speedVari * (driveY + turnDegrees));
-        Middle.setPower(speedVari * -driveX);
+        Middle.setPower(speedVari * -driveX);*/
     }
 
     public void StopDriving(String Direction) {
