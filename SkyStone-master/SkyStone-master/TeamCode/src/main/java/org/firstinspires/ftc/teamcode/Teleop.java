@@ -112,7 +112,7 @@ public class Teleop extends OpMode {
         gunnerY2 = gamepad2.right_stick_y;
         turnDegrees = gamepad1.right_stick_x;
 
-        hDrive.drive(driveX, driveY, turnDegrees, speedVari);
+        hDrive.drive(-driveX, driveY, turnDegrees, speedVari);
 
         if (gamepad1.dpad_up) {
             speedVari = 1;
