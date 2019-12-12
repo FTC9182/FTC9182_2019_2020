@@ -86,16 +86,7 @@ public class HDrive {
 
         SlowTime.reset();
 
-        if (ForwardRight.getPower() < -0.2 && Direction == "Forward") {
-            while (SlowTime.milliseconds() < 500) {
-                ForwardRight.setPower(-0.2);
-                ForwardLeft.setPower(-0.2);
-                BackwardsRight.setPower(-0.2);
-                BackwardsLeft.setPower(-0.2);
-            }
-        }
-
-        if (ForwardRight.getPower() > 0.2 && Direction == "Backwards") {
+        if (ForwardRight.getPower() > 0.2 && Direction == "Forward") {
             while (SlowTime.milliseconds() < 500) {
                 ForwardRight.setPower(0.2);
                 ForwardLeft.setPower(0.2);
@@ -104,33 +95,50 @@ public class HDrive {
             }
         }
 
-        if (Middle.getPower() > 0.2 && Direction == "Left") {
+        if (ForwardRight.getPower() < -0.2 && Direction == "Backwards") {
             while (SlowTime.milliseconds() < 500) {
-                Middle.setPower(0.2);
+                ForwardRight.setPower(-0.2);
+                ForwardLeft.setPower(-0.2);
+                BackwardsRight.setPower(-0.2);
+                BackwardsLeft.setPower(-0.2);
             }
         }
 
-        if (Middle.getPower() < -0.2 && Direction == "Right") {
+        if (/*Middle.getPower() > 0.2*/ ForwardRight.getPower() > 0.2 && Direction == "Left") {
             while (SlowTime.milliseconds() < 500) {
-                Middle.setPower(-0.2);
+                //Middle.setPower(0.2);
+                ForwardRight.setPower(0.2);
+                ForwardLeft.setPower(-0.2);
+                BackwardsRight.setPower(-0.2);
+                BackwardsLeft.setPower(0.2);
+            }
+        }
+
+        if (/*Middle.getPower() < -0.2*/ ForwardRight.getPower() < -0.2 && Direction == "Right") {
+            while (SlowTime.milliseconds() < 500) {
+                //Middle.setPower(-0.2);
+                ForwardRight.setPower(-0.2);
+                ForwardLeft.setPower(0.2);
+                BackwardsRight.setPower(0.2);
+                BackwardsLeft.setPower(-0.2);
             }
         }
 
         if ((ForwardRight.getPower() > 0.2) && (Direction == "TurnLeft")) {
             while (SlowTime.milliseconds() < 500) {
-                ForwardRight.setPower(0.2);
-                ForwardLeft.setPower(-0.2);
-                BackwardsRight.setPower(0.2);
-                BackwardsLeft.setPower(-0.2);
+                ForwardRight.setPower(-0.2);
+                ForwardLeft.setPower(0.2);
+                BackwardsRight.setPower(-0.2);
+                BackwardsLeft.setPower(0.2);
             }
         }
 
         if ((ForwardRight.getPower() < -0.2) && (Direction == "TurnRight")) {
             while (SlowTime.milliseconds() < 500) {
-                ForwardRight.setPower(-0.2);
-                ForwardLeft.setPower(0.2);
-                BackwardsRight.setPower(-0.2);
-                BackwardsLeft.setPower(0.2);
+                ForwardRight.setPower(0.2);
+                ForwardLeft.setPower(-0.2);
+                BackwardsRight.setPower(0.2);
+                BackwardsLeft.setPower(-0.2);
             }
         }
 
@@ -186,10 +194,10 @@ public class HDrive {
 
         if ((Direction == "Forward")) {
 
-            ForwardRight.setPower(-Speed);
-            ForwardLeft.setPower(-Speed);
-            BackwardsRight.setPower(-Speed);
-            BackwardsLeft.setPower(-Speed);
+            ForwardRight.setPower(Speed);
+            ForwardLeft.setPower(Speed);
+            BackwardsRight.setPower(Speed);
+            BackwardsLeft.setPower(Speed);
             FBDistance = (ForwardRight.getCurrentPosition() + ForwardLeft.getCurrentPosition() + BackwardsLeft.getCurrentPosition() + BackwardsRight.getCurrentPosition()) / 4;
 
             return FBDistance > -DriveDistance;
@@ -200,10 +208,10 @@ public class HDrive {
 
         if (Direction == "Backwards") {
 
-            ForwardRight.setPower(Speed);
-            ForwardLeft.setPower(Speed);
-            BackwardsRight.setPower(Speed);
-            BackwardsLeft.setPower(Speed);
+            ForwardRight.setPower(-Speed);
+            ForwardLeft.setPower(-Speed);
+            BackwardsRight.setPower(-Speed);
+            BackwardsLeft.setPower(-Speed);
             FBDistance = (ForwardRight.getCurrentPosition() + ForwardLeft.getCurrentPosition() + BackwardsLeft.getCurrentPosition() + BackwardsRight.getCurrentPosition()) / 4;
 
             return FBDistance < DriveDistance;
@@ -214,10 +222,10 @@ public class HDrive {
 
         if (Direction == "Left") {
 
-            ForwardRight.setPower(-Speed);
-            ForwardLeft.setPower(Speed);
-            BackwardsRight.setPower(Speed);
-            BackwardsLeft.setPower(-Speed);
+            ForwardRight.setPower(Speed);
+            ForwardLeft.setPower(-Speed);
+            BackwardsRight.setPower(-Speed);
+            BackwardsLeft.setPower(Speed);
 
             SDistance = (ForwardRight.getCurrentPosition() - ForwardLeft.getCurrentPosition() - BackwardsRight.getCurrentPosition() + BackwardsLeft.getCurrentPosition()) / 4;
 
@@ -233,10 +241,10 @@ public class HDrive {
 
         if (Direction == "Right") {
 
-            ForwardRight.setPower(Speed);
-            ForwardLeft.setPower(-Speed);
-            BackwardsRight.setPower(-Speed);
-            BackwardsLeft.setPower(Speed);
+            ForwardRight.setPower(-Speed);
+            ForwardLeft.setPower(Speed);
+            BackwardsRight.setPower(Speed);
+            BackwardsLeft.setPower(-Speed);
 
             SDistance = (ForwardRight.getCurrentPosition() - ForwardLeft.getCurrentPosition() - BackwardsRight.getCurrentPosition() + BackwardsLeft.getCurrentPosition()) / 4;
 
@@ -250,10 +258,10 @@ public class HDrive {
         //StopDriving("Right");
 
         if (Direction == "TurnLeft") {
-            ForwardRight.setPower(Speed);
-            ForwardLeft.setPower(-Speed);
-            BackwardsRight.setPower(Speed);
-            BackwardsLeft.setPower(-Speed);
+            ForwardRight.setPower(-Speed);
+            ForwardLeft.setPower(Speed);
+            BackwardsRight.setPower(-Speed);
+            BackwardsLeft.setPower(Speed);
 
             TurnDistance = (ForwardRight.getCurrentPosition() + BackwardsRight.getCurrentPosition()) / 2;
 
@@ -263,10 +271,10 @@ public class HDrive {
         //StopDriving("TurnLeft");
 
         if (Direction == "TurnRight") {
-            ForwardRight.setPower(-Speed);
-            ForwardLeft.setPower(Speed);
-            BackwardsRight.setPower(-Speed);
-            BackwardsLeft.setPower(Speed);
+            ForwardRight.setPower(Speed);
+            ForwardLeft.setPower(-Speed);
+            BackwardsRight.setPower(Speed);
+            BackwardsLeft.setPower(-Speed);
 
             TurnDistance = (ForwardRight.getCurrentPosition() + BackwardsRight.getCurrentPosition()) / 2;
 
@@ -283,10 +291,10 @@ public class HDrive {
     public boolean AutonSensor(int TargetDistance, double Speed, String Direction) {
         if (Direction == "PullToWall/GoToStone") {
 
-            ForwardRight.setPower(-Speed);
-            ForwardLeft.setPower(-Speed);
-            BackwardsRight.setPower(-Speed);
-            BackwardsLeft.setPower(-Speed);
+            ForwardRight.setPower(Speed);
+            ForwardLeft.setPower(Speed);
+            BackwardsRight.setPower(Speed);
+            BackwardsLeft.setPower(Speed);
 
             return FrontDistanceSensor.rawUltrasonic() > TargetDistance;
 
@@ -296,7 +304,11 @@ public class HDrive {
 
         if (Direction == "BlueParkFoundation") {
 
-            Middle.setPower(Speed);
+            //Middle.setPower(-Speed);
+            ForwardRight.setPower(Speed);
+            ForwardLeft.setPower(-Speed);
+            BackwardsRight.setPower(-Speed);
+            BackwardsLeft.setPower(Speed);
 
             return (BottomSensorColor.blue() - BottomSensorColor.red()) < 25;
 
@@ -306,7 +318,12 @@ public class HDrive {
 
         if (Direction == "RedParkFoundation") {
 
-            Middle.setPower(-Speed);
+            //Middle.setPower(Speed);
+
+            ForwardRight.setPower(-Speed);
+            ForwardLeft.setPower(Speed);
+            BackwardsRight.setPower(Speed);
+            BackwardsLeft.setPower(-Speed);
 
             return (BottomSensorColor.red() - BottomSensorColor.blue()) < 35;
 
@@ -316,7 +333,11 @@ public class HDrive {
 
         if (Direction == "RedParkQuarry") {
 
-            Middle.setPower(-Speed);
+            //Middle.setPower(Speed);
+            ForwardRight.setPower(-Speed);
+            ForwardLeft.setPower(Speed);
+            BackwardsRight.setPower(Speed);
+            BackwardsLeft.setPower(-Speed);
 
             return (BottomSensorColor.red() - BottomSensorColor.blue()) < 35;
 
@@ -326,7 +347,11 @@ public class HDrive {
 
         if (Direction == "BlueParkQuarry") {
 
-            Middle.setPower(Speed);
+            //Middle.setPower(-Speed);
+            ForwardRight.setPower(Speed);
+            ForwardLeft.setPower(-Speed);
+            BackwardsRight.setPower(-Speed);
+            BackwardsLeft.setPower(Speed);
 
             return (BottomSensorColor.blue() - BottomSensorColor.red()) < 25;
 
@@ -336,10 +361,10 @@ public class HDrive {
 
         if (Direction == "GoBackwards") {
 
-            ForwardRight.setPower(Speed);
-            ForwardLeft.setPower(Speed);
-            BackwardsRight.setPower(Speed);
-            BackwardsLeft.setPower(Speed);
+            ForwardRight.setPower(-Speed);
+            ForwardLeft.setPower(-Speed);
+            BackwardsRight.setPower(-Speed);
+            BackwardsLeft.setPower(-Speed);
 
             return (FrontDistanceSensor.rawUltrasonic() < TargetDistance);// || FrontDistanceSensor.rawUltrasonic() > 200
         }
@@ -348,10 +373,10 @@ public class HDrive {
 
         if (Direction == "GoToFoundation"){
 
-            ForwardRight.setPower(Speed);
-            ForwardLeft.setPower(Speed);
-            BackwardsRight.setPower(Speed);
-            BackwardsLeft.setPower(Speed);
+            ForwardRight.setPower(-Speed);
+            ForwardLeft.setPower(-Speed);
+            BackwardsRight.setPower(-Speed);
+            BackwardsLeft.setPower(-Speed);
 
             return FoundationTouch.getState() == true;
 
@@ -365,7 +390,11 @@ public class HDrive {
                 SkystoneSeen = true;
             }
 
-            Middle.setPower(Speed);
+            //Middle.setPower(-Speed);
+            ForwardRight.setPower(Speed);
+            ForwardLeft.setPower(-Speed);
+            BackwardsRight.setPower(-Speed);
+            BackwardsLeft.setPower(Speed);
 
             return SkystoneSeen == false;
 
@@ -376,7 +405,11 @@ public class HDrive {
                 SeenSkystone = true;
             }
 
-            Middle.setPower(Speed);
+            //Middle.setPower(-Speed);
+            ForwardRight.setPower(Speed);
+            ForwardLeft.setPower(-Speed);
+            BackwardsRight.setPower(-Speed);
+            BackwardsLeft.setPower(Speed);
 
             return SeenSkystone == false;
         }
@@ -387,7 +420,11 @@ public class HDrive {
                 SkystoneSeen = true;
             }
 
-            Middle.setPower(-Speed);
+            //Middle.setPower(Speed);
+            ForwardRight.setPower(-Speed);
+            ForwardLeft.setPower(Speed);
+            BackwardsRight.setPower(Speed);
+            BackwardsLeft.setPower(-Speed);
 
             return SkystoneSeen == false;
 
