@@ -219,7 +219,7 @@ public class HDrive {
             BackwardsRight.setPower(Speed);
             BackwardsLeft.setPower(-Speed);
 
-            SDistance = (ForwardRight.getCurrentPosition() - ForwardLeft.getCurrentPosition() - BackwardsRight.getCurrentPosition() + BackwardsLeft.getCurrentPosition());
+            SDistance = (ForwardRight.getCurrentPosition() - ForwardLeft.getCurrentPosition() - BackwardsRight.getCurrentPosition() + BackwardsLeft.getCurrentPosition()) / 4;
 
             return SDistance < DriveDistance;
 
@@ -238,7 +238,7 @@ public class HDrive {
             BackwardsRight.setPower(-Speed);
             BackwardsLeft.setPower(Speed);
 
-            SDistance = (ForwardRight.getCurrentPosition() - ForwardLeft.getCurrentPosition() - BackwardsRight.getCurrentPosition() + BackwardsLeft.getCurrentPosition());
+            SDistance = (ForwardRight.getCurrentPosition() - ForwardLeft.getCurrentPosition() - BackwardsRight.getCurrentPosition() + BackwardsLeft.getCurrentPosition()) / 4;
 
             return SDistance > -DriveDistance;
             /*Middle.setPower(-Speed);
