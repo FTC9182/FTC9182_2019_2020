@@ -7,7 +7,6 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 public class AutonRedQuarrySkystoneID extends LinearOpMode {
 
     HDrive hDrive = null;
-    LinearOpMode opMode;
     ArmRotation armRotation = null;
     Arm armExtend = null;
     BlockGrabber grabber = null;
@@ -23,7 +22,7 @@ public class AutonRedQuarrySkystoneID extends LinearOpMode {
 
             waitForStart();
 
-            while(opModeIsActive() && hDrive.AutonSensor(9, 0.4, "PullToWall/GoToStone"));
+            while(opModeIsActive() && hDrive.AutonSensor(12, 0.4, "PullToWall/GoToStone"));
 
             idle();
 
@@ -40,6 +39,19 @@ public class AutonRedQuarrySkystoneID extends LinearOpMode {
             idle();
 
             hDrive.StopDriving("InstantStop");
+
+            while(opModeIsActive() && hDrive.AutonSensor(0, 0.5, "SkystoneRedIDPart1"));
+
+            idle();
+
+            hDrive.StopDriving("InstantStop");
+
+            while(opModeIsActive() && hDrive.AutonSensor(0, 0.5, "SkystoneRedIDPart2"));
+
+            idle();
+
+            hDrive.StopDriving("InstantStop");
+
 
             grabber.Down();
 

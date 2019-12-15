@@ -176,7 +176,7 @@ public class HDrive {
 
         double FBDistance;
 
-        FBDistance = (ForwardRight.getCurrentPosition() + ForwardLeft.getCurrentPosition() + BackwardsLeft.getCurrentPosition() + BackwardsRight.getCurrentPosition()) / 4;
+        FBDistance = (-ForwardRight.getCurrentPosition() + ForwardLeft.getCurrentPosition() + BackwardsRight.getCurrentPosition() - BackwardsLeft.getCurrentPosition()) / 4;
 
         double SDistance;
 
@@ -198,7 +198,7 @@ public class HDrive {
             ForwardLeft.setPower(Speed);
             BackwardsRight.setPower(Speed);
             BackwardsLeft.setPower(Speed);
-            FBDistance = (ForwardRight.getCurrentPosition() + ForwardLeft.getCurrentPosition() + BackwardsLeft.getCurrentPosition() + BackwardsRight.getCurrentPosition()) / 4;
+            FBDistance = (-ForwardRight.getCurrentPosition() + ForwardLeft.getCurrentPosition() + BackwardsRight.getCurrentPosition() - BackwardsLeft.getCurrentPosition()) / 4;
 
             return FBDistance > -DriveDistance;
 
@@ -212,7 +212,7 @@ public class HDrive {
             ForwardLeft.setPower(-Speed);
             BackwardsRight.setPower(-Speed);
             BackwardsLeft.setPower(-Speed);
-            FBDistance = (ForwardRight.getCurrentPosition() + ForwardLeft.getCurrentPosition() + BackwardsLeft.getCurrentPosition() + BackwardsRight.getCurrentPosition()) / 4;
+            FBDistance = (-ForwardRight.getCurrentPosition() + ForwardLeft.getCurrentPosition() + BackwardsRight.getCurrentPosition() - BackwardsLeft.getCurrentPosition()) / 4;
 
             return FBDistance < DriveDistance;
 
