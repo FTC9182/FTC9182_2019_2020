@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.FirstRobotCode;
+package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
@@ -22,7 +22,7 @@ public class WheelGrabberRotation
         MoveTime = new ElapsedTime();
     }
 
-    public void Down()
+    public void Rotated()
     {
         MoveTime.reset();
 
@@ -31,7 +31,7 @@ public class WheelGrabberRotation
         while (MoveTime.milliseconds() < 700);
     }
 
-    public void Up()
+    public void Normal()
     {
         MoveTime.reset();
 
