@@ -17,6 +17,7 @@ public class Teleop extends OpMode {
     Arm armExtend = null;
     ArmRotation armRotate = null;
     BlockGrabber blockGrabber = null;
+    WheelGrabberRotation wheelGrabberRotation = null;
     public ElapsedTime waitTime = new ElapsedTime();
 
     //Drive var
@@ -58,6 +59,8 @@ public class Teleop extends OpMode {
     boolean boostReady = true;
     boolean gravityCounterReady = true;
     boolean gravityCounterOn = true;
+    boolean wheelGrabberRotationReady = true;
+    boolean wheelGrabberRotationRotated = false;
 
     public ElapsedTime triggerTime = new ElapsedTime();
     public ElapsedTime armTime = new ElapsedTime();
@@ -65,6 +68,7 @@ public class Teleop extends OpMode {
     public ElapsedTime boostTime = new ElapsedTime();
     public ElapsedTime gravityCounterTime = new ElapsedTime();
     public ElapsedTime blockGrabberTime = new ElapsedTime();
+    public ElapsedTime wheelGrabberRotationTime = new ElapsedTime();
 
     public void init() {
 
@@ -74,6 +78,7 @@ public class Teleop extends OpMode {
         armExtend = new Arm(hardwareMap);
         armRotate = new ArmRotation(hardwareMap);
         blockGrabber = new BlockGrabber(hardwareMap);
+        wheelGrabberRotation = new WheelGrabberRotation(hardwareMap);
         grabber.Up();
 
         currentPower = basePower;
@@ -92,6 +97,7 @@ public class Teleop extends OpMode {
         boostTimeReady = boostTime.milliseconds() > 1520;
         gravityCounterReady = gravityCounterTime.milliseconds() > 1500;
         blockGrabberReady = blockGrabberTime.milliseconds() > 500;
+        wheelGrabberRotationReady = wheelGrabberRotationTime.milliseconds() > 500;
 
         if (gamepad1.x && speedReady) {
 
@@ -190,6 +196,16 @@ public class Teleop extends OpMode {
             gravityCounterTime.reset();
         }
 
+        if (wheelGrabberRotationReady && gamepad2.x && wheelGrabberRotationRotated){
+            wheelGrabberRotation.Normal();
+            wheelGrabberRotationTime.reset();
+            wheelGrabberRotationRotated = false;
+        }
+        else if (wheelGrabberRotationReady && gamepad2.x && !wheelGrabberRotationRotated){
+            wheelGrabberRotation.Rotated();
+            wheelGrabberRotationTime.reset();
+            wheelGrabberRotationRotated = true;
+        }
         telemetry.addData("current gravity counter", armRotate.currentGravityCounter);
         /*if(armReady) {
             if (gunnerY >= .5) {
