@@ -17,7 +17,7 @@ public class WheelGrabberRotation
     {
         pullerServo = hardwareMap.servo.get("rotate_servo");
 
-        pullerServo.setPosition(basePower);
+        pullerServo.setPosition(fullExtend);
 
         MoveTime = new ElapsedTime();
     }

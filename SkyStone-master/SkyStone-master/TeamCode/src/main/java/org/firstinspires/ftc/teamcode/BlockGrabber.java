@@ -10,7 +10,7 @@ public class BlockGrabber
 
     ElapsedTime MoveTime = new ElapsedTime();
 
-    private double basePower = 1;
+    private double basePower = .5;
     private double fullExtend = 0.02;
 
     public BlockGrabber(HardwareMap hardwareMap)
