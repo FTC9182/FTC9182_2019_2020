@@ -96,7 +96,7 @@ public class Teleop extends OpMode {
         armRotateReady = armRotateTime.milliseconds() > 400;
         boostTimeReady = boostTime.milliseconds() > 1520;
         gravityCounterReady = gravityCounterTime.milliseconds() > 1500;
-        blockGrabberReady = blockGrabberTime.milliseconds() > 500;
+        blockGrabberReady = blockGrabberTime.milliseconds() > 250;
         wheelGrabberRotationReady = wheelGrabberRotationTime.milliseconds() > 500;
 
         if (gamepad1.x && speedReady) {
