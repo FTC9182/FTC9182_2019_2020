@@ -16,6 +16,7 @@ public class ArmRotation {
     public double gravityCounter = .17;//.165
     public double boostGravityPower = .2;//.2
     public double currentGravityCounter;
+    public double currentDownPower;
 
     final double TICKS = 100;
 
@@ -27,27 +28,28 @@ public class ArmRotation {
         armRotation.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         currentGravityCounter = gravityCounter;
         currentUpPower = upPower;
+        currentDownPower = downPower;
     }
-
+/*
     public void Up(){
         armRotation.setTargetPosition(currentPosition + rotationIndex);
         armRotation.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         armRotation.setPower(currentUpPower);
         currentPosition = armRotation.getCurrentPosition();
     }
-
+/*
     public void Down(){
         armRotation.setTargetPosition(currentPosition - rotationIndex);
         armRotation.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         armRotation.setPower(upPower);
         currentPosition = armRotation.getCurrentPosition();
     }
-
+*/
     public void UpMove(double gunnerY2){
         armRotation.setPower(-gunnerY2 * currentUpPower);
     }
 
-    public void DownMove(double gunnerY2) { armRotation.setPower(-gunnerY2 * downPower); }
+    public void DownMove(double gunnerY2) { armRotation.setPower(-gunnerY2 * currentDownPower); }
 
     public void GravityCounter() {armRotation.setPower(currentGravityCounter);}
 
@@ -57,7 +59,15 @@ public class ArmRotation {
 
     public void Boost(double power, double gravityPower){ currentUpPower = power; currentGravityCounter = gravityPower; }
 
-    public void StopGravity(double gravitycounter) { currentGravityCounter = gravitycounter; }
+    public void StopGravity(double gravitycounter, double recovery) {
+        currentGravityCounter = gravitycounter;
+        if (recovery == 1){
+            currentDownPower = upPower;
+        }
+        else if (recovery == 0){
+            currentDownPower = downPower;
+        }
+    }
 
     public boolean EncoderMove(double TargetDistance, double speed, String Direction){
 
