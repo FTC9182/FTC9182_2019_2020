@@ -186,12 +186,12 @@ public class Teleop extends OpMode {
         telemetry.addData("90 degree encoder count", armExtend.armExtend.getCurrentPosition());// pay richard back $1.25
 
         if (gravityCounterOn && gravityCounterReady && gamepad2.y) {
-            armRotate.StopGravity(0);
+            armRotate.StopGravity(0 ,1);
             gravityCounterOn = false;
             gravityCounterTime.reset();
         }
         else if (!gravityCounterOn && gravityCounterReady && gamepad2.y) {
-            armRotate.StopGravity(gravityCounter);
+            armRotate.StopGravity(gravityCounter, 0);
             gravityCounterOn = true;
             gravityCounterTime.reset();
         }
