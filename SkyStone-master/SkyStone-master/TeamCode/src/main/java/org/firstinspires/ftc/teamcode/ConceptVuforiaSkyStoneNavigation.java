@@ -268,10 +268,10 @@ public class ConceptVuforiaSkyStoneNavigation extends LinearOpMode {
         //
         // NOTE !!!!  It's very important that you turn OFF your phone's Auto-Screen-Rotation option.
         // Lock it into Portrait for these numbers to work.
-        //
-        // Info:  The coordinate frame for the robot looks the same as the field.
+        //bot looks the same as the field.
         // The robot's "forward" direction is facing out along X axis, with the LEFT side facing out along the Y axis.
-        // Z is UP on the robot.  This equates to a bearing angle of Zero degrees.
+        // Z is UP on the robot.  This equates to a bea
+        //        // Info:  The coordinate frame for the roring angle of Zero degrees.
         //
         // The phone starts out lying flat, with the screen facing Up and with the physical top of the phone
         // pointing to the LEFT side of the Robot.

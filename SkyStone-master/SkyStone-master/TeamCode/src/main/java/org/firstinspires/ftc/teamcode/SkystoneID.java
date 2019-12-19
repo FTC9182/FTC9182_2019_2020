@@ -22,15 +22,27 @@ public class SkystoneID {
     private static final float mmTargetHeight   = (6) * mmPerInch;
     private static final float stoneZ = 2.00f * mmPerInch;
 
-    private VuforiaLocalizer vuforia = null;
+    private VuforiaLocalizer vuforia;
     private boolean targetVisible = false;
 
-    VuforiaTrackables targetsSkyStone = this.vuforia.loadTrackablesFromAsset("Skystone");
+    VuforiaTrackables targetsSkyStone;
+    VuforiaTrackable stoneTarget;
+
+
+    HDrive hDrive = null;
+
+    boolean Left_Right;
+
+
+
 
     public SkystoneID (HardwareMap hardwareMap){
 
         int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
         VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters(cameraMonitorViewId);
+
+        targetsSkyStone = this.vuforia.loadTrackablesFromAsset("Skystone");
+        stoneTarget = targetsSkyStone.get(0);
 
         parameters.vuforiaLicenseKey = VUFORIA_KEY;
         parameters.cameraDirection   = CAMERA_CHOICE;
@@ -50,17 +62,43 @@ public class SkystoneID {
             phoneXRotate = 90 ;
         }
 
-        VuforiaTrackable stoneTarget = targetsSkyStone.get(0);
         stoneTarget.setName("Stone Target");
 
+        Left_Right = true;
+
+    }
+
+    public boolean SkystoneRedID(double Speed){
+
         if (((VuforiaTrackableDefaultListener)stoneTarget.getListener()).isVisible()) {
+
             targetVisible = true;
 
         }
 
-    }
+        if (Left_Right = true){
 
-    public void SkystoneRedID(){
+            hDrive.ForwardRight.setPower(Speed);
+            hDrive.ForwardLeft.setPower(-Speed);
+            hDrive.BackwardsRight.setPower(-Speed);
+            hDrive.BackwardsLeft.setPower(Speed);
+
+        }
+
+        if (Left_Right = false){
+
+            hDrive.ForwardRight.setPower(-Speed);
+            hDrive.ForwardLeft.setPower(Speed);
+            hDrive.BackwardsRight.setPower(Speed);
+            hDrive.BackwardsLeft.setPower(-Speed);
+
+        }
+
+        /*if (touch sensor = true){
+            Left_Right = false;
+        }*/
+
+        return targetVisible = false;
 
 
     }

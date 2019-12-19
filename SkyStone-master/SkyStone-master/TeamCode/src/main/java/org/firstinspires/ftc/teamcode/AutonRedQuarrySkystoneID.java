@@ -10,6 +10,7 @@ public class AutonRedQuarrySkystoneID extends LinearOpMode {
     ArmRotation armRotation = null;
     Arm armExtend = null;
     BlockGrabber grabber = null;
+    SkystoneID skystoneID = null;
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -18,6 +19,7 @@ public class AutonRedQuarrySkystoneID extends LinearOpMode {
             armRotation = new ArmRotation(hardwareMap);
             armExtend = new Arm(hardwareMap);
             grabber = new BlockGrabber(hardwareMap);
+            skystoneID = new SkystoneID(hardwareMap);
 
 
             waitForStart();
@@ -28,7 +30,7 @@ public class AutonRedQuarrySkystoneID extends LinearOpMode {
 
             hDrive.StopDriving("InstantStop");
 
-            while(opModeIsActive() && hDrive.AutonSensor(0, 0.5, "SkystoneRedIDPart1"));
+            /*while(opModeIsActive() && hDrive.AutonSensor(0, 0.5, "SkystoneRedIDPart1"));
 
             idle();
 
@@ -50,8 +52,13 @@ public class AutonRedQuarrySkystoneID extends LinearOpMode {
 
             idle();
 
-            hDrive.StopDriving("InstantStop");
+            hDrive.StopDriving("InstantStop");*/
 
+            while (opModeIsActive() && skystoneID.SkystoneRedID(0.3));
+
+            idle();
+
+            hDrive.StopDriving("InstantStop");
 
             grabber.Down();
 
