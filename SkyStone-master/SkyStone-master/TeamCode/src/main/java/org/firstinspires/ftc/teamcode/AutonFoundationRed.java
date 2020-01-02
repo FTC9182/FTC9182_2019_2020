@@ -12,6 +12,7 @@ public class AutonFoundationRed extends LinearOpMode {
     Grabber grabber = null;
     HDrive hDrive = null;
     LinearOpMode opMode;
+    //ElapsedTime waitTime = null;
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -20,15 +21,43 @@ public class AutonFoundationRed extends LinearOpMode {
         grabber = new Grabber(hardwareMap);
         grabber.Up();
 
+        //waitTime = new ElapsedTime();
+
         waitForStart();
+
+        //waitTime.reset();
+
+
+        //while (totalTime.milliseconds() < 27000){
+
+        //hDrive.AutonSensor(4, 0.5, "GoToFoundation");
+
+        /*while(opModeIsActive() && hDrive.AutonSensor(95, 0.5, "GoBackwards")){
+            telemetry.addData("Current Distance", hDrive.FrontDistanceSensor.rawUltrasonic());
+            telemetry.update();
+
+            waitTime.reset();
+
+            while(waitTime.milliseconds() < 20);
+
+
+        }*/
+
+        //idle();
+
+        //hDrive.StopDriving("Backwards");
+
+        /*while(opModeIsActive() && hDrive.AutoDrive(0.5, 3, "Backwards"));
+
+        idle();
+
+        hDrive.StopDriving("Backwards");*/
 
         while(opModeIsActive() && hDrive.AutonSensor(0, 0.3, "GoToFoundation"));
 
         idle();
 
         hDrive.StopDriving("InstantStop");
-
-        //AutoDrive is encoder based movement
 
         while(opModeIsActive() && hDrive.AutoDrive(0.5, 1.3, "Left"));
 
@@ -46,15 +75,35 @@ public class AutonFoundationRed extends LinearOpMode {
 
         hDrive.StopDriving("Forward");
 
+        //hDrive.AutoDrive(0.5, 3.5, "Forward");
+
         grabber.Up();
 
         idle();
+
+        //hDrive.AutonSensor(0, 0.5, "RedParkFoundation");
+
+        //maybe decrease strafe speed to get a grip on the tiles?
+
+
+        //while(opModeIsActive() && hDrive.AutoDrive(0.5, 3, "Right"));
+
+        //hDrive.AutoDrive(0.5, 5, "Right");
 
         while(opModeIsActive() && hDrive.AutonSensor(0, 0.5, "RedParkFoundation"));
 
         idle();
 
         hDrive.StopDriving("Right");
+
+        /*hDrive.AutoDrive(0.5,2,"Backwards");
+
+        hDrive.AutoDrive(0.5,1.1, "TurnRight");
+
+        hDrive.AutoDrive(0.5,0.5,"Backwards");
+
+        hDrive.AutoDrive(0.5, 2.7, "Forward");*/
+        //}
 
             while(opModeIsActive()){
 
