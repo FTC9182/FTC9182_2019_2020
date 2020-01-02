@@ -67,7 +67,5 @@ public class AutonBlueQuarrySkystoneID extends LinearOpMode {
 
             while(opModeIsActive());
 
-
-
     }
 }

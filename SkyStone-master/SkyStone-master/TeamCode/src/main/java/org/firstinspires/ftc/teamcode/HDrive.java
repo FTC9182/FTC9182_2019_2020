@@ -289,6 +289,7 @@ public class HDrive {
     }
 
     public boolean AutonSensor(int TargetDistance, double Speed, String Direction) {
+
         if (Direction == "PullToWall/GoToStone") {
 
             ForwardRight.setPower(Speed);
