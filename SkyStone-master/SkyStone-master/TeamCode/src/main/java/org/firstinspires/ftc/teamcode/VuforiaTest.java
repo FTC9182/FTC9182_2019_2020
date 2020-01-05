@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackableDefaultListener;
 
-@TeleOp
+@TeleOp(name = "VuforiaTest")
 public class VuforiaTest extends OpMode {
 
     SkystoneID skystoneID;

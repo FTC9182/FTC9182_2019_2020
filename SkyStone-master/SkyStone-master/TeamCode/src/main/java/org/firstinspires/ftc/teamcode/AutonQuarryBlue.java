@@ -39,11 +39,9 @@ public class AutonQuarryBlue extends LinearOpMode {
 
         hDrive.StopDriving("Left");
 
-        /*hDrive.AutoDrive(0.5, 1, "Forward");
-
             while (opModeIsActive()) {
 
-            }*/
+            }
 
     }
 }
