@@ -33,6 +33,9 @@ public class SkystoneID {
 
     boolean Left_Right;
 
+    float phoneXRotate    = 0;
+    float phoneYRotate    = 0;
+
 
 
 
@@ -43,9 +46,6 @@ public class SkystoneID {
 
         parameters.vuforiaLicenseKey = VUFORIA_KEY;
         parameters.cameraDirection   = CAMERA_CHOICE;
-
-        float phoneXRotate    = 0;
-        float phoneYRotate    = 0;
 
         vuforia = ClassFactory.getInstance().createVuforia(parameters);
 
@@ -66,6 +66,7 @@ public class SkystoneID {
 
         Left_Right = true;
 
+        targetsSkyStone.activate();
     }
 
     public boolean SkystoneRedID(double Speed){
