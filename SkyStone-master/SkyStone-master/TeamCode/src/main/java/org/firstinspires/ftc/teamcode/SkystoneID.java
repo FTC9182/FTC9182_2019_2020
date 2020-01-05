@@ -41,9 +41,6 @@ public class SkystoneID {
         int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
         VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters(cameraMonitorViewId);
 
-        targetsSkyStone = this.vuforia.loadTrackablesFromAsset("Skystone");
-        stoneTarget = targetsSkyStone.get(0);
-
         parameters.vuforiaLicenseKey = VUFORIA_KEY;
         parameters.cameraDirection   = CAMERA_CHOICE;
 
@@ -51,6 +48,11 @@ public class SkystoneID {
         float phoneYRotate    = 0;
 
         vuforia = ClassFactory.getInstance().createVuforia(parameters);
+
+        VuforiaTrackables targetsSkyStone = this.vuforia.loadTrackablesFromAsset("Skystone");
+
+        VuforiaTrackable stoneTarget = targetsSkyStone.get(0);
+        stoneTarget.setName("Stone Target");
 
         if (CAMERA_CHOICE == BACK) {
             phoneYRotate = -90;
@@ -61,8 +63,6 @@ public class SkystoneID {
         if (PHONE_IS_PORTRAIT) {
             phoneXRotate = 90 ;
         }
-
-        stoneTarget.setName("Stone Target");
 
         Left_Right = true;
 
