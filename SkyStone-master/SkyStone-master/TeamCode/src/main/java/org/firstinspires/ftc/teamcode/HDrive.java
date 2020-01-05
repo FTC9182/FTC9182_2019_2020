@@ -1,19 +1,12 @@
 package org.firstinspires.ftc.teamcode;
 
-import android.graphics.Color;
-
 import com.qualcomm.hardware.modernrobotics.ModernRoboticsI2cRangeSensor;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.DigitalChannel;
-import com.qualcomm.robotcore.hardware.DistanceSensor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.ElapsedTime;
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-
-import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
 public class HDrive {
 
@@ -49,6 +42,7 @@ public class HDrive {
         ForwardLeft.setDirection(DcMotorSimple.Direction.FORWARD);
         BackwardsRight.setDirection(DcMotorSimple.Direction.REVERSE);
         BackwardsLeft.setDirection(DcMotorSimple.Direction.FORWARD);
+
         Middle.setDirection(DcMotorSimple.Direction.REVERSE);
 
         SlowTime = new ElapsedTime();

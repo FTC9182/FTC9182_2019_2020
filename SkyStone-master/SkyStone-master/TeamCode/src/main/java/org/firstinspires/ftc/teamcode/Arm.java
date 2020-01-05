@@ -4,8 +4,6 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-import java.util.EventListenerProxy;
-
 public class Arm {
 
     public DcMotor armExtend;
@@ -21,17 +19,18 @@ public class Arm {
         currentPosition = armExtend.getCurrentPosition();
         armExtend.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
-
+/*
     public void Move(double gunnerY){
         if (armExtend.getCurrentPosition() < 500 && armExtend.getCurrentPosition() > -20){
             armExtend.setPower(-.3 * gunnerY);
         }
     }
-
-    public void OriginalMove(double gunnerY){
+*/
+    public void OriginalMove(double gunnerY)
+    {
         armExtend.setPower(power * -gunnerY);
     }
-
+/*
     public void Brake(){
         armExtend.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
@@ -51,4 +50,6 @@ public class Arm {
         while(armExtend.isBusy() && armTimer.seconds() < 1){ armExtend.setPower(armPower); }
         currentPosition = armExtend.getCurrentPosition();
     }
+*/
 }
+

@@ -68,7 +68,7 @@ public class ArmRotation {
             currentDownPower = downPower;
         }
     }
-
+/*
     public boolean EncoderMove(double TargetDistance, double speed, String Direction){
 
         if (Direction == "Up"){
@@ -88,5 +88,5 @@ public class ArmRotation {
         return false;
 
     }
-
+*/
 }
