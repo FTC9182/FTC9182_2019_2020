@@ -8,16 +8,14 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackableDefau
 @TeleOp(name = "VuforiaTest")
 public class VuforiaTest extends OpMode {
 
-    SkystoneID skystoneID;
+    SkystoneID skystoneID = null;
 
-    @Override
     public void init(){
 
         skystoneID = new SkystoneID(hardwareMap);
 
     }
 
-    @Override
     public void loop() {
 
         if (((VuforiaTrackableDefaultListener)skystoneID.stoneTarget.getListener()).isVisible()) {
