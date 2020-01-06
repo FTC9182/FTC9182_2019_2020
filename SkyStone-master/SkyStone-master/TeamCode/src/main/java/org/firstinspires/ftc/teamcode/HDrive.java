@@ -353,6 +353,34 @@ public class HDrive {
 
         //StopDriving("Left");
 
+        if (Direction == "RedParkSkystone") {
+
+            //Middle.setPower(Speed);
+            ForwardRight.setPower(Speed);
+            ForwardLeft.setPower(Speed);
+            BackwardsRight.setPower(Speed);
+            BackwardsLeft.setPower(Speed);
+
+            return (BottomSensorColor.red() - BottomSensorColor.blue()) < 35;
+
+        }
+
+        //StopDriving("Right");
+
+        if (Direction == "BlueParkSkystone") {
+
+            //Middle.setPower(-Speed);
+            ForwardRight.setPower(-Speed);
+            ForwardLeft.setPower(-Speed);
+            BackwardsRight.setPower(-Speed);
+            BackwardsLeft.setPower(-Speed);
+
+            return (BottomSensorColor.blue() - BottomSensorColor.red()) < 25;
+
+        }
+
+        //StopDriving("Left");
+
         if (Direction == "GoBackwards") {
 
             ForwardRight.setPower(-Speed);

@@ -17,9 +17,9 @@ public class VuforiaTestLinearOpMode extends LinearOpMode {
 
         waitForStart();
 
-        skystoneID.targetsSkyStone.activate();
+        //skystoneID.targetsSkyStone.activate();
 
-        while (opModeIsActive()){
+        /*while (opModeIsActive()){
             if (((VuforiaTrackableDefaultListener)skystoneID.stoneTarget.getListener()).isVisible()) {
 
                 telemetry.addData("SeenSkystone", "True");
@@ -31,7 +31,7 @@ public class VuforiaTestLinearOpMode extends LinearOpMode {
                 telemetry.update();
 
             }
-        }
+        }*/
 
 
     }

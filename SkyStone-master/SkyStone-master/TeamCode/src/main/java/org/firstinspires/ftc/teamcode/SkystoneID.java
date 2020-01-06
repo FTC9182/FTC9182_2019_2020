@@ -21,31 +21,23 @@ import static org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocaliz
 public class SkystoneID {
 
     private static final VuforiaLocalizer.CameraDirection CAMERA_CHOICE = BACK;
-    private static final boolean PHONE_IS_PORTRAIT = false  ;
+    private static final boolean PHONE_IS_PORTRAIT = false;
 
     private static final String VUFORIA_KEY =
             "AcOQber/////AAAAGd+Wx7PVUULtlRxS6UeH3RgFL7O2kqLUIvryVwUgd7KQqprL1p5dzd2lpfSa0GIT1bxUPE33ZUWu8oe1S7pT7faMKK2buUugP8KJ3Vj2smsM7+K0LrTAWX/e5tW2zptEhgmH4XOGMD0rgiXHEopZWHVKfRzT2icGLg3ErUTYgHtNjLneooZhWiWDnXHEQFOc4JIoTz63aSIptNjN5q9fXbOwj1Wf4/nU+sxCU0EujqhoZWIztt2zI+mX1iOkGd/qyaSjaxdQ0q1E+YNx+v+gTZ5b0rmyr2ody3e4c4S6nTR9AhagdoDRL6VOm6v5CWWpNwM+ETWuYOBtGm5iTc/YxniKwXbClrFkXckzM+9A6lPt";
 
-    private static final float mmPerInch        = 0;
-    private static final float mmTargetHeight   = 0;
-    private static final float stoneZ = 0;
+    private static final float mmPerInch = 25.4f;
+    private static final float mmTargetHeight = (6) * mmPerInch;
 
-    final float CAMERA_FORWARD_DISPLACEMENT  = 0;   // eg: Camera is 4 Inches in front of robot center
-    final float CAMERA_VERTICAL_DISPLACEMENT = 0;   // eg: Camera is 8 Inches above ground
-    final float CAMERA_LEFT_DISPLACEMENT     = 0;
+    private static final float stoneZ = 2.00f * mmPerInch;
 
-    private VuforiaLocalizer vuforia;
-    private boolean targetVisible = false;
-
-    VuforiaTrackables targetsSkyStone;
-    VuforiaTrackable stoneTarget;
-
+    private VuforiaLocalizer vuforia = null;
+    boolean targetVisible = false;
+    float phoneXRotate = 0;
+    float phoneYRotate = 0;
+    float phoneZRotate = 0;
 
     HDrive hDrive = null;
-
-    boolean Left_Right;
-
-
 
 
     public SkystoneID (HardwareMap hardwareMap){
@@ -54,11 +46,7 @@ public class SkystoneID {
         VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters(cameraMonitorViewId);
 
         parameters.vuforiaLicenseKey = VUFORIA_KEY;
-        parameters.cameraDirection   = CAMERA_CHOICE;
-
-        float phoneXRotate    = 0;
-        float phoneYRotate    = 0;
-        float phoneZRotate    = 0;
+        parameters.cameraDirection = CAMERA_CHOICE;
 
         vuforia = ClassFactory.getInstance().createVuforia(parameters);
 
@@ -67,9 +55,6 @@ public class SkystoneID {
         VuforiaTrackable stoneTarget = targetsSkyStone.get(0);
         stoneTarget.setName("Stone Target");
 
-        List<VuforiaTrackable> allTrackables = new ArrayList<VuforiaTrackable>();
-        allTrackables.addAll(targetsSkyStone);
-
         if (CAMERA_CHOICE == BACK) {
             phoneYRotate = -90;
         } else {
@@ -77,53 +62,21 @@ public class SkystoneID {
         }
 
         if (PHONE_IS_PORTRAIT) {
-            phoneXRotate = 90 ;
+            phoneXRotate = 90;
         }
 
-        OpenGLMatrix robotFromCamera = OpenGLMatrix
-                .translation(CAMERA_FORWARD_DISPLACEMENT, CAMERA_LEFT_DISPLACEMENT, CAMERA_VERTICAL_DISPLACEMENT)
-                .multiplied(Orientation.getRotationMatrix(EXTRINSIC, YZX, DEGREES, phoneYRotate, phoneZRotate, phoneXRotate));
 
-        for (VuforiaTrackable trackable : allTrackables) {
-            ((VuforiaTrackableDefaultListener) trackable.getListener()).setPhoneInformation(robotFromCamera, parameters.cameraDirection);
-        }
 
-        Left_Right = true;
+    }
+
+    public void SkystoneID(){
+
 
     }
 
     public boolean SkystoneRedID(double Speed){
 
-        if (((VuforiaTrackableDefaultListener)stoneTarget.getListener()).isVisible()) {
-
-            targetVisible = true;
-
-        }
-
-        if (Left_Right = true){
-
-            hDrive.ForwardRight.setPower(Speed);
-            hDrive.ForwardLeft.setPower(-Speed);
-            hDrive.BackwardsRight.setPower(-Speed);
-            hDrive.BackwardsLeft.setPower(Speed);
-
-        }
-
-        if (Left_Right = false){
-
-            hDrive.ForwardRight.setPower(-Speed);
-            hDrive.ForwardLeft.setPower(Speed);
-            hDrive.BackwardsRight.setPower(Speed);
-            hDrive.BackwardsLeft.setPower(-Speed);
-
-        }
-
-        /*if (touch sensor = true){
-            Left_Right = false;
-        }*/
-
-        return targetVisible = false;
-
+        return false;
 
     }
 }
