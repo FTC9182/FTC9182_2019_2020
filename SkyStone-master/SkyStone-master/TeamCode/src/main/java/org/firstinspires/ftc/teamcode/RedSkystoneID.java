@@ -32,14 +32,14 @@ public class RedSkystoneID extends LinearOpMode {
     float phoneZRotate = 0;
 
     HDrive hDrive = null;
-    Grabber grabber = null;
+    BlockGrabber grabber = null;
 
     public void runOpMode() throws InterruptedException {
 
         //skystoneID = new SkystoneID(hardwareMap);
 
         hDrive = new HDrive(hardwareMap);
-        grabber = new Grabber(hardwareMap);
+        grabber = new BlockGrabber(hardwareMap);
 
         int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
         VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters(cameraMonitorViewId);
