@@ -19,6 +19,7 @@ public class HDrive {
     ElapsedTime SlowTime = null;
 
     ModernRoboticsI2cRangeSensor FrontDistanceSensor;
+    ModernRoboticsI2cRangeSensor LeftDistanceSensor;
     ColorSensor BottomSensorColor;
     //DistanceSensor BackDistanceSensor;
     ColorSensor FrontColorSensor;
@@ -48,6 +49,7 @@ public class HDrive {
         SlowTime = new ElapsedTime();
 
         FrontDistanceSensor = hardwareMap.get(ModernRoboticsI2cRangeSensor.class, "sensor_range");
+        LeftDistanceSensor = hardwareMap.get(ModernRoboticsI2cRangeSensor.class, "left_range");
 
         BottomSensorColor = hardwareMap.get(ColorSensor.class, "bottom_sensor");
 
@@ -283,7 +285,7 @@ public class HDrive {
     }
 
     public boolean AutonSensor(int TargetDistance, double Speed, String Direction) {
-        if (Direction == "PullToWall/GoToStone") {
+        if (Direction == "PullToWall") {
 
             ForwardRight.setPower(Speed);
             ForwardLeft.setPower(Speed);
@@ -295,6 +297,19 @@ public class HDrive {
         }
 
         //StopDriving("Forward");
+
+        if (Direction == "GoToStone") {
+
+            ForwardRight.setPower(Speed);
+            ForwardLeft.setPower(-Speed);
+            BackwardsRight.setPower(-Speed);
+            BackwardsLeft.setPower(Speed);
+
+            return LeftDistanceSensor.rawUltrasonic() > TargetDistance;
+
+        }
+
+        //StopDriving("Left");
 
         if (Direction == "BlueParkFoundation") {
 

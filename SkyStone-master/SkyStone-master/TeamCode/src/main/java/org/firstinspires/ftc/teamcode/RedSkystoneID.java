@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.robotcore.external.ClassFactory;
@@ -10,6 +11,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
 
 import static org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer.CameraDirection.BACK;
 
+@Autonomous(name = "RedSkystoneID")
 public class RedSkystoneID extends LinearOpMode {
 
     //SkystoneID skystoneID;
@@ -68,10 +70,7 @@ public class RedSkystoneID extends LinearOpMode {
 
         waitForStart();
 
-        //We need another distance sensor on the side of the robot so that it can pull up to the stone since
-        //the current one is on the front.
-
-        while (opModeIsActive() && hDrive.AutonSensor(20, 0.4, "need new sensor"));
+        while (opModeIsActive() && hDrive.AutonSensor(20, 0.4, "GoToStone"));
 
         idle();
 
@@ -79,7 +78,7 @@ public class RedSkystoneID extends LinearOpMode {
 
         targetsSkyStone.activate();
 
-        while (opModeIsActive() && targetVisible == false){
+        while (opModeIsActive() && targetVisible == false && hDrive.AutonSensor(0, 0.3, "GoToFoundation")){
 
             //while (!isStopRequested()) {
 
@@ -91,11 +90,6 @@ public class RedSkystoneID extends LinearOpMode {
                 }
 
             //}
-
-            hDrive.ForwardRight.setPower(-0.3);
-            hDrive.ForwardLeft.setPower(-0.3);
-            hDrive.BackwardsRight.setPower(-0.3);
-            hDrive.BackwardsLeft.setPower(-0.3);
 
         }
 

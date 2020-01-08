@@ -18,7 +18,7 @@ public class VuforiaTest extends OpMode {
 
     public void loop() {
 
-        if (((VuforiaTrackableDefaultListener)skystoneID.stoneTarget.getListener()).isVisible()) {
+        /*if (((VuforiaTrackableDefaultListener)skystoneID.stoneTarget.getListener()).isVisible()) {
 
             telemetry.addData("SeenSkystone", "True");
             telemetry.update();
@@ -28,7 +28,7 @@ public class VuforiaTest extends OpMode {
             telemetry.addData("SeenSkystone", "False");
             telemetry.update();
 
-        }
+        }*/
 
     }
 }

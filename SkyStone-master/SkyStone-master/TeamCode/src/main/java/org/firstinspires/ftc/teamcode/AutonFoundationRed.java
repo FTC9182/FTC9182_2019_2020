@@ -69,7 +69,7 @@ public class AutonFoundationRed extends LinearOpMode {
 
         idle();
 
-        while(opModeIsActive() && hDrive.AutonSensor(11, 0.5, "PullToWall/GoToStone"));
+        while(opModeIsActive() && hDrive.AutonSensor(11, 0.5, "PullToWall"));
 
         idle();
 
