@@ -22,7 +22,7 @@ public class HDrive {
     ModernRoboticsI2cRangeSensor LeftDistanceSensor;
     ColorSensor BottomSensorColor;
     //DistanceSensor BackDistanceSensor;
-    ColorSensor FrontColorSensor;
+    //ColorSensor FrontColorSensor;
     DigitalChannel FoundationTouch;
 
     final double DRIVETICKS = 800;
@@ -55,7 +55,7 @@ public class HDrive {
 
 //        BackDistanceSensor = hardwareMap.get(DistanceSensor.class, "back_distance_sensor");
 
-        FrontColorSensor = hardwareMap.get(ColorSensor.class, "front_color_sensor");
+        //FrontColorSensor = hardwareMap.get(ColorSensor.class, "front_color_sensor");
 
         FoundationTouch = hardwareMap.digitalChannel.get("foundation_touch");
 
@@ -421,7 +421,7 @@ public class HDrive {
 
         //StopDriving("Backwards");
 
-        if (Direction == "SkystoneRedIDPart1") {
+        /*if (Direction == "SkystoneRedIDPart1") {
 
             if ((FrontColorSensor.red()) < 50) {
                 SkystoneSeen = true;
@@ -465,7 +465,7 @@ public class HDrive {
 
             return SkystoneSeen == false;
 
-        }
+        }*/
 
         return false;
 
