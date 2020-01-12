@@ -1,9 +1,11 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 @Autonomous(name = "AutonRedQuarrySkystoneID")
+@Disabled
 public class AutonRedQuarrySkystoneID extends LinearOpMode {
 
     HDrive hDrive = null;
