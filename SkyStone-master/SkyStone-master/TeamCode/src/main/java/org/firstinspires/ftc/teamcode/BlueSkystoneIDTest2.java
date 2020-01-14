@@ -104,7 +104,7 @@ public class BlueSkystoneIDTest2 extends LinearOpMode {
 
         waitForStart();
 
-        while (opModeIsActive() && hDrive.AutonSensor(15, 0.4, "GoToStone"));
+        while (opModeIsActive() && hDrive.AutonSensor(15, 0.5, "GoToStone"));
 
         idle();
 
@@ -114,7 +114,7 @@ public class BlueSkystoneIDTest2 extends LinearOpMode {
 
         moveTimer.reset();
 
-        while (!isStopRequested() && targetVisible == false && moveTimer.milliseconds() < 8000) {
+        while (!isStopRequested() && targetVisible == false && moveTimer.milliseconds() < 10000) {
 
             stopGoTimer.reset();
 
@@ -173,7 +173,7 @@ public class BlueSkystoneIDTest2 extends LinearOpMode {
 
         hDrive.StopDriving("InstantStop");
 
-        while(opModeIsActive() && hDrive.AutoDrive(0.4, 1.7, "Left"));
+        while(opModeIsActive() && hDrive.AutoDrive(0.6, 1.7, "Left"));
 
         idle();
 
@@ -183,13 +183,13 @@ public class BlueSkystoneIDTest2 extends LinearOpMode {
 
         idle();
 
-        while(opModeIsActive() && hDrive.AutoDrive(0.4, 2, "Right"));
+        while(opModeIsActive() && hDrive.AutoDrive(0.6, 2, "Right"));
 
         idle();
 
         hDrive.StopDriving("Right");
 
-        while(opModeIsActive() && hDrive.AutonSensor(0, 0.6, "BlueParkSkystone"));
+        while(opModeIsActive() && hDrive.AutonSensor(0, 0.8, "BlueParkSkystone"));
 
         idle();
 
@@ -197,7 +197,7 @@ public class BlueSkystoneIDTest2 extends LinearOpMode {
 
         moveTimer.reset();
 
-        while(opModeIsActive() && moveTimer.milliseconds() < 400){
+        while(opModeIsActive() && moveTimer.milliseconds() < 600){
             hDrive.ForwardRight.setPower(-0.4);
             hDrive.ForwardLeft.setPower(-0.4);
             hDrive.BackwardsRight.setPower(-0.4);
@@ -208,29 +208,29 @@ public class BlueSkystoneIDTest2 extends LinearOpMode {
 
         hDrive.StopDriving("Backwards");
 
-        while(opModeIsActive() && hDrive.AutoDrive(0.6, 2, "Right"));
-
-        idle();
-
-        hDrive.StopDriving("Right");
-
-        grabber.Up();
-
-        idle();
-
-        while(opModeIsActive() && hDrive.AutoDrive(0.6, 2, "Left"));
+        while(opModeIsActive() && hDrive.AutoDrive(0.7, 2, "Left"));
 
         idle();
 
         hDrive.StopDriving("Left");
 
-        moveTimer.reset();
-
-        while(opModeIsActive() && hDrive.AutonSensor(0, 0.4, "BlueParkQuarry2"));
+        grabber.Up();
 
         idle();
 
-        hDrive.StopDriving("Forward");
+        while(opModeIsActive() && hDrive.AutoDrive(0.7, 2, "Right"));
+
+        idle();
+
+        hDrive.StopDriving("Right");
+
+        moveTimer.reset();
+
+        while(opModeIsActive() && hDrive.AutonSensor(0, 0.7, "BlueParkQuarry2"));
+
+        idle();
+
+        hDrive.StopDriving("InstantStop");
 
         while (opModeIsActive());
 

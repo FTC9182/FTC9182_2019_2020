@@ -180,7 +180,7 @@ public class RedSkystoneIDTest2 extends LinearOpMode {
 
         hDrive.StopDriving("InstantStop");
 
-        while(opModeIsActive() && hDrive.AutoDrive(0.4, 1.7, "Left"));
+        while(opModeIsActive() && hDrive.AutoDrive(0.5, 1.7, "Left"));
 
         idle();
 
@@ -190,13 +190,13 @@ public class RedSkystoneIDTest2 extends LinearOpMode {
 
         idle();
 
-        while(opModeIsActive() && hDrive.AutoDrive(0.4, 2, "Right"));
+        while(opModeIsActive() && hDrive.AutoDrive(0.5, 2, "Right"));
 
         idle();
 
         hDrive.StopDriving("Right");
 
-        while(opModeIsActive() && hDrive.AutonSensor(0, 0.6, "RedParkSkystone"));
+        while(opModeIsActive() && hDrive.AutonSensor(0, 0.7, "RedParkSkystone"));
 
         idle();
 
@@ -204,11 +204,11 @@ public class RedSkystoneIDTest2 extends LinearOpMode {
 
         moveTimer.reset();
 
-        while(opModeIsActive() && moveTimer.milliseconds() < 400){
-            hDrive.ForwardRight.setPower(0.4);
-            hDrive.ForwardLeft.setPower(0.4);
-            hDrive.BackwardsRight.setPower(0.4);
-            hDrive.BackwardsLeft.setPower(0.4);
+        while(opModeIsActive() && moveTimer.milliseconds() < 600){
+            hDrive.ForwardRight.setPower(0.6);
+            hDrive.ForwardLeft.setPower(0.6);
+            hDrive.BackwardsRight.setPower(0.6);
+            hDrive.BackwardsLeft.setPower(0.6);
         }
 
         idle();
@@ -233,7 +233,7 @@ public class RedSkystoneIDTest2 extends LinearOpMode {
 
         moveTimer.reset();
 
-        while(opModeIsActive() && hDrive.AutonSensor(0, 0.4, "RedParkQuarry2"));
+        while(opModeIsActive() && hDrive.AutonSensor(0, 0.6, "RedParkQuarry2"));
 
         idle();
 

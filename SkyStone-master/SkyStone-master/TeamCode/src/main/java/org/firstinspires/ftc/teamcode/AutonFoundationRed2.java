@@ -2,12 +2,9 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.util.ElapsedTime;
 
-import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
-
-@Autonomous(name = "AutonFoundationRed")
-public class AutonFoundationRed extends LinearOpMode {
+@Autonomous(name = "AutonFoundationRed2")
+public class AutonFoundationRed2 extends LinearOpMode {
 
     Grabber grabber = null;
     HDrive hDrive = null;
@@ -89,6 +86,12 @@ public class AutonFoundationRed extends LinearOpMode {
         //while(opModeIsActive() && hDrive.AutoDrive(0.5, 3, "Right"));
 
         //hDrive.AutoDrive(0.5, 5, "Right");
+
+        while(opModeIsActive() && hDrive.AutoDrive(0.5, 2, "Right"));
+
+        idle();
+
+        hDrive.StopDriving("Right");
 
         while(opModeIsActive() && hDrive.AutonSensor(0, 0.5, "RedParkFoundation"));
 

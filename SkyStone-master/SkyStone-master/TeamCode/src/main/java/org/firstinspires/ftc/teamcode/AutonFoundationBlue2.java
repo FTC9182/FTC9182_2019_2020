@@ -4,8 +4,8 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-@Autonomous (name = "AutonFoundationBlue")
-public class AutonFoundationBlue extends LinearOpMode {
+@Autonomous (name = "AutonFoundationBlue2")
+public class AutonFoundationBlue2 extends LinearOpMode {
 
     Grabber grabber = null;
     HDrive hDrive = null;
@@ -71,6 +71,12 @@ public class AutonFoundationBlue extends LinearOpMode {
         grabber.Up();
 
         idle();
+
+        while(opModeIsActive() && hDrive.AutoDrive(0.5, 2, "Left"));
+
+        idle();
+
+        hDrive.StopDriving("Left");
 
         while(opModeIsActive() && hDrive.AutonSensor(0, 0.5, "BlueParkFoundation"));
 
